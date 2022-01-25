@@ -9,7 +9,7 @@ export default function Pets(){
         <div>
           {/* // Pull all the pets by id and display
            map(<div> 
-            image (onclick - petPage)
+            image (onclick - petPage(props: this pet))
             / name / 
             health / 
             happiness / 

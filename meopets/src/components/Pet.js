@@ -1,6 +1,17 @@
 export default function Pet(){
-    return(
-        
-        <div class="circle"></div>
-    )
+//   [name, ]
+//   [health, ]
+//   [happiness, ]
+//   [hunger, ]
+
+return (
+    {/*
+  name of pet
+  image of pet
+   <button onClick = decrement health/>
+   <button onClick = increment hunger/>
+Go back to user profile - text with hyperlink/button 
+    */   }
+ 
+)
 }

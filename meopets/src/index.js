@@ -20,7 +20,6 @@ ReactDOM.render(
             <Routes>
                 <Route path="/" element={<App />} >
                     <Route path="home" element={<Home />} />
-                    <Route path="login" element={<Login />} />
                     <Route path="signup" element={<SignUp />} />
                     <Route path="userprofile" element={<UserProfile />} />
                     <Route path="userprofile/:petId" element={<Pet />} />

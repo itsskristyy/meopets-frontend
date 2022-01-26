@@ -1,11 +1,16 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom';
 import '../App.css';
-import PetsPage from './PetsPage';
 
 function App() {
     return (
-      <PetsPage/>
+        <>
+            <nav>
+                <h1>Meopets</h1>
+            </nav>
+
+            <Outlet />
+        </>
     );
 }
 

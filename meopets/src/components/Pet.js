@@ -1,11 +1,19 @@
 import { useContext } from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import { UserContext } from "../contexts/loginContext";
+import { PetsContext } from "../contexts/petsContext";
 
-export default function Pet(){
+export default function Pet(props){
+    let location = useLocation();
+    console.log(location);
+    const params = useParams();
+    const id = Number(params.petId);
+    console.log(id);
     let navigate = useNavigate();
-    let params = useParams();
-    const pet = useContext(UserContext).activeUserPet;
+    const pets = useContext(PetsContext).pets;
+    console.log(pets)
+    console.log(pets[id]);
+    const pet = pets[id];
 
     return (
         <>

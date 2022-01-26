@@ -1,7 +1,7 @@
-import React, {useContext, useState} from "react";
+import React, { useState, useContext } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import {UserContext} from "../contexts/loginContext";
+import { UserContext } from "../contexts/loginContext";
 
 export default function SignUp() {
     let navigate = useNavigate()
@@ -16,31 +16,29 @@ export default function SignUp() {
     }
 
     return(
-        <div className='signup'>
+        <>
             <form onSubmit={async e => {
                 e.preventDefault();
                 const response = await signUp();
-                console.log("Return:" + response);
-                navigate("/userprofile")
-                }}
-                >
+                console.log(response);
+                navigate('/userprofile');
+            }}>
+                <label>Email:<br/>
+                    <input type="email" name="email" onChange={e => setEmail(e.target.value)}/>
+                </label><br/>
+
                 <label>Username:<br/>
                     <input type="text" name="username" onChange={e => setUsername(e.target.value)} />
                 </label><br/>
 
                 <label>Password:<br/>
-                <input type="password" name="password1" onChange={e => setPassword(e.target.value)} />
+                    <input type="password" name="password1" onChange={e => setPassword(e.target.value)} />
                 </label><br/>
 
-                <label>Confirm your password:<br/>
-                <input type="password" name="password2"  />
+                <label>Confirm Password:<br/>
+                    <input type="password" name="password2"  />
                 </label><br/>
 
-                <label>Email:<br/>
-                    <input type="email" name="email" onChange={e => setEmail(e.target.value)}/>
-                </label><br/>
-
-                {/* TODO */}
                 <h2>Create Your Pet</h2>
 
                 <label>Name of Pet:
@@ -56,6 +54,6 @@ export default function SignUp() {
 
                 <input type="submit" value="Submit"/>
             </form>
-        </div>
+        </>
     )
 }

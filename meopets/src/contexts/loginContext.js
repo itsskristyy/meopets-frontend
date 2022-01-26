@@ -1,20 +1,24 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 /* login/user Context. Here is where the global state gets defined. */
 
 /* context provider */
 export const UserContext = React.createContext({
-    activeUser: {},
-    activeUserPet: {},
+    token: {},
+    isLoggedIn: {},
+    username: {},
     signUp: (email, username, password) => {},
-    logIn: (username, password) => {}
+    logIn: (username, password) => {},
+    logOut: () => {}
 });
 
 export default function Users(props) {
     // Context's states - user and active user's pet(s)
-    const [activeUser, setActiveUser] = useState({userId: null, token: null});
-    const [activeUserPet, setActiveUserPet] = useState("");
+    const [token, setToken] = useState(null);
+    const [username, setUsername] = useState("");
+    const isLoggedIn = !!token;
+    console.log(token);
 
     // Login function. Sends the POST request to the login route with username and password as bodies. 
     // More error handling might be needed tbh (or handling errors from the API).
@@ -24,13 +28,8 @@ export default function Users(props) {
             password: password
         });
         // Assuming login went well, the user state is updated with the response data.
-        setActiveUser(prevUser => {
-            const newUser = {};
-            newUser.userId = response.data.userId;
-            newUser.token = response.data.token;
-            return newUser
-        });
-        console.log(activeUser);
+        setToken(response.data.token);
+        setUsername(username);
         return response;
     }
 
@@ -45,41 +44,27 @@ export default function Users(props) {
             password: password
         });
         // The user is automatically signed in (this can be changed, of course).
-        setActiveUser(prevUser => {
-            const newUser = {};
-            newUser.userId = response.data.userId;
-            newUser.token = response.data.token;
-            return newUser
-        });
-        console.log(activeUser);
+        setToken(response.data.token);
+        setUsername(username);
         return response;
     }
 
-    useEffect(() => {
-        // If a user is authenticated, we'll grab their pet(s) after login and also store
-        // them in the context. 
-        const getPet = async () => {
-            if (activeUser.userId) {
-                try {
-                    const userPet = await axios.get('https://virtual-pets.herokuapp.com/pets', {
-                    headers: {
-                        'Authorization': 'Bearer ' + activeUser.token
-                    }
-                });
-                setActiveUserPet(userPet.data.pet[0])
-                } catch(err) {
-                    console.log(err.error);
-                }
-            }
-        }
-        getPet();
-    }, [activeUser]);
+    function logOut() {
+        setToken(null);
+        setUsername("");
+    }
 
     // The context component is provided to all the children together with all the values we specified here.
     return (
-        <UserContext.Provider value={{activeUser: activeUser, activeUserPet: activeUserPet, signup: signUp, login: logIn, setActiveUser: setActiveUser}}>
+        <UserContext.Provider value={{
+            token: token,
+            isLoggedIn: isLoggedIn,
+            username: username, 
+            signup: signUp, 
+            login: logIn, 
+            logout: logOut
+        }}>
             {props.children}
         </UserContext.Provider>
     )
 }
-

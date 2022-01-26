@@ -16,7 +16,7 @@ ReactDOM.render(
                 <Route path="home" element={<Home />} />
                 <Route path="userprofile" element={<UserProfile />} />
                 <Route path="userprofile/:petId" element={<Pet />} />
-                <Route path="/game" element={<Minigame/>}/>
+                <Route path="/fishing" element={<Minigame/>}/>
             </Route>
         </Routes>
     </BrowserRouter>,

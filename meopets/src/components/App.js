@@ -12,8 +12,8 @@ function isLogged() {
 
 function App() {
     return (
-        <>
-            <nav>
+        <header>
+            <nav className="sticky-nav">
                 <Link className="link" to={`/home`}>
                     <h1>Meopets</h1> {/* Click on logo to redirect to Home */}
                 </Link>
@@ -24,7 +24,7 @@ function App() {
                     };}}
                          to={`/userprofile`}>
                     My Profile
-                </NavLink> |{" "}
+                </NavLink>
 
                 <NavLink className="nav-link" style={({ isActive }) => {
                     return {
@@ -32,6 +32,14 @@ function App() {
                     };}}
                          to={`/fishing`}>
                     Fishing Pond
+                </NavLink>
+
+                <NavLink className="nav-link" style={({ isActive }) => {
+                    return {
+                        color: isActive ? "black" : ""
+                    };}}
+                         to={`/store`}>
+                    Store
                 </NavLink>
 
                 {isLogged()}
@@ -44,7 +52,7 @@ function App() {
             This makes it so that we don't have to copy and paste the navbar HTML
             over and over again */}
             <Outlet />
-        </>
+        </header>
     );
 }
 

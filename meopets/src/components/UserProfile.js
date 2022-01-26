@@ -1,8 +1,12 @@
+import {Outlet} from "react-router-dom";
+import Pets from "./Pets";
+
 export default function UserProfile(){
-    //
     return(
-        <div>
-            {/* renders all PetsPage Component */}
-        </div>
-    )
+        <>
+            <Pets />
+
+            <Outlet />
+        </>
+    );
 }

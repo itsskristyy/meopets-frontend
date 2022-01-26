@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import App from './components/App';
 import Home from "./components/Home";
+import Minigame from './components/Minigame';
 import Pet from "./components/Pet";
 import UserProfile from "./components/UserProfile";
 import './index.css';
@@ -15,6 +16,7 @@ ReactDOM.render(
                 <Route path="home" element={<Home />} />
                 <Route path="userprofile" element={<UserProfile />} />
                 <Route path="userprofile/:petId" element={<Pet />} />
+                <Route path="/fishing" element={<Minigame/>}/>
             </Route>
         </Routes>
     </BrowserRouter>,

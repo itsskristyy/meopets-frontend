@@ -12,11 +12,11 @@ function App() {
                 paddingTop: "15px",
                 marginBottom: 30
             }}>
-                <Link to={`/home`}>
+                <Link className="link" to={`/home`}>
                     <h1>Meopets</h1> {/* Click on logo to redirect to Home */}
                 </Link>
 
-                <NavLink style={({ isActive }) => {
+                <NavLink className="nav-link" style={({ isActive }) => {
                     return {
                         color: isActive ? "#ACE3FF" : ""
                     };}}
@@ -24,7 +24,7 @@ function App() {
                     My Profile
                 </NavLink> |{" "}
 
-                <NavLink style={({ isActive }) => {
+                <NavLink className="nav-link" style={({ isActive }) => {
                     return {
                         color: isActive ? "#ACE3FF" : ""
                     };}}

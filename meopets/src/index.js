@@ -10,12 +10,11 @@ import './index.css';
 ReactDOM.render(
     <BrowserRouter>
         <Routes>
+            {/* Setting App as the parent route will display the navbar in all nested routes */}
             <Route path="/" element={<App />} >
                 <Route path="home" element={<Home />} />
                 <Route path="userprofile" element={<UserProfile />} />
-
                 <Route path="userprofile/:petId" element={<Pet />} />
-
             </Route>
         </Routes>
     </BrowserRouter>,

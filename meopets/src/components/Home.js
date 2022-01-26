@@ -5,13 +5,16 @@ export default function Home() {
 
     return (
         <>
+            {/* On successful form submission, redirect user to UserProfile */}
             <form onSubmit={() => {
                 navigate("/userprofile")
             }}>
+                {/* TODO: Validate user exists in backend */}
                 <label>Username:<br/>
                     <input type="text" name="username" />
                 </label><br/>
 
+                {/* TODO: Validate password matches backend */}
                 <label>Password:<br/>
                     <input type="text" name="password"  />
                 </label><br/>
@@ -19,7 +22,7 @@ export default function Home() {
                 <input type="submit" value="Submit"/>
             </form>
 
-            <p>Don't have an account? <Link to = "/Signup" onClick={() => window.location.reload()}> Sign Up Here</Link></p>
+            <p>Don't have an account? <Link to={`/signup`}>Sign Up Here</Link></p>
         </>
     );
 }

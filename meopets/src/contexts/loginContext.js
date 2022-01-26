@@ -39,7 +39,7 @@ export default function Users(props) {
     // but that kind of handling needs to be included for the user somehow (we can even do it automatically when
     // the user stops typing (with debouncer - see my City and Giphy apps) though I'd need to add another route).
     async function signUp(email, username, password) {
-        const response = await axios.post('https://virtual-pets.herokuapp.com/login', {
+        const response = await axios.post('https://virtual-pets.herokuapp.com/signup', {
             email: email,
             username: username,
             password: password
@@ -47,7 +47,6 @@ export default function Users(props) {
         // The user is automatically signed in (this can be changed, of course).
         setActiveUser({userId: response.data.userId, token: response.data.token});
     }
-
 
     useEffect(() => {
         // If a user is authenticated, we'll grab their pet(s) after login and also store

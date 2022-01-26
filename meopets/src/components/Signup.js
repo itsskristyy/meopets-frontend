@@ -9,7 +9,7 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
 
     async function signUp() {
-        const response = await axios.post('http://localhost:8080/signup', {
+        const response = await axios.post('https://virtual-pets.herokuapp.com/signup', {
             email: email,
             username: username,
             password: password

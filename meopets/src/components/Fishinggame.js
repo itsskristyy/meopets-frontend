@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function Minigame(props){
+export default function Fishinggame(props){
     const [gamePlayed, setGamePlayed] = useState(false)
    function gamePlay(){
     if(!gamePlayed){

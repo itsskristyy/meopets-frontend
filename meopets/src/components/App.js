@@ -18,7 +18,7 @@ function App() {
 
                 <NavLink className="nav-link" style={({ isActive }) => {
                     return {
-                        color: isActive ? "#ACE3FF" : ""
+                        color: isActive ? "black" : ""
                     };}}
                          to={`/userprofile`}>
                     My Profile
@@ -26,7 +26,7 @@ function App() {
 
                 <NavLink className="nav-link" style={({ isActive }) => {
                     return {
-                        color: isActive ? "#ACE3FF" : ""
+                        color: isActive ? "black" : ""
                     };}}
                          to={`/fishing`}>
                     Fishing Pond

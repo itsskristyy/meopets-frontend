@@ -11,8 +11,11 @@ p{
     text-decoration: none;
 }
 .nav-link {
-    color: black;
+    color: #32BAFF;
+    font-size: 18px;
+    font-weight: bold;
     text-decoration: none;
+    -webkit-text-stroke: 1px lightslategray;
 }
 .prof-msg{
     margin-top: 30px;

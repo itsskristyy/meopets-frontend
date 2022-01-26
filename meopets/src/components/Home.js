@@ -40,10 +40,12 @@ export default function Home() {
                 console.log(response);
                 navigate('/userprofile');
             }}>
+                {/* TODO: Validate user exists in backend */}
                 <label>Username:<br/>
                     <input type="text" name="username" onChange={e => setUsername(e.target.value)} />
                 </label><br/>
 
+                {/* TODO: Validate password matches backend */}
                 <label>Password:<br/>
                     <input type="password" name="password1" onChange={e => setPassword(e.target.value)} />
                 </label><br/>

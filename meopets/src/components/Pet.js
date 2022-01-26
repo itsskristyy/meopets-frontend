@@ -17,6 +17,7 @@ export default function Pet(){
             <button>Play with me!</button>
             <br/><br/>
 
+            {/* Clicking on the button navigates the user back to UserProfile */}
             <button onClick={() => {
                 navigate("/userprofile")
             }}>

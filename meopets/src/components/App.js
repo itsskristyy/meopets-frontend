@@ -1,12 +1,9 @@
 import {Link, NavLink, Outlet} from 'react-router-dom';
 import '../App.css';
-import Home from './Home';
-import UserProfile from './UserProfile';
 
 function App() {
     return (
         <>
-            {/* Todo: Please move nav styling into App.css */}
             <nav>
                 <Link className="link" to={`/home`}>
                     <h1>Meopets</h1> {/* Click on logo to redirect to Home */}

@@ -25,6 +25,14 @@ function App() {
                     };}}
                          to={`/fishing`}>
                     Fishing Pond
+                </NavLink> |{" "}
+
+                <NavLink className="nav-link" style={({ isActive }) => {
+                    return {
+                        color: isActive ? "black" : ""
+                    };}}
+                         to={`/goldgame`}>
+                    Gold Rush
                 </NavLink>
             </nav>
 

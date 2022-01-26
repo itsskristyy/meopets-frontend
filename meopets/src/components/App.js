@@ -1,11 +1,27 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import {Outlet} from 'react-router-dom';
 import '../App.css';
-import PetsPage from './PetsPage';
+import Home from './Home';
 
 function App() {
     return (
-      <PetsPage/>
+      <><nav
+        style={{
+          backgroundColor: "pink",
+          paddingBottom: "15px",
+          paddingTop: "15px",
+          marginBottom: 30
+
+        }}
+        
+      >
+       
+        <Link to = "/Home" onClick={() => window.location.reload()}> Meopets</Link>
+        
+      </nav>
+      
+      <Home/></>
     );
 }
 

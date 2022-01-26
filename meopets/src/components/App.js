@@ -1,5 +1,6 @@
 import {Link, Outlet} from 'react-router-dom';
 import '../App.css';
+import Home from './Home';
 import UserProfile from './UserProfile';
 
 function App() {
@@ -15,7 +16,6 @@ function App() {
             }}>
                 <h1>Meopets</h1>
             </nav>
-
             <Outlet />
         </>
     );

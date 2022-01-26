@@ -3,14 +3,17 @@ import { useEffect, useState } from "react"
 export default function Minigame(){
     const [gamePlayed, setGamePlayed] = useState(false)
     useEffect(() => {
-        if(!gamePlayed){
-            const color = ['blue', 'green', 'red', 'orange']
+    if(!gamePlayed){
+       const color = ['blue', 'green', 'purple', 'red']
        let mouseCol = color[Math.floor(Math.random()*4)]
        const allFish = []
-      
-           let points = 0
-           for(let i=0;i<10;i++){
-           // document.querySelector('.canvas-p').cursor = "url(http://www.javascriptkit.com/dhtmltutors/cursor-hand.gif), auto"
+       let fish = 0
+       function changeCol(){
+        mouseCol = color[Math.floor(Math.random()*4)]
+        document.querySelector(".box-color").style.backgroundColor = mouseCol
+      }
+       for(let i=0;i<10;i++){
+           
             let blueFish = document.createElement('img')
             blueFish.src =  "http://www.clker.com/cliparts/K/H/j/V/a/d/blue-fish-md.png" 
             blueFish.alt="blue fish" 
@@ -21,22 +24,80 @@ export default function Minigame(){
             blueFish.onmouseover=() =>{
              if(mouseCol === 'blue'){
                  blueFish.style.visibility = "hidden"
-                 points++
-                 document.querySelector('.points').textContent = `You have: ${points} points`
+                 fish++
+                 document.querySelector('.points').textContent = `You caught ${fish}/40 fish`
                
              }
              }
             allFish.push(blueFish)
            }    
+        for(let i=0;i<10;i++){
+           
+             let greenFish = document.createElement('img')
+             greenFish.src =  "http://www.clker.com/cliparts/v/n/f/E/3/o/green-fish-md.png" 
+             greenFish.alt="green fish" 
+             greenFish.className="green-fish" 
+             greenFish.style.position = "absolute"
+             greenFish.style.left = Math.floor(Math.random()*900)+"px"
+             greenFish.style.top = Math.floor((Math.random()*400)+210)+"px"
+             greenFish.onmouseover=() =>{
+              if(mouseCol === 'green'){
+                greenFish.style.visibility = "hidden"
+                  fish++
+                  document.querySelector('.points').textContent = `You caught ${fish}/40 fish`
+                
+              }
+              }
+             allFish.push(greenFish)
+            }   
+            for(let i=0;i<10;i++){
+           
+                let purpleFish = document.createElement('img')
+                purpleFish.src =  "http://www.clker.com/cliparts/I/r/6/x/I/d/purple-fish-md.png" 
+                purpleFish.alt="purple fish" 
+                purpleFish.className="purple-fish" 
+                purpleFish.style.position = "absolute"
+                purpleFish.style.left = Math.floor(Math.random()*900)+"px"
+                purpleFish.style.top = Math.floor((Math.random()*400)+210)+"px"
+                purpleFish.onmouseover=() =>{
+                 if(mouseCol === 'purple'){
+                    purpleFish.style.visibility = "hidden"
+                     fish++
+                     document.querySelector('.points').textContent = `You caught ${fish}/40 fish`
+                   
+                 }
+                 }
+                allFish.push(purpleFish)
+               }   
+               for(let i=0;i<10;i++){
+           
+                let redFish = document.createElement('img')
+                redFish.src =  "http://www.clker.com/cliparts/o/4/q/M/a/Q/red-fish-md.png" 
+                redFish.alt="red fish" 
+                redFish.className="red-fish" 
+                redFish.style.position = "absolute"
+                redFish.style.left = Math.floor(Math.random()*900)+"px"
+                redFish.style.top = Math.floor((Math.random()*400)+210)+"px"
+                redFish.onmouseover=() =>{
+                 if(mouseCol === 'red'){
+                    redFish.style.visibility = "hidden"
+                     fish++
+                     document.querySelector('.points').textContent = `You caught ${fish}/40 fish`
+                   
+                 }
+                 }
+                allFish.push(redFish)
+               }   
            for(let i=0; i<allFish.length; i++){
             document.querySelector('.canvas').appendChild(allFish[i])
            }
            document.querySelector(".box-color").style.backgroundColor = mouseCol
            
-            setInterval(function(){
-                mouseCol = color[Math.floor(Math.random()*4)]
-                document.querySelector(".box-color").style.backgroundColor = mouseCol
-              },3000)
+           setInterval(changeCol,1500)
+           setTimeout(function(){
+               clearInterval(changeCol)
+               document.querySelector('.minig-page').innerHTML = `<p>Game over! You caught ${fish} fish!</p>`
+            }, 30000)
     
            
           
@@ -49,9 +110,12 @@ export default function Minigame(){
      return(
          <div>
     <div className="minig-page">
+        <div className="game-row">
+        <h1 className="points">You caught 0 fish</h1>
         <div className="box-color"> </div>
-        <h1 className="points">You have: 0 points</h1>
-       
+        <p className="game-inst">You have 30 seconds to catch as many fish as you can! 
+            You can only catch fish when the box is displaying the color of that fish!</p>
+        </div>
         <div className="canvas-p">
         <div className="canvas">
          

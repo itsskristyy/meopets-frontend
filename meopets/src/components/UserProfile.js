@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Pets from "./Pets"
+import Pets from "./Pets";
 
 export default function UserProfile(props) {
-    const [currency, setCurrency] = useState(300)
-    const [greeting, setGreeting] = useState("Welcome Back, Bobble!")
+    const [currency, setCurrency] = useState(300);
+    const [greeting, setGreeting] = useState("Welcome Back, Bobble!");
+
 
     return (
         <>

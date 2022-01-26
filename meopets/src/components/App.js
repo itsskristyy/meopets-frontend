@@ -1,4 +1,4 @@
-import {Link, Outlet} from 'react-router-dom';
+import {Link, NavLink, Outlet} from 'react-router-dom';
 import '../App.css';
 import UserProfile from './UserProfile';
 
@@ -15,6 +15,22 @@ function App() {
                 <Link to={`/home`}>
                     <h1>Meopets</h1> {/* Click on logo to redirect to Home */}
                 </Link>
+
+                <NavLink style={({ isActive }) => {
+                    return {
+                        color: isActive ? "#ACE3FF" : ""
+                    };}}
+                         to={`/userprofile`}>
+                    My Profile
+                </NavLink> |{" "}
+
+                <NavLink style={({ isActive }) => {
+                    return {
+                        color: isActive ? "#ACE3FF" : ""
+                    };}}
+                         to={`/fishing`}>
+                    Fishing Pond
+                </NavLink>
             </nav>
 
             {/* Outlet sets this component as the parent route:

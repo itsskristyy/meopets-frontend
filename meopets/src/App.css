@@ -63,9 +63,9 @@ p{
     text-align: center;
 }  
 .canvas{
-    width: 480px;
-    height: 320px;
-    background: #ffe6eb; 
-    display: block; 
-    margin: 0 auto;
+    cursor:url(http://www.javascriptkit.com/dhtmltutors/cursor-hand.gif), auto;
+}
+.blue-fish{
+    height: 10px;
+    width: 15px;
 }

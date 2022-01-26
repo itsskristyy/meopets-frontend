@@ -3,37 +3,42 @@ import { useEffect, useState } from "react"
 export default function Minigame(){
     const [gamePlayed, setGamePlayed] = useState(false)
     useEffect(() => {
-        if(!gamePlayed){
-            let canvas = document.querySelector('.canvas')
-            let ctx = canvas.getContext("2d")
-            let x = canvas.width/2;
-            let y = canvas.height-30;
-            let dx = [2,-2]
-            let dy = [2,-2]
-            
-            function drawBall() {
-                ctx.beginPath();
-                ctx.arc(x, y, 10, 0, Math.PI*2);
-                ctx.arc(x-2, y-9, 10, 0, Math.PI*2);
-                ctx.fillStyle = "#0095DD";
-                ctx.fill();
-                ctx.closePath();
-            }
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                drawBall();
-                x += dx[Math.floor(Math.random()*2)];
-                y += dy[Math.floor(Math.random()*2)];
+       const color = ['blue', 'green', 'red', 'orange']
+       const mouseCol = color[Math.floor(Math.random()*4)]
+       const allFish = []
+      
+           let points = 0
+           for(let i=0;i<10;i++){
+            let blueFish = document.createElement('img')
+            blueFish.src =  "http://www.clker.com/cliparts/K/H/j/V/a/d/blue-fish-md.png" 
+            blueFish.alt="blue fish" 
+            blueFish.className="blue-fish" 
+            blueFish.style.position = "absolute"
+            blueFish.style.left = Math.floor(Math.random()*900)+"px"
+            blueFish.style.top = "200px"
+            blueFish.onmouseover=() =>{
+             if(mouseCol === 'blue'){
+                 blueFish.style.visibility = "hidden"
+                 points++
+                 document.querySelector('.points').textContent = `You have: ${points} points`
+               
+             }
+             }
+            allFish.push(blueFish)
+           }    
+           for(let i=0; i<allFish.length; i++){
+            document.querySelector('.canvas').appendChild(allFish[i])
+           }
+      
 
-            }
-            setInterval(draw, 100);
-        }
        
       }, []);
      return(
     <div>
-        <h1>HELLO</h1>
-        <canvas className="canvas"></canvas>
+        <h1 className="points">You have: 0 points</h1>
+        <div className="canvas">
+         
+        </div>
       
     </div>
      )

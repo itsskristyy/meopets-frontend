@@ -62,8 +62,20 @@ p{
 .login{
     text-align: center;
 }  
-.canvas{
-    cursor:url(http://www.javascriptkit.com/dhtmltutors/cursor-hand.gif), auto;
+.minig-page{
+    cursor:url(../public/fishing-rod.png),auto;
+}
+.canvas-p{
+    width: 1200px;
+    height: 1000px;
+    border: 2px solid #ACE3FF;
+    cursor:url(../public/fishing-rod.png),auto;
+}
+.box-color{
+    height: 30px;
+    width: 80px;
+    margin-left: 20px;
+    background-color: white;
 }
 .blue-fish{
     height: 10px;

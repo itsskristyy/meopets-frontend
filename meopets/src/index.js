@@ -19,11 +19,12 @@ ReactDOM.render(
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />} >
+                    <Route index element={<Home />} />
                     <Route path="home" element={<Home />} />
                     <Route path="signup" element={<SignUp />} />
                     <Route path="userprofile" element={<UserProfile />} />
                     <Route path="userprofile/:petId" element={<Pet />} />
-                    <Route path="/fishing" element={<Minigame/>}/>
+                    <Route path="fishing" element={<Minigame/>}/>
 
                     <Route path="*" element={
                         <main style={{ padding: "1rem" }}>

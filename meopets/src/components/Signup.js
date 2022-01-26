@@ -32,7 +32,7 @@ export default function SignUp() {
                 <input type="password" name="password1" onChange={e => setPassword(e.target.value)} />
                 </label><br/>
 
-                <label>Repeat Password:<br/>
+                <label>Confirm Password:<br/>
                 <input type="password" name="password2"  />
                 </label><br/>
 

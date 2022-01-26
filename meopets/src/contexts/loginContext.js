@@ -8,10 +8,8 @@ export const UserContext = React.createContext({
     token: {},
     isLoggedIn: {},
     username: {},
-    userPets: {},
     signUp: (email, username, password) => {},
     logIn: (username, password) => {},
-    getPets: () => {},
     logOut: () => {}
 });
 
@@ -19,7 +17,6 @@ export default function Users(props) {
     // Context's states - user and active user's pet(s)
     const [token, setToken] = useState(null);
     const [username, setUsername] = useState("");
-    const [userPets, setUserPets] = useState(null);
     const isLoggedIn = !!token;
     console.log(token);
 
@@ -52,23 +49,6 @@ export default function Users(props) {
         return response;
     }
 
-    async function getPets() {
-        if (isLoggedIn) {
-            try {
-                const userPet = await axios.get('https://virtual-pets.herokuapp.com/pets', {
-                    headers: {
-                        'Authorization': 'Bearer ' + token
-                    }
-                });
-                console.log(userPet);
-                setUserPets(userPet.data.pet)
-                return userPet.data.pet;
-            } catch(err) {
-                console.log(err.error);
-            }
-        }
-    }
-
     function logOut() {
         setToken(null);
         setUsername("");
@@ -79,11 +59,9 @@ export default function Users(props) {
         <UserContext.Provider value={{
             token: token,
             isLoggedIn: isLoggedIn,
-            username: username,
-            userPets: userPets,
-            signup: signUp,
-            login: logIn,
-            getPets: getPets,
+            username: username, 
+            signup: signUp, 
+            login: logIn, 
             logout: logOut
         }}>
             {props.children}

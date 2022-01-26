@@ -1,40 +1,29 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { UserContext } from '../contexts/loginContext';
+import { PetsContext } from '../contexts/petsContext';
 
 export default function Pets(){
     //let pets = getPets(); // Grab pet(s) from dummy data
-    const [pets, setPets] = useState("");
     const user = useContext(UserContext);
+    const pets = useContext(PetsContext);
     
-    useEffect(() => {
-        async function getPets() {
-            const response = await axios.get('https://virtual-pets.herokuapp.com/pets', {
-                headers: {
-                    'Authorization': 'Bearer ' + user.token
-                }
-                });
-            setPets(response.data.pet);
-        }
-        getPets();
-    }, []);
+    console.log(pets.pets)
 
     return(
         <div>
             {/* Map through data and display a div for each pet */}
-            {pets.map(pet => (
-                <div key={pet.name}>
-            {/*{pets.length > 0 && pets.map(pet => (*/}
+            {pets.pets && Object.keys(pets.pets).map(key => (
+                <div>
                     {/* Clicking on the pet's name will redirect you to its own page */}
-                    <Link className="pet" to={`/userprofile/${pet.name}`}>
-                        {pet.name}
+                    <Link className="pet" to={`/userprofile/${user.username}/${pets.pets[key].id}`}>
+                        {pets.pets[key].name}
                     </Link>
 
                     <ul>
-                    <li>Happiness: {pet.happiness}</li>
-                    <li>Health: {pet.health}</li>
-                    <li>Hunger: {pet.hunger}</li>
+                    <li>Happiness: {pets.pets[key].happiness}</li>
+                    <li>Health: {pets.pets[key].health}</li>
+                    <li>Hunger: {pets.pets[key].hunger}</li>
                     </ul>
                 </div>
             ))}

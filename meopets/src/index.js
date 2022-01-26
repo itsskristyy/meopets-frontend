@@ -7,7 +7,8 @@ import Minigame from './components/Minigame';
 import Pet from "./components/Pet";
 import SignUp from './components/Signup';
 import UserProfile from "./components/UserProfile";
-import UsersProvider from './contexts/loginContext'; 
+import UsersProvider from './contexts/loginContext';
+import PetsProvider from './contexts/petsContext'; 
 import './index.css';
 
 /* To use context in our app, we import the UsersProvider (line 9) and wrap our
@@ -16,23 +17,19 @@ directly. We'll see later (in Home.js) that context consumers will destructure o
 
 ReactDOM.render(
     <UsersProvider>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<App />} >
-                    <Route path="home" element={<Home />} />
-                    <Route path="signup" element={<SignUp />} />
-                    <Route path="userprofile" element={<UserProfile />} />
-                    <Route path="userprofile/:petId" element={<Pet />} />
-                    <Route path="/fishing" element={<Minigame/>}/>
-
-                    <Route path="*" element={
-                        <main style={{ padding: "1rem" }}>
-                            <p>Invalid URL</p>
-                        </main>
-                    }/>
-                </Route>
-            </Routes>
-        </BrowserRouter>
+        <PetsProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<App />} >
+                        <Route path="home" element={<Home />} />
+                        <Route path="signup" element={<SignUp />} />
+                        <Route path="userprofile" element={<UserProfile />} />
+                        <Route path="userprofile/:userName/:petId" element={<Pet />} />
+                        <Route path="/fishing" element={<Minigame/>}/>
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </PetsProvider>
     </UsersProvider>,
     document.getElementById('root')
 );

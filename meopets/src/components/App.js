@@ -1,13 +1,23 @@
-import React from 'react';
-import {Outlet} from 'react-router-dom';
+import {Link, Outlet} from 'react-router-dom';
 import '../App.css';
 import UserProfile from './UserProfile';
 
 function App() {
 
-
     return (
-      <UserProfile/>
+        <>
+            <nav style={{
+                backgroundColor: "pink",
+                paddingBottom: "15px",
+                paddingTop: "15px",
+                marginBottom: 30
+
+            }}>
+                <h1>Meopets</h1>
+            </nav>
+
+            <Outlet />
+        </>
     );
 }
 

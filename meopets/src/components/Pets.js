@@ -1,20 +1,24 @@
+import {Link} from 'react-router-dom'
+import {getPets} from "../data/pet_data";
 
 export default function Pets(){
-    // [name, ]
-    // [health, ]
-    // [happiness, ]
-    // [hunger, ]
-    // [image]
+    let pets = getPets();
+
     return(
         <div>
-          {/* // Pull all the pets by id and display
-           map(<div> 
-            image (onclick - petPage(props: this pet))
-            / name / 
-            health / 
-            happiness / 
-            hunger </div>)
-        // click on name or image, redirect to the Pet() */}
+            {pets.map(pet => (
+                <div>
+                    <Link to={`/userprofile/${pet.name}`}>
+                        {pet.name}
+                    </Link>
+
+                    <ul>
+                    <li>Happiness: {pet.happiness}</li>
+                    <li>Health: {pet.health}</li>
+                    <li>Hunger: {pet.hunger}</li>
+                    </ul>
+                </div>
+            ))}
         </div>
-    )
+    );
 }

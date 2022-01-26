@@ -1,6 +1,15 @@
 import {Link, NavLink, Outlet} from 'react-router-dom';
 import '../App.css';
 
+function isLogged() {
+    // if true,
+    return (
+        <Link className="link" to={`/home`}>
+            <button className="logout">Log out</button>
+        </Link>
+    );
+}
+
 function App() {
     return (
         <>
@@ -25,9 +34,7 @@ function App() {
                     Fishing Pond
                 </NavLink>
 
-                <Link className="link" to={`/home`}>
-                    <button className="logout">Log out</button>
-                </Link>
+                {isLogged()}
             </nav>
 
             {/* Outlet sets this component as the parent route:

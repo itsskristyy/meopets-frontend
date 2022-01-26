@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function Minigame(){
+export default function Minigame(props){
     const [gamePlayed, setGamePlayed] = useState(false)
     useEffect(() => {
     if(!gamePlayed){
@@ -97,6 +97,9 @@ export default function Minigame(){
            setTimeout(function(){
                clearInterval(changeCol)
                document.querySelector('.minig-page').innerHTML = `<p>Game over! You caught ${fish} fish!</p>`
+               //here there should be a line to the user 
+               // you won this many coins!
+               //then it should use the currency state that should be received in props and update that state
             }, 30000)
     
            

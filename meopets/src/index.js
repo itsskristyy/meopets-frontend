@@ -4,8 +4,8 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import App from './components/App';
 import Home from "./components/Home";
 import Pet from "./components/Pet";
-import './index.css';
 import UserProfile from "./components/UserProfile";
+import './index.css';
 
 ReactDOM.render(
     <BrowserRouter>

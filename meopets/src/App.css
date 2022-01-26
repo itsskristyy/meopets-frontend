@@ -39,6 +39,10 @@ p {
 .login {
     text-align: center;
 }
+.logout {
+    float: right;
+    margin-right: 24px;
+}
 
 /* Signup page */
 .signup{

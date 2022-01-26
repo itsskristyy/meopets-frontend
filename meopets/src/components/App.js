@@ -12,7 +12,6 @@ function App() {
                 paddingBottom: "15px",
                 paddingTop: "15px",
                 marginBottom: 30
-
             }}>
                 <h1>Meopets</h1>
             </nav>

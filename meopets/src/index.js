@@ -10,6 +10,10 @@ import UserProfile from "./components/UserProfile";
 import UsersProvider from './contexts/loginContext'; 
 import './index.css';
 
+/* To use context in our app, we import the UsersProvider (line 9) and wrap our
+entire app in it (lines 17, 29). Note: as a provider, the loginContext.js file is imported
+directly. We'll see later (in Home.js) that context consumers will destructure on import. */
+
 ReactDOM.render(
     <UsersProvider>
         <BrowserRouter>

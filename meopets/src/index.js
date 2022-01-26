@@ -24,6 +24,12 @@ ReactDOM.render(
                     <Route path="userprofile" element={<UserProfile />} />
                     <Route path="userprofile/:petId" element={<Pet />} />
                     <Route path="/fishing" element={<Minigame/>}/>
+
+                    <Route path="*" element={
+                        <main style={{ padding: "1rem" }}>
+                            <p>Invalid URL</p>
+                        </main>
+                    }/>
                 </Route>
             </Routes>
         </BrowserRouter>

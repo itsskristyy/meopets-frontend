@@ -24,6 +24,10 @@ function App() {
                          to={`/fishing`}>
                     Fishing Pond
                 </NavLink>
+
+                <Link className="link" to={`/home`}>
+                    <button className="logout">Log out</button>
+                </Link>
             </nav>
 
             {/* Outlet sets this component as the parent route:

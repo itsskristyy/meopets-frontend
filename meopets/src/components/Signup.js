@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from 'axios';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/loginContext";
 
 export default function SignUp() {
     let navigate = useNavigate()
@@ -8,18 +9,20 @@ export default function SignUp() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const signup = useContext(UserContext).signup;
+
     async function signUp() {
-        const response = await axios.post('https://virtual-pets.herokuapp.com/signup', {
-            email: email,
-            username: username,
-            password: password
-        });
-        const token = response.data.token;
+        return await signup(email, username, password);
     }
 
     return(
         <>
-            <form onSubmit={async e => {e.preventDefault(); await signUp();}}>
+            <form onSubmit={async e => {
+                e.preventDefault(); 
+                const response = await signUp(); 
+                console.log(response);
+                navigate('/userprofile');
+            }}>
                 <label>Email:<br/>
                         <input type="email" name="email" onChange={e => setEmail(e.target.value)}/>
                 </label><br/>

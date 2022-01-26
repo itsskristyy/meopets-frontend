@@ -1,20 +1,20 @@
+import { useContext } from "react";
 import {useNavigate, useParams} from "react-router-dom";
+import { UserContext } from "../contexts/loginContext";
 
 export default function Pet(){
     let navigate = useNavigate();
     let params = useParams();
-    
+    const pet = useContext(UserContext).activeUserPet;
+
     return (
         <>
-            <h2>{params.petId}</h2> {/* Grab name of pet that matches URL param */}
-            {/* TODO: Match image to species of pet */}
+            <h2>{pet.name}</h2>
+            <img src={pet.image} alt={pet.name} />
             <p>Image of pet goes here</p>
 
-            {/* TODO: Decrement pet's hunger state */}
-            <button >Feed me!</button>
-            {/* TODO: Increment pet's happiness state */}
-            <button onClick={  () => {navigate("/game")}}>Play with me!</button>
-
+            <button>Feed me!</button>
+            <button>Play with me!</button>
             <br/><br/>
 
             {/* Clicking on the button navigates the user back to UserProfile */}

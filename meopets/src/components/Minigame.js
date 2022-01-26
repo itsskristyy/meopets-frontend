@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 
 export default function Minigame(props){
     const [gamePlayed, setGamePlayed] = useState(false)
-    useEffect(() => {
+   function gamePlay(){
     if(!gamePlayed){
+       document.querySelector('.start-btn').style.visibility = "hidden"
        const color = ['blue', 'green', 'purple', 'red']
        let mouseCol = color[Math.floor(Math.random()*4)]
        const allFish = []
@@ -20,7 +21,7 @@ export default function Minigame(props){
             blueFish.className="blue-fish" 
             blueFish.style.position = "absolute"
             blueFish.style.left = Math.floor(Math.random()*900)+"px"
-            blueFish.style.top = Math.floor((Math.random()*400)+210)+"px"
+            blueFish.style.top = Math.floor((Math.random()*400)+310)+"px"
             blueFish.onmouseover=() =>{
              if(mouseCol === 'blue'){
                  blueFish.style.visibility = "hidden"
@@ -39,7 +40,7 @@ export default function Minigame(props){
              greenFish.className="green-fish" 
              greenFish.style.position = "absolute"
              greenFish.style.left = Math.floor(Math.random()*900)+"px"
-             greenFish.style.top = Math.floor((Math.random()*400)+210)+"px"
+             greenFish.style.top = Math.floor((Math.random()*400)+310)+"px"
              greenFish.onmouseover=() =>{
               if(mouseCol === 'green'){
                 greenFish.style.visibility = "hidden"
@@ -58,7 +59,7 @@ export default function Minigame(props){
                 purpleFish.className="purple-fish" 
                 purpleFish.style.position = "absolute"
                 purpleFish.style.left = Math.floor(Math.random()*900)+"px"
-                purpleFish.style.top = Math.floor((Math.random()*400)+210)+"px"
+                purpleFish.style.top = Math.floor((Math.random()*400)+310)+"px"
                 purpleFish.onmouseover=() =>{
                  if(mouseCol === 'purple'){
                     purpleFish.style.visibility = "hidden"
@@ -77,7 +78,7 @@ export default function Minigame(props){
                 redFish.className="red-fish" 
                 redFish.style.position = "absolute"
                 redFish.style.left = Math.floor(Math.random()*900)+"px"
-                redFish.style.top = Math.floor((Math.random()*400)+210)+"px"
+                redFish.style.top = Math.floor((Math.random()*400)+310)+"px"
                 redFish.onmouseover=() =>{
                  if(mouseCol === 'red'){
                     redFish.style.visibility = "hidden"
@@ -109,9 +110,10 @@ export default function Minigame(props){
        
 
        
-      }, []);
+      }
      return(
          <div>
+             <button onClick={gamePlay} className="start-btn">Start</button>
     <div className="minig-page">
         <div className="game-row">
         <h1 className="points">You caught 0 fish</h1>

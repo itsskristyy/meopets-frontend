@@ -41,8 +41,16 @@ p {
     text-align: center;
 }
 .logout {
+    -webkit-text-stroke: 1px black;
+
+    background-color: #e66a83;
+    border: none;
+    color: white;
+    display: inline-block;
     float: right;
-    margin-right: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 7px 32px;
 }
 
 /* Signup page */

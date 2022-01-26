@@ -8,7 +8,7 @@ export default function Pets(){
         <div>
             {/* Map through data and display a div for each pet */}
             {pets.map(pet => (
-                <div>
+                <div key={pet.name}>
                     {/* Clicking on the pet's name will redirect you to its own page */}
                     <Link className="pet" to={`/userprofile/${pet.name}`}>
                         {pet.name}

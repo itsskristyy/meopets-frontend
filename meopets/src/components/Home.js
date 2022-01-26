@@ -22,7 +22,7 @@ export default function Home() {
                 <input type="submit" value="Submit"/>
             </form>
 
-            <p>Don't have an account? <Link to={`/signup`}>Sign Up Here</Link></p>
+            <p>Don't have an account? <Link to={`./signup`}>Sign Up Here</Link></p>
         </>
     );
 }

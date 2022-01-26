@@ -45,7 +45,14 @@ export default function Users(props) {
             password: password
         });
         // The user is automatically signed in (this can be changed, of course).
-        setActiveUser({userId: response.data.userId, token: response.data.token});
+        setActiveUser(prevUser => {
+            const newUser = {};
+            newUser.userId = response.data.userId;
+            newUser.token = response.data.token;
+            return newUser
+        });
+        console.log(activeUser);
+        return response;
     }
 
     useEffect(() => {

@@ -6,12 +6,7 @@ function App() {
     return (
         <>
             {/* Todo: Please move nav styling into App.css */}
-            <nav style={{
-                backgroundColor: "pink",
-                paddingBottom: "15px",
-                paddingTop: "15px",
-                marginBottom: 30
-            }}>
+            <nav>
                 <Link className="link" to={`/home`}>
                     <h1>Meopets</h1> {/* Click on logo to redirect to Home */}
                 </Link>

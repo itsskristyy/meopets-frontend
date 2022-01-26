@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import axios from 'axios';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {UserContext} from "../contexts/loginContext";
 
 export default function SignUp() {
     let navigate = useNavigate()
@@ -8,22 +9,21 @@ export default function SignUp() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const signup = useContext(UserContext).signup;
+
     async function signUp() {
-        const response = await axios.post('https://virtual-pets.herokuapp.com/signup', {
-            email: email,
-            username: username,
-            password: password
-        });
-        const token = response.data.token;
+        return await signup(email, username, password);
     }
 
     return(
-        <>
-            <form onSubmit={async e => {e.preventDefault(); await signUp();}}>
-                <label>Email:<br/>
-                        <input type="email" name="email" onChange={e => setEmail(e.target.value)}/>
-                </label><br/>
-
+        <div className='signup'>
+            <form onSubmit={async e => {
+                e.preventDefault();
+                const response = await signUp();
+                console.log("Return:" + response);
+                navigate("/userprofile")
+                }}
+                >
                 <label>Username:<br/>
                     <input type="text" name="username" onChange={e => setUsername(e.target.value)} />
                 </label><br/>
@@ -32,12 +32,30 @@ export default function SignUp() {
                 <input type="password" name="password1" onChange={e => setPassword(e.target.value)} />
                 </label><br/>
 
-                <label>Confirm Password:<br/>
+                <label>Confirm your password:<br/>
                 <input type="password" name="password2"  />
+                </label><br/>
+
+                <label>Email:<br/>
+                    <input type="email" name="email" onChange={e => setEmail(e.target.value)}/>
+                </label><br/>
+
+                {/* TODO */}
+                <h2>Create Your Pet</h2>
+
+                <label>Name of Pet:
+                    <input type="text" name="petname"  />
+                </label> <br/>
+
+                <label>Type of Pet:
+                    <select id = "dropdown">
+                        <option value="1"> Blob </option>
+                        <option value="2"> Winged Cat</option>
+                    </select>
                 </label><br/>
 
                 <input type="submit" value="Submit"/>
             </form>
-        </>
+        </div>
     )
 }

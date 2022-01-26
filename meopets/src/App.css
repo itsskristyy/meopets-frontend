@@ -40,6 +40,11 @@ p {
     text-align: center;
 }
 
+/* Signup page */
+.signup{
+    text-align: center;
+}
+
 /* Pets */
 .pet {
     color: black;

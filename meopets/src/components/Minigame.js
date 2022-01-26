@@ -96,7 +96,7 @@ export default function Minigame(props){
            setInterval(changeCol,1500)
            setTimeout(function(){
                clearInterval(changeCol)
-               document.querySelector('.minig-page').innerHTML = `<p>Game over! You caught ${fish} fish!</p>`
+               document.querySelector('.minig-page').innerHTML = `<p>Game over! You caught ${fish} fish!</p><button onClick={window.location.reload()} style="margin-left:440px;">Click here to play again.</button>`
                //here there should be a line to the user 
                // you won this many coins!
                //then it should use the currency state that should be received in props and update that state

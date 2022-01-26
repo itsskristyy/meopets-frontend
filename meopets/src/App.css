@@ -4,13 +4,20 @@ body{
 }
 nav {
     box-shadow: 0px 4px 4px grey;
+    background-color: #FFA9BA;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    margin-bottom: 30px;
+    /*visibility: visible;*/
 }
-p{
-    text-align: center;
+p {
     font-size: 30px;
+    text-align: center;
 }
+
 .link {
     color: black;
+    font-size: 24px;
     text-decoration: none;
 }
 .nav-link {
@@ -20,20 +27,13 @@ p{
     text-decoration: none;
     -webkit-text-stroke: 1px lightslategray;
 }
-.prof-msg{
-    margin-top: 30px;
-    margin-left: 50px;
-    display: inline-flex;
-    text-align: center;
-    border-radius: 50%;
-    background: #FAFAFA;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-.prof-msg-txt{
-    padding: 10px;
-    
+.pet {
+    color: black;
+    text-decoration: none;
 }
-.currency{
+
+/* Fishing */
+.currency {
     margin-top: 20px;
     margin-left: 40px;
     vertical-align: middle;
@@ -48,6 +48,18 @@ p{
     padding-bottom: 6px;
     padding-right: 6px;
 }
+.prof-msg{
+    margin-top: 30px;
+    margin-left: 50px;
+    display: inline-flex;
+    text-align: center;
+    border-radius: 50%;
+    background: #FAFAFA;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+.prof-msg-txt {
+    padding: 10px;
+}
 .coins-img{
     margin-top: 12px;
     margin-left: 6px;
@@ -59,12 +71,6 @@ p{
     display: inline;
     text-align:start;
     font-size: medium;
-}
-.nav{
-    width: 1440px;
-    height: 100px;
-    background-color: #FFA9BA;
-    visibility: visible;
 }
 .nav-txt{
     margin-left: 15px;

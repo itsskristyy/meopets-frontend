@@ -1,6 +1,6 @@
 import { useState } from "react"
+import { Outlet } from "react-router-dom";
 import Pets from "./Pets"
-import {Outlet} from "react-router-dom";
 
 export default function UserProfile(props) {
     const [currency, setCurrency] = useState(300)
@@ -18,8 +18,15 @@ export default function UserProfile(props) {
                     <h4 className="prof-msg-txt">{greeting}</h4>
                 </div>
             </div>
-            <Pets/>
 
+
+            <Pets/> {/* Render grid cells/flexboxes of all pets the user owns */}
+
+            {/* Outlet sets this component as the parent route:
+            
+            UserProfile will be the parent route of Pet, path = "/userprofile"
+            When the user clicks on an individual, pet, they will be taken
+            to that pet's profile page, path = "/userprofile/petnamehere" */}
             <Outlet/>
         </>
     );

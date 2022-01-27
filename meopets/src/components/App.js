@@ -1,16 +1,7 @@
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import React, { useContext } from 'react'
 import '../App.css';
-import { UserContext } from '../contexts/loginContext'; 
-
-function isLogged() {
-    // if true,
-    return (
-        <Link className="link" to={`/home`}>
-            <button className="logout">Log out</button>
-        </Link>
-    );
-}
+import { UserContext } from '../contexts/loginContext';
 
 function App() {
     const user = useContext(UserContext);
@@ -32,7 +23,7 @@ function App() {
                     };}}
                          to={`/userprofile`}>
                     My Profile
-                </NavLink>
+                </NavLink>}
 
                 {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
@@ -57,9 +48,6 @@ function App() {
                             Log out
                         </button>
                     </Link>}
-                </NavLink>
-
-                {isLogged()}
             </nav>
 
             {/* Outlet sets this component as the parent route:

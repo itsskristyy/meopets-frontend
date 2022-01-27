@@ -33,19 +33,18 @@ export default function Login() {
         return await login(username, password);
     }
 
-    const { register, formState: { errors } } = useForm({
+    const { register, formState: { errors }, handleSubmit, reset} = useForm({
         criteriaMode: "all"
     });
 
+    const onSubmit = async data => {
+        await logIn(data.username, data.password);
+        navigate('/userprofile', {replace: true})
+    }
 
     return (
         <>
-            <form onSubmit={async e => {
-                e.preventDefault();
-                const response = await logIn();
-                console.log(response);
-                navigate('/userprofile', {replace: true});
-            }}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 {/* TODO: Validate user exists in backend */}
                 <label>Username:<br/>
                     <input {...register("username", {

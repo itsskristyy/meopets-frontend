@@ -26,10 +26,11 @@ ReactDOM.render(
             <Routes>
                 <Route path="/" element={<App />} >
                     <Route index element={<Home />} />
+                    <Route path="home" element={<Home />} />
                     <Route path="login" element={<Login />} />
                     <Route path="signup" element={<SignUp />} />
                     <Route path="userprofile" element={<UserProfile />} />
-                    <Route path="userprofile/:petId" element={<Pet />} />
+                    <Route path="userprofile/:userName/:petId" element={<Pet />} />
                     <Route path="fishing" element={<Minigame/>} />
 
                     <Route path="*" element={

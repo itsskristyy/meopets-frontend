@@ -33,18 +33,19 @@ export default function Login() {
         return await login(username, password);
     }
 
-    const { register, formState: { errors }, handleSubmit } = useForm({
+    const { register, formState: { errors } } = useForm({
         criteriaMode: "all"
     });
 
+
     return (
         <>
-            <form onSubmit={handleSubmit(async e => {
+            <form onSubmit={async e => {
                 e.preventDefault();
                 const response = await logIn();
                 console.log(response);
-                navigate('/userprofile');
-            })}>
+                navigate('/userprofile', {replace: true});
+            }}>
                 {/* TODO: Validate user exists in backend */}
                 <label>Username:<br/>
                     <input {...register("username", {
@@ -91,7 +92,7 @@ export default function Login() {
                 /><br/><br/>
 
 
-                <input type="submit" value="Submit"/>
+                <button type="submit">Submit</button>
             </form>
             <p>Don't have an account? <Link to="/signup">Sign Up Here</Link></p>
         </>

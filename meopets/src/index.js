@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import Pet from "./components/Pet";
 import SignUp from './components/Signup';
 import UserProfile from "./components/UserProfile";
+import Store from './components/Store';
 
 import UsersProvider from './contexts/loginContext';
 import PetsProvider from './contexts/petsContext';
@@ -34,6 +35,7 @@ ReactDOM.render(
                     <Route path="userprofile/:userName/:petId" element={<Pet />} />
                     <Route path="fishing" element={<Fishinggame/>}/>
                 <Route path="goldgame" element={<Goldgame/>}/>
+                <Route path="store" element={<Store/>}/>
 
                     <Route path="*" element={
                         <main style={{ padding: "1rem" }}>

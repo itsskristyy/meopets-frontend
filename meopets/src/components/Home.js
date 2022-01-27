@@ -1,5 +1,5 @@
 import Login from "./Login";
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 
 export default function Landing() {
     return (
@@ -8,7 +8,7 @@ export default function Landing() {
 
             <h2>Returning user?{" "}
                 <Link className="link"
-                      to={`/login}`}
+                      to={`/login`}
                 >Login</Link>
             </h2>
 

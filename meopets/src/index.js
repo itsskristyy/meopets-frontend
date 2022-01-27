@@ -4,6 +4,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import App from './components/App';
 import Home from "./components/Home";
+import Login from "./components/Login";
 import Minigame from './components/Minigame';
 import Pet from "./components/Pet";
 import SignUp from './components/Signup';
@@ -25,7 +26,7 @@ ReactDOM.render(
             <Routes>
                 <Route path="/" element={<App />} >
                     <Route index element={<Home />} />
-                    <Route path="home" element={<Home />} />
+                    <Route path="login" element={<Login />} />
                     <Route path="signup" element={<SignUp />} />
                     <Route path="userprofile" element={<UserProfile />} />
                     <Route path="userprofile/:petId" element={<Pet />} />

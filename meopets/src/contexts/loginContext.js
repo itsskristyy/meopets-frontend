@@ -31,7 +31,12 @@ export default function Users(props) {
         const response = await axios.post('https://virtual-pets.herokuapp.com/login', {
             username: username,
             password: password
-        });
+        })
+            .catch(function (error) {
+                if (error.response) {
+                    alert ("Username or password is incorrect, or does not exist.");
+                }
+            });
         // Assuming login went well, the user state is updated with the response data.
         setToken(response.data.token);
         setUsername(username);

@@ -43,11 +43,13 @@ export default function Login() {
     }
 
     return (
-        <>
+        <div className="login-page">
+            <h2 className="form-title">Log In</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                {/* TODO: Validate user exists in backend */}
+                <div className="login-form">
                 <label>Username:<br/>
-                    <input {...register("username", {
+                    <input className="login-input"
+                           {...register("username", {
                         required: "Username required.",
                         maxLength: {
                             value: 20,
@@ -66,11 +68,12 @@ export default function Login() {
                             <span key={type}>{" "}{message}</span>
                         ))
                     }
-                /><br/>
+                />
 
                 {/* TODO: Validate password matches backend */}
                 <label>Password:<br/>
-                    <input {...register("password1", {
+                    <input className="login-input"
+                           {...register("password1", {
                         required: "Password required.",
                         maxLength: {
                             value: 20,
@@ -88,12 +91,15 @@ export default function Login() {
                             <span key={type}>{" "}{message}</span>
                         ))
                     }
-                /><br/><br/>
+                /><br/>
 
-
-                <button type="submit">Submit</button>
+                <input className="login-input"
+                       type="submit" value="Log in!"
+                    style={{padding: "0.5em"}}></input>
+                </div>
             </form>
-            <p>Don't have an account? <Link to="/signup">Sign Up Here</Link></p>
-        </>
+
+            <h3 className="redirect">Don't have an account? <Link className="redirect-link" to="/signup">Sign Up Here</Link></h3>
+        </div>
     );
 }

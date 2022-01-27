@@ -1,7 +1,15 @@
-import {Link, NavLink, Outlet} from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react'
 import '../App.css';
+import { UserContext } from '../contexts/loginContext'; 
 
 function App() {
+    const user = useContext(UserContext);
+    const navigate = useNavigate();
+    const logOut = () => {
+        user.logOut();
+        navigate('/home');
+    };
     return (
         <>
             <nav>
@@ -9,21 +17,28 @@ function App() {
                     <h1>Meopets</h1> {/* Click on logo to redirect to Home */}
                 </Link>
 
-                <NavLink className="nav-link" style={({ isActive }) => {
+                {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
                         color: isActive ? "black" : ""
                     };}}
                          to={`/userprofile`}>
                     My Profile
-                </NavLink> |{" "}
+                </NavLink>} |{" "}
 
-                <NavLink className="nav-link" style={({ isActive }) => {
+                {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
                         color: isActive ? "black" : ""
                     };}}
                          to={`/fishing`}>
                     Fishing Pond
-                </NavLink>
+                </NavLink>}
+
+                {user.isLoggedIn && 
+                    <Link className="link" to={`/home`}>
+                        <button className="logout" onClick={() => logOut()}>
+                            Log out
+                        </button>
+                    </Link>}
             </nav>
 
             {/* Outlet sets this component as the parent route:

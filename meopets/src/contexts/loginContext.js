@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 /* login/user Context. Here is where the global state gets defined. */
 
@@ -8,7 +9,7 @@ export const UserContext = React.createContext({
     token: {},
     isLoggedIn: {},
     username: {},
-    signUp: (email, username, password) => {},
+    signUp: (email, username, password, firstPetName, firstPetType) => {},
     logIn: (username, password) => {},
     logOut: () => {}
 });
@@ -17,7 +18,7 @@ export default function Users(props) {
     // Context's states - user and active user's pet(s)
     const [token, setToken] = useState(null);
     const [username, setUsername] = useState("");
-    const isLoggedIn = !!token;
+    let isLoggedIn = !!token;
     console.log(token);
 
     // Login function. Sends the POST request to the login route with username and password as bodies. 
@@ -37,11 +38,13 @@ export default function Users(props) {
     // Request body also includes email. These are also validated on the backend for duplicates,
     // but that kind of handling needs to be included for the user somehow (we can even do it automatically when
     // the user stops typing (with debouncer - see my City and Giphy apps) though I'd need to add another route).
-    async function signUp(email, username, password) {
+    async function signUp(email, username, password, firstPetName, firstPetType) {
         const response = await axios.post('https://virtual-pets.herokuapp.com/signup', {
             email: email,
             username: username,
-            password: password
+            password: password,
+            firstPetName: firstPetName,
+            firstPetType: firstPetType
         });
         // The user is automatically signed in (this can be changed, of course).
         setToken(response.data.token);

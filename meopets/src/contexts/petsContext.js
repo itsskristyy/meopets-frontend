@@ -20,12 +20,20 @@ export default function Pets(props) {
 
 
     async function addPet(name, type) {
-        const response = await axios.post('https://virtual-pets.herokuapp.com/pets', {
-            headers: {
-                'Authorization': 'Bearer ' + user.token
-            }
-        });
-        return response;
+            const response = await axios.post('https://virtual-pets.herokuapp.com/pets', {
+                data: {
+                    name: name,
+                    type: type
+                },
+                headers: {
+                    'Authorization': 'Bearer ' + user.token
+                }
+            });
+            console.log(name, type, response);
+            const pet = {};
+            pet[response.data.pet.id] = response.data.pet;
+            setPets(pet)
+            return response;
     }
 
     async function getPets() {

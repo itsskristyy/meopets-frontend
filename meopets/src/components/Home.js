@@ -38,7 +38,7 @@ export default function Home() {
                 e.preventDefault(); 
                 const response = await logIn();
                 console.log(response);
-                navigate('/userprofile');
+                navigate('/userprofile', {replace: true});
             }}>
                 {/* TODO: Validate user exists in backend */}
                 <label>Username:<br/>

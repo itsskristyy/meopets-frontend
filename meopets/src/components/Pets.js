@@ -26,7 +26,7 @@ export default function Pets(){
                     <li>Hunger: {pets.pets[key].hunger}</li>
                     </ul>
                 </div>
-            ))}
+            ))}           
         </div>
     );
 }

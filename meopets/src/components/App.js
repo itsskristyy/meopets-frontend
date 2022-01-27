@@ -1,5 +1,7 @@
-import {Link, NavLink, Outlet} from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react'
 import '../App.css';
+import { UserContext } from '../contexts/loginContext'; 
 
 function isLogged() {
     // if true,
@@ -11,6 +13,12 @@ function isLogged() {
 }
 
 function App() {
+    const user = useContext(UserContext);
+    const navigate = useNavigate();
+    const logOut = () => {
+        user.logout();
+        navigate('/home', {replace: true});
+    };
     return (
         <header>
             <nav className="sticky-nav">
@@ -18,7 +26,7 @@ function App() {
                     <h1>Meopets</h1> {/* Click on logo to redirect to Home */}
                 </Link>
 
-                <NavLink className="nav-link" style={({ isActive }) => {
+                {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
                         color: isActive ? "black" : ""
                     };}}
@@ -26,20 +34,29 @@ function App() {
                     My Profile
                 </NavLink>
 
-                <NavLink className="nav-link" style={({ isActive }) => {
+                {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
                         color: isActive ? "black" : ""
                     };}}
                          to={`/fishing`}>
                     Fishing Pond
-                </NavLink>
 
-                <NavLink className="nav-link" style={({ isActive }) => {
+                </NavLink>}
+
+                {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
                         color: isActive ? "black" : ""
                     };}}
                          to={`/store`}>
                     Store
+                </NavLink>}
+
+                {user.isLoggedIn && 
+                    <Link className="link" to={`/home`}>
+                        <button className="logout" onClick={() => logOut()}>
+                            Log out
+                        </button>
+                    </Link>}
                 </NavLink>
 
                 {isLogged()}

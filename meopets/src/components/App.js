@@ -31,7 +31,14 @@ function App() {
                     };}}
                          to={`/fishing`}>
                     Fishing Pond
+                </NavLink>}
 
+                {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
+                    return {
+                        color: isActive ? "black" : ""
+                    };}}
+                         to={`/goldgame`}>
+                    Gold Rush
                 </NavLink>}
 
                 {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {

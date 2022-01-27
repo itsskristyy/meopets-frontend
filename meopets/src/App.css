@@ -143,14 +143,15 @@ p {
     cursor:url(../public/fishing-rod.png),auto;
 }
 .game-inst {
-    width: 120px;
+    width: 200px;
     margin-left: 25px;
-    font-size: x-small;
+    font-size: small;
 }
 .game-row {
     display: flex;
     flex-direction:row;
     align-items: center;
+    margin-left: 40px;
 }
 .minig-page {
     cursor:url(../public/fishing-rod.png),auto;
@@ -167,3 +168,39 @@ p {
 .prof-msg-txt {
     padding: 10px;
 }
+/* GoldGame */
+.gold-coin{
+    height: 13px;
+    width: 13px;
+    margin-top: 900;
+    cursor: move;
+}
+.canvas-g{
+    width: 1200px;
+    height: 1000px;
+    border: 2px solid #ACE3FF;
+}
+container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+  
+.pot {
+    width: 100px;
+    height: 90px;
+    margin-left: 50px;
+  }
+  .start-btn{
+    font-weight: bold;
+    margin-left: 40px;
+    background-color: #FFF4AA;
+    border: 2px solid #c9c5b0;
+    width: 85px;
+    height: 35px;
+    border-radius: 5px;
+    font-size: 20px;
+  }
+  .start-btn:hover{
+    background-color: #dfd38b;
+  }

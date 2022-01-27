@@ -126,8 +126,8 @@ p {
 
 /* Fishing */
 .blue-fish, .green-fish, .purple-fish, .red-fish {
-    height: 10px;
-    width: 15px;
+    height: 20px;
+    width: 35px;
 }
 .box-color {
     height: 50px;
@@ -204,3 +204,17 @@ container {
   .start-btn:hover{
     background-color: #dfd38b;
   }
+  .prev-img{
+      width: 55px;
+      height: 55px;
+      margin-top: 5px;
+      margin-left: 20px;
+  }
+  .singe-pet-img{
+      width: 180px;
+      height: 180px;
+  }
+  .all-pet-img{
+    width: 80px;
+    height: 80px;
+}

@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import { UserContext } from "../contexts/loginContext";
 import { PetsContext } from "../contexts/petsContext";
-
+import petImg from "./petmapper";
 // Function to check species
 // pets[id].type
 // If species is 1 -> return /blob.png
@@ -45,17 +45,13 @@ export default function Pet(props){
             {user.isLoggedIn &&
             <div>
                 <h2>{pets[id].name}</h2>
-                // Return function
-                <img src={pets[id].image} alt={pets[id].name} />
-                <p>Image of pet goes here</p>
+                {/* // Return function */}
+                <img src={petImg[pets[id].type]} alt={pets[id].name} className="singe-pet-img"/>
       
-            <h2>{params.petId}</h2> {/* Grab name of pet that matches URL param */}
-            {/* TODO: Match image to species of pet */}
-            <p>Image of pet goes here</p>
 
             <button onClick={async () => await feedPet(pets[id])}>Feed me!</button>
             <button onClick={async () => await playWithPet(pets[id])}>Play with me!</button>
-            <button onClick={  () => {navigate("/fishing")}}>Go fishing!</button>
+            <button onClick={() => {navigate("/fishing")}}>Go fishing!</button>
                 <br/><br/>
 
                 {/* Clicking on the button navigates the user back to UserProfile */}

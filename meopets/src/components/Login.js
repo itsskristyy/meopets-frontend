@@ -16,7 +16,6 @@ export default function Login() {
     /* To use Context in a component, we need to first retrieve the aspects of it we want:
     Objects can be imported and assigned directly (line 16), functions will need to be wrapped in a wrapper
     (as in case of logIn in lines 31-33). */
-    const activeUser = useContext(UserContext).activeUser;
     const login = useContext(UserContext).login;
 
     // useEffect(() => {
@@ -65,7 +64,9 @@ export default function Login() {
                     render={({ messages }) =>
                         messages &&
                         Object.entries(messages).map(([type, message]) => (
-                            <span key={type}>{" "}{message}</span>
+                            <div key={type}
+                                 style={{color:"red", fontWeight:"bold"}}
+                            >{" "}{message}<br/><br/></div>
                         ))
                     }
                 />
@@ -88,14 +89,16 @@ export default function Login() {
                     render={({ messages }) =>
                         messages &&
                         Object.entries(messages).map(([type, message]) => (
-                            <span key={type}>{" "}{message}</span>
+                            <div key={type}
+                                 style={{color:"red", fontWeight:"bold"}}
+                            >{" "}{message}<br/></div>
                         ))
                     }
                 /><br/>
 
                 <input className="login-input"
-                       type="submit" value="Log in!"
-                    style={{padding: "0.5em"}}></input>
+                       type="submit"
+                       style={{padding: "0.5em"}}></input>
                 </div>
             </form>
 

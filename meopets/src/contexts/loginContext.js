@@ -10,18 +10,20 @@ import { useNavigate } from "react-router-dom";
 export const UserContext = React.createContext({
     token: {},
     isLoggedIn: {},
-    username: {},
+    user: {},
     signUp: (email, username, password, firstPetName, firstPetType) => {},
     logIn: (username, password) => {},
-    logOut: () => {}
+    logOut: () => {},
+    updateUser: (userUpdate) => {}
 });
 
 export default function Users(props) {
     // Context's states - user and active user's pet(s)
     const initialToken = sessionStorage.getItem('token');
-    const initialUsername = sessionStorage.getItem('username');
+    const initialUser = !!initialToken ? JSON.parse(sessionStorage.getItem('user')) : null;
+    console.log(initialToken, initialUser);
     const [token, setToken] = useState(initialToken);
-    const [username, setUsername] = useState(initialUsername);
+    const [user, setUser] = useState(initialUser);
     let isLoggedIn = !!token;
     console.log(token);
 
@@ -39,9 +41,11 @@ export default function Users(props) {
             });
         // Assuming login went well, the user state is updated with the response data.
         setToken(response.data.token);
-        setUsername(username);
+        setUser(response.data.user);
+        console.log(response);
+        console.log(response.data.user)
         sessionStorage.setItem('token', response.data.token);
-        sessionStorage.setItem('username', username);
+        sessionStorage.setItem('user', JSON.stringify(response.data.user));
         return response;
     }
 
@@ -59,25 +63,48 @@ export default function Users(props) {
         });
         // The user is automatically signed in (this can be changed, of course).
         setToken(response.data.token);
-        setUsername(username);
+        setUser(response.data.user);
+        sessionStorage.setItem('token', response.data.token);
+        sessionStorage.setItem('user', JSON.stringify(response.data.user));
         return response;
+    }
+
+    async function updateUser(userUpdate) {
+        if(isLoggedIn) {
+            try {
+                console.log(userUpdate);
+                console.log(user.token);
+                const updatedUser = await axios.put('https://virtual-pets.herokuapp.com/users', {data: userUpdate},
+                {headers: {'Authorization' : 'Bearer ' + token}})
+                console.log(updatedUser);
+                const updated = updatedUser.data.user;
+                console.log(updated);
+                setUser(updated);
+                sessionStorage.setItem('user', JSON.stringify(updated));                
+                return updated;
+            } catch(err) {
+                console.log(err);
+            }
+        }
     }
 
     function logOut() {
         setToken(null);
-        setUsername("");
+        setUser(null);
         sessionStorage.clear();
     }
+
 
     // The context component is provided to all the children together with all the values we specified here.
     return (
         <UserContext.Provider value={{
             token: token,
             isLoggedIn: isLoggedIn,
-            username: username, 
+            user: user, 
             signup: signUp, 
             login: logIn, 
-            logout: logOut
+            logout: logOut,
+            updateUser: updateUser
         }}>
             {props.children}
         </UserContext.Provider>

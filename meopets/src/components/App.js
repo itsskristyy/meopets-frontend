@@ -14,7 +14,7 @@ function App() {
         <header>
             <nav className="sticky-nav">
                 <Link className="link" to={`/home`}>
-                    <h1>Meopets</h1> {/* Click on logo to redirect to Home */}
+                    <img src="./logo.png" height="120px" alt="meopets logo"/>
                 </Link>
 
                 {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {

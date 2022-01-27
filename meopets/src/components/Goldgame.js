@@ -61,7 +61,8 @@ export default function Goldgame(props){
             <div className="game-row">
             <h1 className="points-g">You got 0 coins!</h1>
             <p className="game-inst">You have 30 seconds to add coins to the pot. 
-            Drag the coins to the pot to add them! 
+            Drag the coins to the pot to add them! Careful! If you start dragging a coin and let it go before reaching the pot, 
+            the coin is lost and you can't add it to the pot!
                 </p>
             </div>
             

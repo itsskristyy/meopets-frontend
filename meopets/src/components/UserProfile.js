@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/loginContext";
 import Pets from "./Pets";
 
@@ -7,7 +7,13 @@ export default function UserProfile(props) {
     const [currency, setCurrency] = useState(300);
     //const [greeting, setGreeting] = useState("Welcome Back, Bobble!");
     const user = useContext(UserContext);
+    const navigate = useNavigate();
     const greeting = `Welcome Back, ${user.username}!`;
+    useEffect(() => {
+        if(!user.isLoggedIn) {
+            navigate('/home');
+        }
+    }, []);
 
     return (
         <>

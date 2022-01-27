@@ -58,8 +58,12 @@ export default function SignUp() {
             <form onSubmit={async e => {
                 e.preventDefault();
                 const response = await signUp();
-                console.log(response);
-                navigate('/userprofile', {replace: true});
+                if (response.status === 201) {
+                    console.log(response);
+                    navigate('/userprofile', {replace: true});
+                } else {
+                    console.log(response.error);
+                }
             }}>
                 <label>Email:<br/>
                     <input type="email" name="email" onChange={e => setEmail(e.target.value)}/>

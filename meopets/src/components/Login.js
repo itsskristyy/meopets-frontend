@@ -37,13 +37,6 @@ export default function Login() {
         criteriaMode: "all"
     });
 
-/*async e => {
-                e.preventDefault();
-                const response = await logIn();
-                console.log(response);
-                navigate('/userprofile', {replace: true});
-            }*/
-
     const onSubmit = async data => {
         await logIn(data.username, data.password);
         navigate('/userprofile', {replace: true})

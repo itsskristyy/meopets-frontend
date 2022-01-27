@@ -1,39 +1,60 @@
-import {Link, NavLink, Outlet} from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react'
 import '../App.css';
-import UserProfile from './UserProfile';
+import { UserContext } from '../contexts/loginContext';
 
 function App() {
+    const user = useContext(UserContext);
+    const navigate = useNavigate();
+    const logOut = () => {
+        user.logout();
+        navigate('/home', {replace: true});
+    };
     return (
-        <>
-            {/* Todo: Please move nav styling into App.css */}
-            <nav>
+        <header>
+            <nav className="sticky-nav">
                 <Link className="link" to={`/home`}>
                     <h1>Meopets</h1> {/* Click on logo to redirect to Home */}
                 </Link>
 
-                <NavLink className="nav-link" style={({ isActive }) => {
+                {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
                         color: isActive ? "black" : ""
                     };}}
                          to={`/userprofile`}>
                     My Profile
-                </NavLink> |{" "}
+                </NavLink>}
 
-                <NavLink className="nav-link" style={({ isActive }) => {
+                {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
                         color: isActive ? "black" : ""
                     };}}
                          to={`/fishing`}>
                     Fishing Pond
-                </NavLink> |{" "}
+                </NavLink>}
 
-                <NavLink className="nav-link" style={({ isActive }) => {
+                {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
                         color: isActive ? "black" : ""
                     };}}
                          to={`/goldgame`}>
                     Gold Rush
-                </NavLink>
+                </NavLink>}
+
+                {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
+                    return {
+                        color: isActive ? "black" : ""
+                    };}}
+                         to={`/store`}>
+                    Store
+                </NavLink>}
+
+                {user.isLoggedIn && 
+                    <Link className="link" to={`/home`}>
+                        <button className="logout" onClick={() => logOut()}>
+                            Log out
+                        </button>
+                    </Link>}
             </nav>
 
             {/* Outlet sets this component as the parent route:
@@ -43,7 +64,7 @@ function App() {
             This makes it so that we don't have to copy and paste the navbar HTML
             over and over again */}
             <Outlet />
-        </>
+        </header>
     );
 }
 

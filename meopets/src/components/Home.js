@@ -1,28 +1,22 @@
-import {Link, useNavigate} from 'react-router-dom'
+import Login from "./Login";
+import {Link, Outlet} from "react-router-dom";
 
-export default function Home() {
-    let navigate = useNavigate()
-
+export default function Landing() {
     return (
         <>
-            {/* On successful form submission, redirect user to UserProfile */}
-            <form onSubmit={() => {
-                navigate("/userprofile")
-            }}>
-                {/* TODO: Validate user exists in backend */}
-                <label>Username:<br/>
-                    <input type="text" name="username" />
-                </label><br/>
+            <h1>Welcome to Meopets!</h1>
 
-                {/* TODO: Validate password matches backend */}
-                <label>Password:<br/>
-                    <input type="text" name="password"  />
-                </label><br/>
+            <h2>Returning user?{" "}
+                <Link className="link"
+                      to={`/login`}
+                >Login</Link>
+            </h2>
 
-                <input type="submit" value="Submit"/>
-            </form>
-
-            <p>Don't have an account? <Link to={`./signup`}>Sign Up Here</Link></p>
+            <h2>Haven't made an account yet?{" "}
+                <Link className="link"
+                      to={`/signup`}
+                >Come adopt a pet!</Link>
+            </h2>
         </>
     );
 }

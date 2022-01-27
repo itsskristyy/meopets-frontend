@@ -126,8 +126,8 @@ p {
 
 /* Fishing */
 .blue-fish, .green-fish, .purple-fish, .red-fish {
-    height: 10px;
-    width: 15px;
+    height: 20px;
+    width: 35px;
 }
 .box-color {
     height: 50px;

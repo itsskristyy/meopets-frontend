@@ -36,6 +36,20 @@ export default function Goldgame(props){
         
         
     }
+    function handleDragStart(e) {
+        e.style.opacity = '0.4';
+      }
+    
+      function handleDragEnd(e) {
+        e.style.opacity = '1';
+      }
+    
+      let items = document.querySelectorAll('.container .box');
+      items.forEach(function(item) {
+        item.addEventListener('dragstart', handleDragStart);
+        item.addEventListener('dragend', handleDragEnd);
+      });
+    
     
     function playGame(){
         setInterval(dropCoins,500)
@@ -49,6 +63,15 @@ export default function Goldgame(props){
             <button onClick={playGame}>Start</button>
             <div className="canvas-g" >
             <div className="canvas" >
+            <div className="container">
+            <div draggable="true" onDragStart={(e)=>{
+        e.target.style.opacity = '0.4'}} onDragEnd={(e)=>{
+            e.target.style.visibility = "hidden"
+          }} className="box" 
+          >A</div>
+            <div draggable="true" className="box" onDragOver={(e)=>{e.target.style.background = "purple"}}>B</div>
+            <div draggable="true" className="box">C</div>
+            </div>
           
             </div>
             </div>

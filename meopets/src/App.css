@@ -210,3 +210,11 @@ container {
       margin-top: 5px;
       margin-left: 20px;
   }
+  .singe-pet-img{
+      width: 180px;
+      height: 180px;
+  }
+  .all-pet-img{
+    width: 80px;
+    height: 80px;
+}

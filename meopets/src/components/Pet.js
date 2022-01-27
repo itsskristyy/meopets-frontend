@@ -46,7 +46,7 @@ export default function Pet(props){
             <div>
                 <h2>{pets[id].name}</h2>
                 {/* // Return function */}
-                <img src={petImg[pets[id].type]} alt={pets[id].name} />
+                <img src={petImg[pets[id].type]} alt={pets[id].name} className="singe-pet-img"/>
       
 
             <button onClick={async () => await feedPet(pets[id])}>Feed me!</button>

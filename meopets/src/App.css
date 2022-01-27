@@ -94,9 +94,9 @@ p {
     cursor:url(../public/fishing-rod.png),auto;
 }
 .game-inst {
-    width: 120px;
+    width: 200px;
     margin-left: 25px;
-    font-size: x-small;
+    font-size: small;
 }
 .game-row {
     display: flex;
@@ -143,8 +143,15 @@ container {
     margin-left: 50px;
   }
   .start-btn{
+    font-weight: bold;
     margin-left: 40px;
     background-color: #FFF4AA;
-    border: 1px solid darkgoldenrod;
+    border: 2px solid #c9c5b0;
+    width: 85px;
+    height: 35px;
+    border-radius: 5px;
+    font-size: 20px;
   }
-
+  .start-btn:hover{
+    background-color: #dfd38b;
+  }

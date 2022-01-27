@@ -113,7 +113,7 @@ export default function Fishinggame(props){
       }
      return(
          <div>
-             <button onClick={gamePlay} className="start-btn">Start</button>
+             <button onClick={gamePlay} className="start-btn">START</button>
     <div className="minig-page">
         <div className="game-row">
         <h1 className="points">You caught 0 fish</h1>

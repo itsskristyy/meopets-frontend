@@ -16,7 +16,7 @@ export default function Pets(){
             {pets.pets && Object.keys(pets.pets).map(key => (
                 <div>
                     {/* Clicking on the pet's name will redirect you to its own page */}
-                    <Link className="pet" to={`/userprofile/${user.username}/${pets.pets[key].id}`}>
+                    <Link className="pet" to={`/userprofile/${user.user.username}/${pets.pets[key].id}`}>
                         {pets.pets[key].name}
                     </Link>
                     <img src={petImg[pets.pets[key].type]} alt={pets.pets[key].name} className='all-pet-img' />

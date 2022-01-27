@@ -51,7 +51,7 @@ export default function Pet(props){
 
             <button onClick={async () => await feedPet(pets[id])}>Feed me!</button>
             <button onClick={async () => await playWithPet(pets[id])}>Play with me!</button>
-            <button onClick={  () => {navigate("/fishing")}}>Go fishing!</button>
+            <button onClick={() => {navigate("/fishing")}}>Go fishing!</button>
                 <br/><br/>
 
                 {/* Clicking on the button navigates the user back to UserProfile */}

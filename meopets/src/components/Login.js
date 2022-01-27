@@ -16,7 +16,6 @@ export default function Login() {
     /* To use Context in a component, we need to first retrieve the aspects of it we want:
     Objects can be imported and assigned directly (line 16), functions will need to be wrapped in a wrapper
     (as in case of logIn in lines 31-33). */
-    const activeUser = useContext(UserContext).activeUser;
     const login = useContext(UserContext).login;
 
     // useEffect(() => {

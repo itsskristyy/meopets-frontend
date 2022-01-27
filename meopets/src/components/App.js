@@ -3,6 +3,15 @@ import React, { useContext } from 'react'
 import '../App.css';
 import { UserContext } from '../contexts/loginContext'; 
 
+function isLogged() {
+    // if true,
+    return (
+        <Link className="link" to={`/home`}>
+            <button className="logout">Log out</button>
+        </Link>
+    );
+}
+
 function App() {
     const user = useContext(UserContext);
     const navigate = useNavigate();
@@ -11,8 +20,8 @@ function App() {
         navigate('/home', {replace: true});
     };
     return (
-        <>
-            <nav>
+        <header>
+            <nav className="sticky-nav">
                 <Link className="link" to={`/home`}>
                     <h1>Meopets</h1> {/* Click on logo to redirect to Home */}
                 </Link>
@@ -23,7 +32,7 @@ function App() {
                     };}}
                          to={`/userprofile`}>
                     My Profile
-                </NavLink>} |{" "}
+                </NavLink>
 
                 {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
@@ -31,6 +40,15 @@ function App() {
                     };}}
                          to={`/fishing`}>
                     Fishing Pond
+
+                </NavLink>}
+
+                {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
+                    return {
+                        color: isActive ? "black" : ""
+                    };}}
+                         to={`/store`}>
+                    Store
                 </NavLink>}
 
                 {user.isLoggedIn && 
@@ -39,6 +57,9 @@ function App() {
                             Log out
                         </button>
                     </Link>}
+                </NavLink>
+
+                {isLogged()}
             </nav>
 
             {/* Outlet sets this component as the parent route:
@@ -48,7 +69,7 @@ function App() {
             This makes it so that we don't have to copy and paste the navbar HTML
             over and over again */}
             <Outlet />
-        </>
+        </header>
     );
 }
 

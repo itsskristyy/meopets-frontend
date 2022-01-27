@@ -17,16 +17,18 @@ p {
 }
 
 .link {
-    color: black;
+    -webkit-text-stroke: 1px black;
+    color: white;
     font-size: 24px;
     text-decoration: none;
 }
 .nav-link {
-    color: #32BAFF;
-    font-size: 18px;
+    -webkit-text-stroke: 1px black;
+    color: white;
+    font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-    -webkit-text-stroke: 1px lightslategray;
+    margin-right: 30px;
 }
 /*.nav-txt{*/
 /*    margin-left: 15px;*/
@@ -38,6 +40,18 @@ p {
 /* Home */
 .login {
     text-align: center;
+}
+.logout {
+    -webkit-text-stroke: 1px black;
+
+    background-color: #e66a83;
+    border: none;
+    color: white;
+    display: inline-block;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 7px 32px;
 }
 
 /* Signup page */

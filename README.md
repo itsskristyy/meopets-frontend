@@ -2,7 +2,9 @@
 Brooklyn College 2022 TTP Residency - Capstone for Group #2
 
 `npm install`  
-`npm install react-router-dom@6`
+`npm install react-router-dom@6`  
+`npm install react-hook-form`  
+`npm install @hookform/error-message`  
 
 ---
 

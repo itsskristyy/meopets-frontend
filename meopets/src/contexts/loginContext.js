@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 /* login/user Context. Here is where the global state gets defined. */
+//heroku url: https://virtual-pets.herokuapp.com
+//localhost url: http://localhost:8080
 
 /* context provider */
 export const UserContext = React.createContext({
@@ -16,8 +18,10 @@ export const UserContext = React.createContext({
 
 export default function Users(props) {
     // Context's states - user and active user's pet(s)
-    const [token, setToken] = useState(null);
-    const [username, setUsername] = useState("");
+    const initialToken = sessionStorage.getItem('token');
+    const initialUsername = sessionStorage.getItem('username');
+    const [token, setToken] = useState(initialToken);
+    const [username, setUsername] = useState(initialUsername);
     let isLoggedIn = !!token;
     console.log(token);
 
@@ -31,6 +35,8 @@ export default function Users(props) {
         // Assuming login went well, the user state is updated with the response data.
         setToken(response.data.token);
         setUsername(username);
+        sessionStorage.setItem('token', response.data.token);
+        sessionStorage.setItem('username', username);
         return response;
     }
 
@@ -55,6 +61,7 @@ export default function Users(props) {
     function logOut() {
         setToken(null);
         setUsername("");
+        sessionStorage.clear();
     }
 
     // The context component is provided to all the children together with all the values we specified here.

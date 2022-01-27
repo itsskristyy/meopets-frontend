@@ -94,9 +94,9 @@ export default function Fishinggame(props){
            }
            document.querySelector(".box-color").style.backgroundColor = mouseCol
            
-           setInterval(changeCol,1500)
+           let intID =  setInterval(changeCol,1500)
            setTimeout(function(){
-               clearInterval(changeCol)
+               clearInterval(intID)
                document.querySelector('.minig-page').innerHTML = `<p>Game over! You caught ${fish} fish!</p><button onClick={window.location.reload()} style="margin-left:440px;">Click here to play again.</button>`
                //here there should be a line to the user 
                // you won this many coins!

@@ -7,8 +7,8 @@ function App() {
     const user = useContext(UserContext);
     const navigate = useNavigate();
     const logOut = () => {
-        user.logOut();
-        navigate('/home');
+        user.logout();
+        navigate('/home', {replace: true});
     };
     return (
         <>

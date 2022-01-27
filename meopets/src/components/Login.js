@@ -1,5 +1,10 @@
-import {Link, useNavigate} from 'react-router-dom'
 import React, { useState, useContext, useEffect } from "react";
+
+import {useForm} from "react-hook-form";
+import { ErrorMessage } from '@hookform/error-message';
+
+import {Link, useNavigate} from 'react-router-dom'
+
 import { UserContext } from "../contexts/loginContext";
 
 /* As alluded to in index.js, to consume the context we destructure it on import, as in line 3.
@@ -7,10 +12,6 @@ We'll also { useContext } from React in line 2. */
 
 export default function Login() {
     let navigate = useNavigate();
-    // const [user, setUser] = React.useState({
-    //     username: "",
-    //     password: ""
-    // });
 
     /* To use Context in a component, we need to first retrieve the aspects of it we want:
     Objects can be imported and assigned directly (line 16), functions will need to be wrapped in a wrapper
@@ -32,23 +33,63 @@ export default function Login() {
         return await login(username, password);
     }
 
+    const { register, formState: { errors }, handleSubmit } = useForm({
+        criteriaMode: "all"
+    });
+
     return (
         <>
-            <form onSubmit={async e => {
+            <form onSubmit={handleSubmit(async e => {
                 e.preventDefault();
                 const response = await logIn();
                 console.log(response);
                 navigate('/userprofile');
-            }}>
+            })}>
                 {/* TODO: Validate user exists in backend */}
                 <label>Username:<br/>
-                    <input type="text" name="username" onChange={e => setUsername(e.target.value)} />
-                </label><br/>
+                    <input {...register("username", {
+                        required: "Username required.",
+                        maxLength: {
+                            value: 20,
+                            message: "Username cannot be greater than 20 characters."
+                        }
+                    })}
+                           onChange={e => setUsername(e.target.value)}/>
+                </label>
+
+                <ErrorMessage
+                    errors={errors}
+                    name="username"
+                    render={({ messages }) =>
+                        messages &&
+                        Object.entries(messages).map(([type, message]) => (
+                            <span key={type}>{" "}{message}</span>
+                        ))
+                    }
+                /><br/>
 
                 {/* TODO: Validate password matches backend */}
                 <label>Password:<br/>
-                    <input type="password" name="password1" onChange={e => setPassword(e.target.value)} />
-                </label><br/>
+                    <input {...register("password1", {
+                        required: "Password required.",
+                        maxLength: {
+                            value: 20,
+                            message: "Password cannot be greater than 20 characters."
+                        }})} type="password"
+                           onChange={e => setPassword(e.target.value)}/>
+                </label>
+
+                <ErrorMessage
+                    errors={errors}
+                    name="password1"
+                    render={({ messages }) =>
+                        messages &&
+                        Object.entries(messages).map(([type, message]) => (
+                            <span key={type}>{" "}{message}</span>
+                        ))
+                    }
+                /><br/><br/>
+
 
                 <input type="submit" value="Submit"/>
             </form>

@@ -5,7 +5,7 @@ export default function Goldgame(props){
    let points = 0 
     function dropCoins(){
         const coins = []
-        for(let i=0;i<25;i++){
+        for(let i=0;i<18;i++){
             let coin = document.createElement('img')
             coin.src =  "https://cdn-icons-png.flaticon.com/512/1292/1292744.png" 
             coin.alt="gold coin" 
@@ -29,8 +29,8 @@ export default function Goldgame(props){
         dropCoins()
         setTimeout(function(){
            
-            document.querySelector('.gold-page').innerHTML = `<p>Game over!</p><button onClick={window.location.reload()} style="margin-left:400px;  background-color: #FFF4AA; border: 2px solid #c9c5b0;
-            width: 125px; height: 40px; " className="start-btn">Click here to play again.</button>`
+            document.querySelector('.gold-page').innerHTML = `<p>Game over! You got ${points} coins!</p><button onClick={window.location.reload()} style="margin-left:440px;  background-color: #FFF4AA; border: 2px solid #c9c5b0;
+            width: 125px; height: 40px; border-radius: 5px; " className="start-btn">Click here to play again.</button>`
                }, 30000)
     }
     function handleDragStart(e){

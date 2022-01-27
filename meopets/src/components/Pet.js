@@ -13,7 +13,7 @@ export default function Pet(){
             {/* TODO: Decrement pet's hunger state */}
             <button >Feed me!</button>
             {/* TODO: Increment pet's happiness state */}
-            <button onClick={  () => {navigate("/game")}}>Play with me!</button>
+            <button onClick={  () => {navigate("/fishing")}}>Play with me!</button>
 
             <br/><br/>
 

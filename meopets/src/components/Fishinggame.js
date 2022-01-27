@@ -97,7 +97,8 @@ export default function Fishinggame(props){
            let intID =  setInterval(changeCol,1500)
            setTimeout(function(){
                clearInterval(intID)
-               document.querySelector('.minig-page').innerHTML = `<p>Game over! You caught ${fish} fish!</p><button onClick={window.location.reload()} style="margin-left:440px;">Click here to play again.</button>`
+               document.querySelector('.minig-page').innerHTML = `<p>Game over! You caught ${fish} fish!<button onClick={window.location.reload()} style="margin-left:440px;  background-color: #FFF4AA; border: 2px solid #c9c5b0;
+               width: 125px; height: 40px; border-radius: 5px; " className="start-btn">Click here to play again.</button>`
                //here there should be a line to the user 
                // you won this many coins!
                //then it should use the currency state that should be received in props and update that state

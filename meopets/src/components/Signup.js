@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/loginContext";
 import { PetsContext } from "../contexts/petsContext";
 import ErrorDisplay from "./ErrorDisplay";
-
+import petImg from "./petmapper";
 export default function SignUp() {
     let navigate = useNavigate()
     const [email, setEmail] = useState("");
@@ -88,11 +88,17 @@ export default function SignUp() {
                 </label> <br/>
 
                 <label>Type of Pet:
-                    <select id = "dropdown" onChange={e => setPetType(Number(e.target.value))}>
+                    <select id = "dropdown" onChange={e => 
+                    {setPetType(Number(e.target.value))
+                    document.querySelector(".prev-img").src = petImg[e.target.value]
+                    }}>
                         <option value='1'> Blob </option>
                         <option value='2'> Winged Cat</option>
                     </select>
                 </label><br/>
+                <span>
+                        <img src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" className="prev-img" />
+                </span>
                 <ErrorDisplay errors={errors} />
                 <input type="submit" value="Submit"/>
             </form>

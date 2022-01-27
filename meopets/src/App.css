@@ -204,3 +204,9 @@ container {
   .start-btn:hover{
     background-color: #dfd38b;
   }
+  .prev-img{
+      width: 55px;
+      height: 55px;
+      margin-top: 5px;
+      margin-left: 20px;
+  }

@@ -37,13 +37,34 @@ p {
 /*    color: #FAFAFA;*/
 /*}*/
 
-/* Home */
-.login {
+/* Login */
+.form-title {
     text-align: center;
 }
+.login-form {
+    background-color: #FFF4AA;
+    border-color: #88C6ED;
+    box-sizing: border-box;
+    border-style: inset;
+    max-width: 350px;
+    padding: 30px 40px 30px 40px;
+}
+
+.login-input {
+    display: block;
+    width: 100%;
+    padding: 7px 48px 8px 8px;
+    line-height: 100%;
+    margin: 6px 0;
+    box-sizing: border-box;
+}
+.login-page {
+    display: grid;
+    justify-content: center;
+}
+
 .logout {
     -webkit-text-stroke: 1px black;
-
     background-color: #e66a83;
     border: none;
     color: white;
@@ -53,7 +74,16 @@ p {
     font-weight: bold;
     padding: 7px 32px;
 }
-
+.redirect {
+    text-align: center;
+}
+.redirect-link {
+    -webkit-text-stroke: 1px black;
+    color: #FFA9BA;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px #000000;
+}
 /* Signup page */
 .signup{
     text-align: center;

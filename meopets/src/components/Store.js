@@ -1,7 +1,8 @@
 import React from "react";
 import axios from 'axios';
 import '../store.css';
-
+import Inventory from "./Inventory";
+import { useState } from "react";
 /* images used in the store */
 import tissue from '../tissue.png';
 import sandwich from '../sandwich.png';
@@ -14,7 +15,7 @@ import syrup from '../coughsyrup.png';
 import bear from '../bear.png';
 
 export default function Store() {
-  
+    const [inventory, setInventory] = useState([1,1,1,3,2,1,3,4])
 
     return (
 
@@ -97,6 +98,8 @@ export default function Store() {
 
 
             </div >
+            <h1> Inventory </h1>
+            <Inventory inventory={inventory} setInventory={setInventory}/>
         </div>
     );
 

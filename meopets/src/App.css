@@ -58,7 +58,7 @@ p {
 }
 .login-page {
     display: grid;
-    grid-template-rows: 6em 17em 5em;
+    grid-template-rows: 6em 20em 5em;
     justify-content: center;
 }
 

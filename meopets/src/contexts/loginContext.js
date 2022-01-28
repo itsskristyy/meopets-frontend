@@ -93,23 +93,21 @@ export default function Users(props) {
             });
         // Assuming login went well, the user state is updated with the response data.
         const returnedUser = response.data.user;
+        console.log(returnedUser);
         setCurrency(returnedUser.currency);
-        delete returnedUser.currency;
         setToken(response.data.token);
         setUser(returnedUser);
         sessionStorage.setItem('token', response.data.token);
         sessionStorage.setItem('expirationTime', response.data.exp);
+        delete returnedUser.currency;
         sessionStorage.setItem('user', JSON.stringify(returnedUser));
-        console.log(response);
         const remainingTime = calculateRemainingTime(response.data.exp);
-        console.log(response.data.exp, remainingTime);
         logoutTimer = setTimeout(logOut, (remainingTime-200)*1000);
         return response;
     }
 
     async function getCurrency() {
         const response = await axios.get('https://virtual-pets.herokuapp.com/users', {headers: {'Authorization' : 'Bearer ' + token}});
-        console.log(response);
         setCurrency(response.data.user.currency);
     }
 
@@ -143,7 +141,6 @@ export default function Users(props) {
         sessionStorage.setItem('expirationTime', response.data.exp);
         sessionStorage.setItem('user', JSON.stringify(returnedUser));
         const remainingTime = calculateRemainingTime(response.data.exp);
-        console.log(remainingTime);
         logoutTimer = setTimeout(logOut, (remainingTime-300)*1000);
         return response;
     }

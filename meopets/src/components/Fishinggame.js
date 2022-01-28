@@ -6,7 +6,7 @@ export default function Fishinggame(props){
     const updateUser = useContext(UserContext).updateUser;
     const [gamePlayed, setGamePlayed] = useState(false)
     async function getTCoins(amount) {
-        const newCurrency = {currency: user.user.currency + amount};
+        const newCurrency = {currency: user.currency + amount};
         return updateUser(newCurrency);
     }
    function gamePlay(){
@@ -123,22 +123,27 @@ export default function Fishinggame(props){
        
       }
      return(
-         <div>
-             <button onClick={gamePlay} className="start-btn">START</button>
-    <div className="minig-page">
-        <div className="game-row">
-        <h1 className="points">You caught 0 fish</h1>
-        <div className="box-color"> </div>
-        <p className="game-inst">You have 30 seconds to catch as many fish as you can! 
-            You can only catch fish when the box is displaying the color of that fish!</p>
-        </div>
-        <div className="canvas-p">
-        <div className="canvas">
-         
-        </div>
-        </div>
-      
-    </div>
-    </div>
+            <div>
+                <div className="currency">
+                    <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
+                        className="coins-img"/>
+                    <p className="coins">{user.currency}</p>
+                </div>
+                <button onClick={gamePlay} className="start-btn">START</button>
+                <div className="minig-page">
+                    <div className="game-row">
+                        <h1 className="points">You caught 0 fish</h1>
+                        <div className="box-color"> </div>
+                        <p className="game-inst">You have 30 seconds to catch as many fish as you can! 
+                            You can only catch fish when the box is displaying the color of that fish!</p>
+                    </div>
+                    <div className="canvas-p">
+                        <div className="canvas">
+                        
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
      )
  }

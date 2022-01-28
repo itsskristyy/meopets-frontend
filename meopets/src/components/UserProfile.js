@@ -15,39 +15,41 @@ export default function UserProfile(props) {
         }
     }, []);
 
-    // async function getCoins(newCurrency) {
-    //     return updateUser(newCurrency);
-    // }
+    async function getCoins(newCurrency) {
+        return updateUser(newCurrency);
+    }
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
     return (
         <>  
             {!user.isLoggedIn && navigate('/home')}
             {user.isLoggedIn &&
                 <div>
-                    <div className="currency">
-                        <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
-                             className="coins-img"/>
-                        <p className="coins">{user.currency + 50}</p>
+                    <div className="currency-display">
+                        <div className="currency">
+                            <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
+                                className="coins-img"/>
+                            <p className="coins">{user.currency}</p>
+                        </div>
+                        {today > new Date(user.user.lastUpdated) && 
+                        <button type='button' className="daily-button"  
+                        onClick={async () => {
+                            const lastUpdated = new Date(user.user.lastUpdated);
+                            console.log(lastUpdated, Date(user.user.lastUpdated))
+                            if(today > lastUpdated) {
+                                await getCoins({currency: user.currency + 50})
+                            }
+                        }}>Daily Coins!</button>}
                     </div>
 
-                    <div className="banner">
+                <div className="banner">
 
-                {/*<button type='button' */}
-                {/*    onClick={async () => {*/}
-                {/*        const today = new Date();*/}
-                {/*        today.setHours(0, 0, 0, 0);*/}
-                {/*        const lastUpdated = new Date(user.user.lastUpdated);*/}
-                {/*        if(today > lastUpdated) {*/}
-                {/*            await getCoins({currency: user.currency + 50})*/}
-                {/*        } else {*/}
-
-                {/*        }*/}
-                {/*    }}>Get Your Daily Coins!</button>*/}
 
                     <div>
-                        {user.user.created !== user.user.lastUpdated &&
+                        {new Date(user.user.created) < today &&
                             <h1 className="prof-msg-txt">Welcome back, {user.user.username}!</h1>}
-                        {user.user.created === user.user.lastUpdated &&
+                        {new Date(user.user.created) > today &&
                         <h1 className="prof-msg-txt">Welcome, {user.user.username}!</h1>}
                     </div>
 

@@ -173,6 +173,30 @@ p {
     padding-bottom: 6px;
     padding-right: 6px;
 }
+.currency-display {
+    display: flex;
+    align-items: center;
+}
+.daily-button { 
+    margin-top: -25px;
+    margin-left: 20px;
+    font-weight: bold;
+    background-color: #FFF4AA;
+    border: 2px solid #c9c5b0;
+    width: 160px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    padding-bottom: 6px;
+    padding-right: 6px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px;
+}
+
+.daily-button:hover {
+    background-color: orange;
+}
+
 .banner {
     background-color: #FFF4AA;
     border-color: #88C6ED;
@@ -233,6 +257,9 @@ p {
 
 
 /* GoldGame */
+.gold-page {
+    margin-left: 10vw;
+}
 .gold-coin{
     height: 13px;
     width: 13px;

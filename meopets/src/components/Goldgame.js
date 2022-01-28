@@ -8,7 +8,7 @@ export default function Goldgame(props){
    let draggedOver = false
    let points = 0 
    async function getTCoins(amount) {
-    const newCurrency = {currency: user.user.currency + amount};
+    const newCurrency = {currency: user.currency + amount};
     return updateUser(newCurrency);
     }
     function dropCoins(){
@@ -67,6 +67,12 @@ export default function Goldgame(props){
     
     
     return(
+        <>
+            <div className="currency">
+                            <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
+                                className="coins-img"/>
+                            <p className="coins">{user.currency}</p>
+            </div>
         <div className="gold-page">
             <button onClick={playGame} className="start-btn">START</button>
             <div className="game-row">
@@ -84,12 +90,13 @@ export default function Goldgame(props){
             <div className="canvas" >
             <div className="container">
             {/* <div draggable="true" onDragStart={(e)=>{
-        e.target.style.opacity = '0.4'}} onDragEnd={handleDragEnd} className="box" 
-          >A</div> */}
+                e.target.style.opacity = '0.4'}} onDragEnd={handleDragEnd} className="box" 
+            >A</div> */}
                    </div>
           
             </div>
             </div>
         </div>
+        </>
     )
 }

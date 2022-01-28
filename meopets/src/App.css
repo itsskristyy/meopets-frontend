@@ -108,9 +108,35 @@ p {
 }
 
 /* Pets */
-.pet {
+.pet-card {
+    background-color: #FFF4AA;
+    border-color: #88C6ED;
+    box-sizing: border-box;
+    border-style: inset;
+
+    padding: 12px 25px 5px 25px;
+}
+.pet-grid {
+    display: flex;
+    justify-content: center;
+}
+.pet-image {
+    display: flex;
+    justify-content: center;
+}
+.pet-list {
+    -webkit-text-stroke: 1px black;
+    color: white;
+}
+.pet-name {
+    display: flex;
+    justify-content: center;
     color: black;
+    font-size: 28px;
     text-decoration: none;
+}
+.pet-stats {
+    margin-right: 20px;
 }
 
 /* User Profile */
@@ -199,10 +225,7 @@ p {
     justify-content: center;
 }
 
-/* Pets */
-.pet-card {
 
-}
 
 
 /* GoldGame */

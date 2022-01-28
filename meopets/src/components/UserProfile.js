@@ -14,8 +14,7 @@ export default function UserProfile(props) {
         }
     }, []);
 
-    async function getCoins() {
-        const newCurrency = {currency: user.user.currency + 50};
+    async function getCoins(newCurrency) {
         return updateUser(newCurrency);
     }
 
@@ -24,11 +23,12 @@ export default function UserProfile(props) {
             {!user.isLoggedIn && navigate('/home')}
             {user.isLoggedIn && 
             <div className="user-disp">
-                <button type='button' onClick={async () => await getCoins()}>Get Your Daily Coins!</button>
+                <button type='button' 
+                    onClick={async () => {await getCoins({currency: user.currency + 10})}}>Get Your Daily Coins!</button>
                 <div className="currency">
                     <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
                          className="coins-img"/>
-                    <p className="coins">{user.user.currency}</p>
+                    <p className="coins">{user.currency}</p>
                 </div>
                 <div className="prof-msg">
                     {user.user.created !== user.user.lastUpdated &&

@@ -33,25 +33,25 @@ export default function Store() {
         const newCurrency = {currency: user.currency - amount};
         return updateUser(newCurrency);
         }
-    async function petUpdateHandler(pet) {
-        return await updatePet(pet);
-    }
-    async function feedPet(pet,amount) {
-        const petToFeed = {...pet};
-        petToFeed.hunger > 0 ? petToFeed.hunger -= amount : petToFeed.hunger = 0;
-        return await petUpdateHandler(petToFeed);
-    }
+    // async function petUpdateHandler(pet) {
+    //     return await updatePet(pet);
+    // }
+    // async function feedPet(pet,amount) {
+    //     const petToFeed = {...pet};
+    //     petToFeed.hunger > 0 ? petToFeed.hunger -= amount : petToFeed.hunger = 0;
+    //     return await petUpdateHandler(petToFeed);
+    // }
 
-    async function playWithPet(pet, amount) {
-        const petToPlay = {...pet};
-        petToPlay.happiness += amount;
-        return await petUpdateHandler(petToPlay);
-    }
-    async function playFishing(pet,amount) {
-        const petToPlay = {...pet};
-        petToPlay.health > 0 ? petToPlay.health -= amount : petToPlay.health = 0;
-        return await petUpdateHandler(petToPlay);
-    }
+    // async function playWithPet(pet, amount) {
+    //     const petToPlay = {...pet};
+    //     petToPlay.happiness += amount;
+    //     return await petUpdateHandler(petToPlay);
+    // }
+    // async function playFishing(pet,amount) {
+    //     const petToPlay = {...pet};
+    //     petToPlay.health > 0 ? petToPlay.health -= amount : petToPlay.health = 0;
+    //     return await petUpdateHandler(petToPlay);
+    // }
    // pets[id], amount
     return (
 
@@ -67,7 +67,7 @@ export default function Store() {
                         if(user.currency >= 150){
                             setInventory([...inventory,4])
                             getTCoins(150)
-                            playWithPet(pets[id],5)
+                            // playWithPet(pets[id],5)
                         }else{
                             alert("Sorry, You do not have enough coins to purchase this item.")
                         }
@@ -112,7 +112,7 @@ export default function Store() {
                         if(user.currency >= 20){
                             setInventory([...inventory,7])
                             getTCoins(20)
-                            feedPet(pets[id],1)
+                            // feedPet(pets[id],1)
                         }else{
                             alert("Sorry, You do not have enough coins to purchase this item.")
                         } 

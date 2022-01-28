@@ -9,20 +9,19 @@ export default function UserProfile(props) {
     const updateUser = useContext(UserContext).updateUser;
     const navigate = useNavigate();
     useEffect(() => {
-        console.log(user.isLoggedIn)
         if(!user.isLoggedIn) {
             navigate('/home');
         }
     }, []);
 
     async function getCoins() {
-        console.log(user.user.currency+50);
         const newCurrency = {currency: user.user.currency + 50};
         return updateUser(newCurrency);
     }
 
     return (
-        <>
+        <>  
+            {!user.isLoggedIn && navigate('/home')}
             {user.isLoggedIn && 
             <div className="user-disp">
                 <button type='button' onClick={async () => await getCoins()}>Get Your Daily Coins!</button>

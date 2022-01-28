@@ -1,15 +1,20 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../contexts/loginContext';
 import { PetsContext } from '../contexts/petsContext';
 import petImg from './petmapper';
 export default function Pets(){
     //let pets = getPets(); // Grab pet(s) from dummy data
+    const navigate = useNavigate();
     const user = useContext(UserContext);
     const pets = useContext(PetsContext);
-    
-    console.log(pets.pets)
 
+    useEffect(() => {
+        if(!user.isLoggedIn) {
+            navigate('/home');
+        }
+    }, []);
+    
     return(
         <div>
             {/* Map through data and display a div for each pet */}

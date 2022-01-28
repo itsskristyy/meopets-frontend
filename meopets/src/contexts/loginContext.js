@@ -1,11 +1,12 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 /* login/user Context. Here is where the global state gets defined. */
 //heroku url: https://virtual-pets.herokuapp.com
 //localhost url: http://localhost:8080
 
+let logoutTimer;
 /* context provider */
 export const UserContext = React.createContext({
     token: {},
@@ -17,15 +18,56 @@ export const UserContext = React.createContext({
     updateUser: (userUpdate) => {}
 });
 
+function calculateRemainingTime(expirationTime) {
+    const now = parseInt(new Date().getTime()/1000);
+    const adjExpirationTime = new Date(+expirationTime).getTime();
+    return adjExpirationTime - now;
+}
+
+function retrieveStoredToken() {
+    const storedToken = sessionStorage.getItem('token');
+    const storedExpirationTime = sessionStorage.getItem('expirationTime');
+    const remainingTime = calculateRemainingTime(storedExpirationTime);
+
+    if(remainingTime < 200) {
+        sessionStorage.clear();
+        return null;
+    }
+
+    return {
+        token: storedToken,
+        remainingTime: remainingTime
+    }
+}
+
 export default function Users(props) {
     // Context's states - user and active user's pet(s)
-    const initialToken = sessionStorage.getItem('token');
+    const tokenData = retrieveStoredToken();
+    let initialToken;
+    if (tokenData) {
+        initialToken = tokenData.token;
+    }
+    //const initialToken = sessionStorage.getItem('token');
     const initialUser = !!initialToken ? JSON.parse(sessionStorage.getItem('user')) : null;
-    console.log(initialToken, initialUser);
     const [token, setToken] = useState(initialToken);
     const [user, setUser] = useState(initialUser);
     let isLoggedIn = !!token;
-    console.log(token);
+
+    const logOut = useCallback(() => {
+        setToken(null);
+        setUser(null);
+        sessionStorage.clear();
+        if(logoutTimer) {
+            clearTimeout(logoutTimer);
+        }
+    }, []);
+
+    useEffect(() => {
+        if(tokenData) {
+            logoutTimer = setTimeout(logOut, (tokenData.remainingTime)*1000);
+        }
+    }, [tokenData, logOut]);
+
 
     // Login function. Sends the POST request to the login route with username and password as bodies. 
     // More error handling might be needed tbh (or handling errors from the API).
@@ -42,10 +84,13 @@ export default function Users(props) {
         // Assuming login went well, the user state is updated with the response data.
         setToken(response.data.token);
         setUser(response.data.user);
-        console.log(response);
-        console.log(response.data.user)
         sessionStorage.setItem('token', response.data.token);
+        sessionStorage.setItem('expirationTime', response.data.exp);
         sessionStorage.setItem('user', JSON.stringify(response.data.user));
+        console.log(response);
+        const remainingTime = calculateRemainingTime(response.data.exp);
+        console.log(response.data.exp, remainingTime);
+        logoutTimer = setTimeout(logOut, (remainingTime-200)*1000);
         return response;
     }
 
@@ -65,20 +110,20 @@ export default function Users(props) {
         setToken(response.data.token);
         setUser(response.data.user);
         sessionStorage.setItem('token', response.data.token);
+        sessionStorage.setItem('expirationTime', response.data.exp);
         sessionStorage.setItem('user', JSON.stringify(response.data.user));
+        const remainingTime = calculateRemainingTime(response.data.exp);
+        console.log(remainingTime);
+        logoutTimer = setTimeout(logOut, (remainingTime-300)*1000);
         return response;
     }
 
     async function updateUser(userUpdate) {
         if(isLoggedIn) {
             try {
-                console.log(userUpdate);
-                console.log(user.token);
                 const updatedUser = await axios.put('https://virtual-pets.herokuapp.com/users', {data: userUpdate},
                 {headers: {'Authorization' : 'Bearer ' + token}})
-                console.log(updatedUser);
                 const updated = updatedUser.data.user;
-                console.log(updated);
                 setUser(updated);
                 sessionStorage.setItem('user', JSON.stringify(updated));                
                 return updated;
@@ -86,12 +131,6 @@ export default function Users(props) {
                 console.log(err);
             }
         }
-    }
-
-    function logOut() {
-        setToken(null);
-        setUser(null);
-        sessionStorage.clear();
     }
 
 

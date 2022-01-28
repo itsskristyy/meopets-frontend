@@ -22,21 +22,28 @@ export default function Store() {
     const user = useContext(UserContext);
     const updateUser = useContext(UserContext).updateUser;
     async function getTCoins(amount) {
-        const newCurrency = {currency: user.user.currency - amount};
+        const newCurrency = {currency: user.currency - amount};
         return updateUser(newCurrency);
         }
+    const loading = user.currency === 0;
+
     return (
 
 
         <div className="storeInventory">
             <h1> Hello, what would you like to buy? </h1>
 
+            {!loading && <div className="currency">
+                            <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
+                                className="coins-img"/>
+                            <p className="coins">{user.currency}</p>
+            </div>}
 
             <h2> Toys </h2>
             <div className="toys">
                 <ul> Ball
                     <img  alt = "ball" id="ball" src={ball} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){
-                        if(user.user.currency >= 150){
+                        if(user.currency >= 150){
                             setInventory([...inventory,4])
                             getTCoins(150)
                         }else{
@@ -51,7 +58,7 @@ export default function Store() {
 
                 <ul> Teddy Bear
                     <img alt = "bear" id="bear" src = {bear} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        if(user.user.currency >= 220){
+                        if(user.currency >= 220){
                             setInventory([...inventory,9])
                             getTCoins(220)
                         }else{
@@ -64,7 +71,7 @@ export default function Store() {
 
                 <ul> Rubber Duck
                     <img alt = "duck" id="duck" src={duck} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                         if(user.user.currency >= 70){
+                         if(user.currency >= 70){
                             setInventory([...inventory,5])
                             getTCoins(70)
                         }else{
@@ -80,7 +87,7 @@ export default function Store() {
             <div className="food">
                 <ul> Apple Juice
                     <img alt = "juice" id="juice" src= {juice} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        if(user.user.currency >= 20){
+                        if(user.currency >= 20){
                             setInventory([...inventory,7])
                             getTCoins(20)
                         }else{
@@ -93,7 +100,7 @@ export default function Store() {
 
                 <ul> Cupcake
                     <img alt = "cupcake" id="cake" src={cake} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){
-                        if(user.user.currency >= 35){
+                        if(user.currency >= 35){
                             setInventory([...inventory,6])
                             getTCoins(35)
                         }else{
@@ -106,7 +113,7 @@ export default function Store() {
 
                 <ul> Water
                     <img alt = "water" id="water" src={water} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        if(user.user.currency >= 10){
+                        if(user.currency >= 10){
                             setInventory([...inventory,3])
                             getTCoins(10)
                         }else{
@@ -120,7 +127,7 @@ export default function Store() {
                 <ul> Sandwich
                     <img alt = "sandwich" id="sandwich" src={sandwich} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
                         
-                        if(user.user.currency >= 40){
+                        if(user.currency >= 40){
                             setInventory([...inventory,2])
                             getTCoins(40)
                         }else{
@@ -137,7 +144,7 @@ export default function Store() {
             <div className="medicine">
                 <ul> Magic Candy
                     <img alt = "candy" src="https://clipart.world/wp-content/uploads/2020/08/pink-candy-transparent.png" onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        if(user.user.currency >= 70){
+                        if(user.currency >= 70){
                             setInventory([...inventory,10])
                             getTCoins(70)
                         }else{
@@ -150,7 +157,7 @@ export default function Store() {
 
                 <ul>   Meopkins
                     <img  alt = "napkins" id="napkins" alt="tissue" src={tissue} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                         if(user.user.currency >= 70){
+                         if(user.currency >= 70){
                             setInventory([...inventory,1])
                             getTCoins(70)
                         }else{
@@ -164,7 +171,7 @@ export default function Store() {
                 <ul>   Cough Syrup
                     <img  id="cough" src= {syrup}  
                     onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        if(user.user.currency >= 80){
+                        if(user.currency >= 80){
                             setInventory([...inventory,8])
                             getTCoins(120)
                         }else{

@@ -1,25 +1,73 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 /* login/user Context. Here is where the global state gets defined. */
+//heroku url: https://virtual-pets.herokuapp.com
+//localhost url: http://localhost:8080
 
+let logoutTimer;
 /* context provider */
 export const UserContext = React.createContext({
     token: {},
     isLoggedIn: {},
-    username: {},
+    user: {},
     signUp: (email, username, password, firstPetName, firstPetType) => {},
     logIn: (username, password) => {},
-    logOut: () => {}
+    logOut: () => {},
+    updateUser: (userUpdate) => {}
 });
+
+function calculateRemainingTime(expirationTime) {
+    const now = parseInt(new Date().getTime()/1000);
+    const adjExpirationTime = new Date(+expirationTime).getTime();
+    return adjExpirationTime - now;
+}
+
+function retrieveStoredToken() {
+    const storedToken = sessionStorage.getItem('token');
+    const storedExpirationTime = sessionStorage.getItem('expirationTime');
+    const remainingTime = calculateRemainingTime(storedExpirationTime);
+
+    if(remainingTime < 200) {
+        sessionStorage.clear();
+        return null;
+    }
+
+    return {
+        token: storedToken,
+        remainingTime: remainingTime
+    }
+}
 
 export default function Users(props) {
     // Context's states - user and active user's pet(s)
-    const [token, setToken] = useState(null);
-    const [username, setUsername] = useState("");
+    const tokenData = retrieveStoredToken();
+    let initialToken;
+    if (tokenData) {
+        initialToken = tokenData.token;
+    }
+    //const initialToken = sessionStorage.getItem('token');
+    const initialUser = !!initialToken ? JSON.parse(sessionStorage.getItem('user')) : null;
+    const [token, setToken] = useState(initialToken);
+    const [user, setUser] = useState(initialUser);
     let isLoggedIn = !!token;
-    console.log(token);
+
+    const logOut = useCallback(() => {
+        setToken(null);
+        setUser(null);
+        sessionStorage.clear();
+        if(logoutTimer) {
+            clearTimeout(logoutTimer);
+        }
+    }, []);
+
+    useEffect(() => {
+        if(tokenData) {
+            logoutTimer = setTimeout(logOut, (tokenData.remainingTime)*1000);
+        }
+    }, [tokenData, logOut]);
+
 
     // Login function. Sends the POST request to the login route with username and password as bodies. 
     // More error handling might be needed tbh (or handling errors from the API).
@@ -35,7 +83,14 @@ export default function Users(props) {
             });
         // Assuming login went well, the user state is updated with the response data.
         setToken(response.data.token);
-        setUsername(username);
+        setUser(response.data.user);
+        sessionStorage.setItem('token', response.data.token);
+        sessionStorage.setItem('expirationTime', response.data.exp);
+        sessionStorage.setItem('user', JSON.stringify(response.data.user));
+        console.log(response);
+        const remainingTime = calculateRemainingTime(response.data.exp);
+        console.log(response.data.exp, remainingTime);
+        logoutTimer = setTimeout(logOut, (remainingTime-200)*1000);
         return response;
     }
 
@@ -61,24 +116,42 @@ export default function Users(props) {
             });;
         // The user is automatically signed in (this can be changed, of course).
         setToken(response.data.token);
-        setUsername(username);
+        setUser(response.data.user);
+        sessionStorage.setItem('token', response.data.token);
+        sessionStorage.setItem('expirationTime', response.data.exp);
+        sessionStorage.setItem('user', JSON.stringify(response.data.user));
+        const remainingTime = calculateRemainingTime(response.data.exp);
+        console.log(remainingTime);
+        logoutTimer = setTimeout(logOut, (remainingTime-300)*1000);
         return response;
     }
 
-    function logOut() {
-        setToken(null);
-        setUsername("");
+    async function updateUser(userUpdate) {
+        if(isLoggedIn) {
+            try {
+                const updatedUser = await axios.put('https://virtual-pets.herokuapp.com/users', {data: userUpdate},
+                {headers: {'Authorization' : 'Bearer ' + token}})
+                const updated = updatedUser.data.user;
+                setUser(updated);
+                sessionStorage.setItem('user', JSON.stringify(updated));                
+                return updated;
+            } catch(err) {
+                console.log(err);
+            }
+        }
     }
+
 
     // The context component is provided to all the children together with all the values we specified here.
     return (
         <UserContext.Provider value={{
             token: token,
             isLoggedIn: isLoggedIn,
-            username: username, 
+            user: user, 
             signup: signUp, 
             login: logIn, 
-            logout: logOut
+            logout: logOut,
+            updateUser: updateUser
         }}>
             {props.children}
         </UserContext.Provider>

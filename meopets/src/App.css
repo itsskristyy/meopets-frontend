@@ -2,6 +2,7 @@
 body {
     background: #ACE3FF;
     font-family: Roboto;
+    min-width: 1100px;
 }
 nav {
     box-shadow: 0px 4px 4px grey;
@@ -37,13 +38,34 @@ p {
 /*    color: #FAFAFA;*/
 /*}*/
 
-/* Home */
-.login {
+/* Login */
+.form-title {
     text-align: center;
 }
+.login-form {
+    background-color: #FFF4AA;
+    border-color: #88C6ED;
+    box-sizing: border-box;
+    border-style: inset;
+    max-width: 350px;
+    padding: 30px 40px 30px 40px;
+}
+
+.login-input {
+    display: block;
+    width: 100%;
+    padding: 7px 48px 8px 8px;
+    line-height: 100%;
+    margin: 6px 0;
+    box-sizing: border-box;
+}
+.login-page {
+    display: grid;
+    justify-content: center;
+}
+
 .logout {
     -webkit-text-stroke: 1px black;
-
     background-color: #e66a83;
     border: none;
     color: white;
@@ -53,7 +75,16 @@ p {
     font-weight: bold;
     padding: 7px 32px;
 }
-
+.redirect {
+    text-align: center;
+}
+.redirect-link {
+    -webkit-text-stroke: 1px black;
+    color: #FFA9BA;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px #000000;
+}
 /* Signup page */
 .signup{
     text-align: center;
@@ -96,8 +127,8 @@ p {
 
 /* Fishing */
 .blue-fish, .green-fish, .purple-fish, .red-fish {
-    height: 10px;
-    width: 15px;
+    height: 20px;
+    width: 35px;
 }
 .box-color {
     height: 50px;
@@ -113,14 +144,15 @@ p {
     cursor:url(../public/fishing-rod.png),auto;
 }
 .game-inst {
-    width: 120px;
+    width: 280px;
     margin-left: 25px;
-    font-size: x-small;
+    font-size: small;
 }
 .game-row {
     display: flex;
     flex-direction:row;
     align-items: center;
+    margin-left: 40px;
 }
 .minig-page {
     cursor:url(../public/fishing-rod.png),auto;
@@ -136,4 +168,54 @@ p {
 }
 .prof-msg-txt {
     padding: 10px;
+}
+/* GoldGame */
+.gold-coin{
+    height: 13px;
+    width: 13px;
+    margin-top: 900;
+    cursor: move;
+}
+.canvas-g{
+    width: 1200px;
+    height: 1000px;
+    border: 2px solid #ACE3FF;
+}
+container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+  
+.pot {
+    width: 100px;
+    height: 90px;
+    margin-left: 50px;
+  }
+  .start-btn{
+    font-weight: bold;
+    margin-left: 40px;
+    background-color: #FFF4AA;
+    border: 2px solid #c9c5b0;
+    width: 85px;
+    height: 35px;
+    border-radius: 5px;
+    font-size: 20px;
+  }
+  .start-btn:hover{
+    background-color: #dfd38b;
+  }
+  .prev-img{
+      width: 55px;
+      height: 55px;
+      margin-top: 5px;
+      margin-left: 20px;
+  }
+  .singe-pet-img{
+      width: 180px;
+      height: 180px;
+  }
+  .all-pet-img{
+    width: 80px;
+    height: 80px;
 }

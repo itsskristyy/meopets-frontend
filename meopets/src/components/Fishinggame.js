@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 
-export default function Minigame(props){
+export default function Fishinggame(props){
     const [gamePlayed, setGamePlayed] = useState(false)
-    useEffect(() => {
+   function gamePlay(){
     if(!gamePlayed){
+       document.querySelector('.start-btn').style.visibility = "hidden"
        const color = ['blue', 'green', 'purple', 'red']
        let mouseCol = color[Math.floor(Math.random()*4)]
        const allFish = []
@@ -15,12 +16,12 @@ export default function Minigame(props){
        for(let i=0;i<10;i++){
            
             let blueFish = document.createElement('img')
-            blueFish.src =  "http://www.clker.com/cliparts/K/H/j/V/a/d/blue-fish-md.png" 
+            blueFish.src =  "https://i.imgur.com/tD91ybW.png" 
             blueFish.alt="blue fish" 
             blueFish.className="blue-fish" 
             blueFish.style.position = "absolute"
-            blueFish.style.left = Math.floor(Math.random()*900)+"px"
-            blueFish.style.top = Math.floor((Math.random()*400)+210)+"px"
+            blueFish.style.left = Math.floor(Math.random()*1100)+"px"
+            blueFish.style.top = Math.floor((Math.random()*400)+295)+"px"
             blueFish.onmouseover=() =>{
              if(mouseCol === 'blue'){
                  blueFish.style.visibility = "hidden"
@@ -34,12 +35,12 @@ export default function Minigame(props){
         for(let i=0;i<10;i++){
            
              let greenFish = document.createElement('img')
-             greenFish.src =  "http://www.clker.com/cliparts/v/n/f/E/3/o/green-fish-md.png" 
+             greenFish.src =  "https://i.imgur.com/dUARus2.png" 
              greenFish.alt="green fish" 
              greenFish.className="green-fish" 
              greenFish.style.position = "absolute"
-             greenFish.style.left = Math.floor(Math.random()*900)+"px"
-             greenFish.style.top = Math.floor((Math.random()*400)+210)+"px"
+             greenFish.style.left = Math.floor(Math.random()*1100)+"px"
+             greenFish.style.top = Math.floor((Math.random()*400)+295)+"px"
              greenFish.onmouseover=() =>{
               if(mouseCol === 'green'){
                 greenFish.style.visibility = "hidden"
@@ -53,12 +54,12 @@ export default function Minigame(props){
             for(let i=0;i<10;i++){
            
                 let purpleFish = document.createElement('img')
-                purpleFish.src =  "http://www.clker.com/cliparts/I/r/6/x/I/d/purple-fish-md.png" 
+                purpleFish.src =  "https://i.imgur.com/ZtOYZGz.png" 
                 purpleFish.alt="purple fish" 
                 purpleFish.className="purple-fish" 
                 purpleFish.style.position = "absolute"
-                purpleFish.style.left = Math.floor(Math.random()*900)+"px"
-                purpleFish.style.top = Math.floor((Math.random()*400)+210)+"px"
+                purpleFish.style.left = Math.floor(Math.random()*1100)+"px"
+                purpleFish.style.top = Math.floor((Math.random()*400)+295)+"px"
                 purpleFish.onmouseover=() =>{
                  if(mouseCol === 'purple'){
                     purpleFish.style.visibility = "hidden"
@@ -72,12 +73,12 @@ export default function Minigame(props){
                for(let i=0;i<10;i++){
            
                 let redFish = document.createElement('img')
-                redFish.src =  "http://www.clker.com/cliparts/o/4/q/M/a/Q/red-fish-md.png" 
+                redFish.src =  "https://i.imgur.com/oUv3f2I.png" 
                 redFish.alt="red fish" 
                 redFish.className="red-fish" 
                 redFish.style.position = "absolute"
-                redFish.style.left = Math.floor(Math.random()*900)+"px"
-                redFish.style.top = Math.floor((Math.random()*400)+210)+"px"
+                redFish.style.left = Math.floor(Math.random()*1100)+"px"
+                redFish.style.top = Math.floor((Math.random()*400)+295)+"px"
                 redFish.onmouseover=() =>{
                  if(mouseCol === 'red'){
                     redFish.style.visibility = "hidden"
@@ -93,10 +94,11 @@ export default function Minigame(props){
            }
            document.querySelector(".box-color").style.backgroundColor = mouseCol
            
-           setInterval(changeCol,1500)
+           let intID =  setInterval(changeCol,1500)
            setTimeout(function(){
-               clearInterval(changeCol)
-               document.querySelector('.minig-page').innerHTML = `<p>Game over! You caught ${fish} fish!</p><button onClick={window.location.reload()} style="margin-left:440px;">Click here to play again.</button>`
+               clearInterval(intID)
+               document.querySelector('.minig-page').innerHTML = `<p>Game over! You caught ${fish} fish!<button onClick={window.location.reload()} style="margin-left:440px;  background-color: #FFF4AA; border: 2px solid #c9c5b0;
+               width: 125px; height: 40px; border-radius: 5px; " className="start-btn">Click here to play again.</button>`
                //here there should be a line to the user 
                // you won this many coins!
                //then it should use the currency state that should be received in props and update that state
@@ -109,9 +111,10 @@ export default function Minigame(props){
        
 
        
-      }, []);
+      }
      return(
          <div>
+             <button onClick={gamePlay} className="start-btn">START</button>
     <div className="minig-page">
         <div className="game-row">
         <h1 className="points">You caught 0 fish</h1>

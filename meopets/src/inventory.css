@@ -1,0 +1,27 @@
+h2 {
+    font-size: 20px;
+    text-align: center;
+    
+    
+}
+p{
+    font-size: 10px;
+    text-align: left;
+    
+    
+}
+img {
+    height: 150px;
+    width: auto;
+   
+   
+}
+ul{
+    font-size: 10px;
+    text-align: left;
+    display: grid;
+}
+
+.toys{
+    display: inline;
+}

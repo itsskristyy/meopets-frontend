@@ -1,11 +1,10 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import {useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 
 import { UserContext } from "../contexts/loginContext";
-import { PetsContext } from "../contexts/petsContext";
-import ErrorDisplay from "./ErrorDisplay";
+import petImg from "./petmapper";
 
 export default function SignUp() {
     let navigate = useNavigate()
@@ -21,7 +20,7 @@ export default function SignUp() {
         return await signup(email, username, password, petName, petType);
     };
 
-    const { register, formState: { errors }, getValues, handleSubmit, reset} = useForm({
+    const { register, formState: { errors }, handleSubmit} = useForm({
         criteriaMode: "all"
     });
 
@@ -148,12 +147,19 @@ export default function SignUp() {
                     /><br/>
 
                     {/* PET TYPE ------------------------------------------------------------------------------------*/}
-                    <label>Type of Pet:{" "}
-                        <select id = "dropdown" onChange={e => setPetType(Number(e.target.value))}>
+                    <label>Type of Pet:
+                        <select id = "dropdown" onChange={e => 
+                            {setPetType(Number(e.target.value))
+                            document.querySelector(".prev-img").src = petImg[e.target.value]
+                        }}>
                             <option value='1'> Blob </option>
                             <option value='2'> Winged Cat</option>
                         </select>
-                    </label><br/><br/>
+                    </label><br/>
+                <span>
+                        <img src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" className="prev-img" />
+                </span>
+                    <br/><br/>
 
                     <input type="submit" value="Submit"/>
                 </div>

@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 /* login/user Context. Here is where the global state gets defined. */
 //heroku url: https://virtual-pets.herokuapp.com

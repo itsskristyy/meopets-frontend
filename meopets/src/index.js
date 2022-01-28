@@ -1,7 +1,5 @@
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
-import { useContext } from "react";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from './components/App';
 import Home from "./components/Home";
 import Fishinggame from './components/Fishinggame';
@@ -13,7 +11,7 @@ import SignUp from './components/Signup';
 import UserProfile from "./components/UserProfile";
 import Store from './components/Store';
 
-import UsersProvider, {UserContext} from './contexts/loginContext';
+import UsersProvider from './contexts/loginContext';
 import PetsProvider from './contexts/petsContext';
 
 import './index.css';

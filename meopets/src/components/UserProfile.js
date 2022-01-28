@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext,  useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/loginContext";
 import Pets from "./Pets";
@@ -8,6 +8,7 @@ export default function UserProfile(props) {
     const user = useContext(UserContext);
     const updateUser = useContext(UserContext).updateUser;
     const navigate = useNavigate();
+    
     useEffect(() => {
         if(!user.isLoggedIn) {
             navigate('/home');
@@ -31,7 +32,7 @@ export default function UserProfile(props) {
                         if(today > lastUpdated) {
                             await getCoins({currency: user.currency + 50})
                         } else {
-                            
+
                         }
                     }}>Get Your Daily Coins!</button>
                 <div className="currency">

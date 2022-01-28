@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/meopets-frontend/static/css/main.33804510.css",
-    "main.js": "/meopets-frontend/static/js/main.80e44ff4.js",
+    "main.js": "/meopets-frontend/static/js/main.cee0e276.js",
     "index.html": "/meopets-frontend/index.html",
     "main.33804510.css.map": "/meopets-frontend/static/css/main.33804510.css.map",
-    "main.80e44ff4.js.map": "/meopets-frontend/static/js/main.80e44ff4.js.map"
+    "main.cee0e276.js.map": "/meopets-frontend/static/js/main.cee0e276.js.map"
   },
   "entrypoints": [
     "static/css/main.33804510.css",
-    "static/js/main.80e44ff4.js"
+    "static/js/main.cee0e276.js"
   ]
 }

@@ -13,7 +13,7 @@ function App() {
     return (
         <header>
             <nav className="sticky-nav">
-                <Link className="link" to={`/home`}>
+                <Link className="logo-link" to={`/home`}>
                     <img src="./logo.png" height="120px" alt="meopets logo"/>
                 </Link>
 

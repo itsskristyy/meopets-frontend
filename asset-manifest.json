@@ -1,13 +1,23 @@
 {
   "files": {
-    "main.css": "/meopets-frontend/static/css/main.33804510.css",
-    "main.js": "/meopets-frontend/static/js/main.cee0e276.js",
+    "main.css": "/meopets-frontend/static/css/main.2759b1f3.css",
+    "main.js": "/meopets-frontend/static/js/main.da5e586e.js",
+    "static/media/tissue.png": "/meopets-frontend/static/media/tissue.bc013ced0c3220f7b1eb.png",
+    "static/media/duck.png": "/meopets-frontend/static/media/duck.270f54b7515b1ff076b5.png",
+    "static/media/water.png": "/meopets-frontend/static/media/water.1349d1ca6db94921896a.png",
+    "static/media/cupcakee.png": "/meopets-frontend/static/media/cupcakee.a58698df291e43c26d4c.png",
+    "static/media/sandwich.png": "/meopets-frontend/static/media/sandwich.13f09971d5e82ad7c61a.png",
+    "static/media/beachball.png": "/meopets-frontend/static/media/beachball.5737d050a63c99f5445c.png",
+    "static/media/coughsyrup.png": "/meopets-frontend/static/media/coughsyrup.e30a0bdb7565c8f8d4e8.png",
+    "static/media/juice.png": "/meopets-frontend/static/media/juice.187791212f98a2b7d4d4.png",
+    "static/media/bear.png": "/meopets-frontend/static/media/bear.3db605caad330cb4f733.png",
+    "static/media/logo.png": "/meopets-frontend/static/media/logo.9c2eee5e5920ad572057.png",
     "index.html": "/meopets-frontend/index.html",
-    "main.33804510.css.map": "/meopets-frontend/static/css/main.33804510.css.map",
-    "main.cee0e276.js.map": "/meopets-frontend/static/js/main.cee0e276.js.map"
+    "main.2759b1f3.css.map": "/meopets-frontend/static/css/main.2759b1f3.css.map",
+    "main.da5e586e.js.map": "/meopets-frontend/static/js/main.da5e586e.js.map"
   },
   "entrypoints": [
-    "static/css/main.33804510.css",
-    "static/js/main.cee0e276.js"
+    "static/css/main.2759b1f3.css",
+    "static/js/main.da5e586e.js"
   ]
 }

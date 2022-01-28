@@ -11,8 +11,8 @@ export default function Inventory(props) {
 
             document.querySelector('.invent-btn').textContent = "Refresh Inventory"
             document.querySelector('.invent-items').innerHTML = ""
-            let amountItems = [0,0,0,0,0,0,0,0,0]
-            let title = ["", "", "", "", "", "","", "", ""]
+            let amountItems = [0,0,0,0,0,0,0,0,0,0]
+            let title = ["", "", "", "", "", "","", "", "", ""]
             for(let i=0; i<props.inventory.length; i++){
                 props.inventory[i] === 1 && amountItems[0]++
                 props.inventory[i] === 2 && amountItems[1]++
@@ -23,6 +23,7 @@ export default function Inventory(props) {
                 props.inventory[i] === 7 && amountItems[6]++
                 props.inventory[i] === 8 && amountItems[7]++
                 props.inventory[i] === 9 && amountItems[8]++
+                props.inventory[i] === 10 && amountItems[9]++
                 props.inventory[i] === 1 && (title[0] = "Meopkins")
                 props.inventory[i] === 2 && (title[1] = "Sandwich")
                 props.inventory[i] === 3 && (title[2] = "Water")
@@ -32,8 +33,9 @@ export default function Inventory(props) {
                 props.inventory[i] === 7 && (title[6] = "Apple Juice")
                 props.inventory[i] === 8 && (title[7] = "Cough Syrup")
                 props.inventory[i] === 9 && (title[8] = "Teddy Bear")
+                props.inventory[i] === 10 && (title[9] = "Magic Candy")
             }
-                for(let i=0; i<9;i++){
+                for(let i=0; i<10;i++){
                     if(amountItems[i] !== 0){
                         console.log(i)
                         

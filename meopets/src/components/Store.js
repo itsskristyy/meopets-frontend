@@ -27,15 +27,6 @@ export default function Store() {
         }
     return (
 
-        // '1':tissue,
-        // '2':sandwich,
-        // '3':water,
-        // '4':ball,
-        // '5':duck,
-        // '6':cake,
-        // '7':juice,
-        // '8':syrup,
-        // '9':bear
 
         <div className="storeInventory">
             <h1> Hello, what would you like to buy? </h1>
@@ -55,9 +46,12 @@ export default function Store() {
 
                 <ul> Teddy Bear
                     <img alt = "bear" id="bear" src = {bear} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        setInventory([...inventory,9])
-                        getTCoins(220)
-                    }}} />
+                        if(user.user.currency >= 220){
+                            setInventory([...inventory,9])
+                            getTCoins(220)
+                        }else{
+                            alert("Sorry, You do not have enough coins to purchase this item.")
+                        }  }}} />
                     <p> 220 coins </p>
                     <p> +6 Happiness </p>
                 </ul>
@@ -116,20 +110,30 @@ export default function Store() {
             <h2> Medicine </h2>
             <div className="medicine">
                 <ul> Magic Candy
-                    <img alt = "candy" src="https://clipart.world/wp-content/uploads/2020/08/pink-candy-transparent.png" onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ }}} />
+                    <img alt = "candy" src="https://clipart.world/wp-content/uploads/2020/08/pink-candy-transparent.png" onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
+                        setInventory([...inventory,10])
+                        getTCoins(70)
+                    }}} />
                     <p> 70 coins </p>
                     <p> +5 Health </p>
                 </ul>
 
                 <ul>   Meopkins
-                    <img  alt = "napkins" id="napkins" alt="tissue" src={tissue} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ }}} />
+                    <img  alt = "napkins" id="napkins" alt="tissue" src={tissue} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
+                        
+                        setInventory([...inventory,1])
+                        getTCoins(70)
+                    }}} />
                     <p> 70 coins </p>
                     <p> +3 Health </p>
                 </ul>
 
                 <ul>   Cough Syrup
                     <img  id="cough" src= {syrup}  
-                    onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ }}} />
+                    onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
+                        setInventory([...inventory,8])
+                        getTCoins(120)
+                    }}} />
                     <p> 120 coins </p>
                     <p> +7 Health </p>
                 </ul>

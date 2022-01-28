@@ -1,16 +1,16 @@
 import React, { useState, useContext } from "react";
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from '@hookform/error-message';
+
 import { UserContext } from "../contexts/loginContext";
-import { PetsContext } from "../contexts/petsContext";
-import ErrorDisplay from "./ErrorDisplay";
 import petImg from "./petmapper";
+
 export default function SignUp() {
     let navigate = useNavigate()
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [repeatPassword, setRepeatPassword] = useState("");
     const [petName, setPetName] = useState("");
     const [petType, setPetType] = useState(1);
 
@@ -20,88 +20,150 @@ export default function SignUp() {
         return await signup(email, username, password, petName, petType);
     };
 
+    const { register, formState: { errors }, handleSubmit} = useForm({
+        criteriaMode: "all"
+    });
 
-    let errors;
-    let submitDisabled = true;
-
-    function validate() {
-        errors = {};
-        const isEmailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i); 
-        if (email === '') {
-            errors['email'] = "Email must not be empty."
-        } else if (!isEmailValid) {
-            errors['email'] = "Email is not in a valid format."
-        } 
-        if (username === '') {
-            errors['username'] = "Username must not be empty."
-        } 
-        if (password === '') {
-            errors['password'] = "Password must not be empty."
-        } 
-        if (repeatPassword === '') {
-            errors['repeatPassword'] = "Please repeat your password."
-        } else if (repeatPassword !== password) {
-            errors['repeatPassword'] = "Passwords don't match."
-        }
-        if (petName === '') {
-            errors['petname'] = "Petname must not be empty."
-        }
-        if (Object.keys(errors).length === 0) {
-            submitDisabled = false;
-        }
+    const onSubmit = async data => {
+        await signUp(data.email, data.username, data.password, data.petName, data.petType);
+        navigate('/userprofile', {replace: true})
     }
-    
-    validate();
 
     return(
-        <>
-            <form onSubmit={async e => {
-                e.preventDefault();
-                const response = await signUp();
-                if (response.status === 201) {
-                    console.log(response);
-                    navigate('/userprofile', {replace: true});
-                } else {
-                    console.log(response.error);
-                }
-            }}>
-                <label>Email:<br/>
-                    <input type="email" name="email" onChange={e => setEmail(e.target.value)}/>
-                </label><br/>
+        <div className="signup-page">
+            <h2 className="form-title">Sign Up</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="signup-form">
+                    {/* EMAIL ---------------------------------------------------------------------------------------*/}
+                    <label>Email:<br/>
+                        <input className="login-input"
+                               {...register("email", {
+                                   required: "Email required.",
+                                   pattern: {
+                                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                       message: "Invalid email address."
+                                   }})}
+                               onChange={e => setEmail(e.target.value)} />
+                    </label>
 
-                <label>Username:<br/>
-                    <input type="text" name="username" onChange={e => setUsername(e.target.value)} />
-                </label><br/>
+                    <ErrorMessage
+                        errors={errors}
+                        name="email"
+                        render={({ message }) =>
+                            <div style={{color:"red", fontWeight:"bold"}}
+                            >{" "}{message}</div>}
+                    /><br/>
 
-                <label>Password:<br/>
-                    <input type="password" name="password1" onChange={e => setPassword(e.target.value)} />
-                </label><br/>
+                    {/* USERNAME ------------------------------------------------------------------------------------*/}
+                    <label>Username:<br/>
+                        <input className="login-input"
+                               {...register("username", {
+                                   required: "Username required.",
+                                   maxLength: {
+                                       value: 20,
+                                       message: "Username cannot be greater than 20 characters."
+                                   }
+                               })}
+                               onChange={e => setUsername(e.target.value)} />
+                    </label>
 
-                <label>Confirm Password:<br/>
-                    <input type="password" name="password2" onChange={e => setRepeatPassword(e.target.value)} />
-                </label><br/>
+                    <ErrorMessage
+                        errors={errors}
+                        name="username"
+                        render={({ messages }) =>
+                            messages &&
+                            Object.entries(messages).map(([type, message]) => (
+                                <div key={type}
+                                     style={{color:"red", fontWeight:"bold"}}
+                                >{" "}{message}<br/></div>
+                            ))}
+                    /><br/>
 
-                <h2>Create Your Pet</h2>
+                    {/* PASSWORD ------------------------------------------------------------------------------------*/}
+                    <label>Password:<br/>
+                        <input className="login-input"
+                               {...register("password1", {
+                                   required: "Password required.",
+                                   maxLength: {
+                                       value: 20,
+                                       message: "Password cannot be greater than 20 characters."
+                                   }})}
+                               type="password"
+                               onChange={e => setPassword(e.target.value)}/>
+                    </label>
 
-                <label>Name of Pet:
-                    <input type="text" name="petname" onChange={e => setPetName(e.target.value)} />
-                </label> <br/>
+                    <ErrorMessage
+                        errors={errors}
+                        name="password1"
+                        render={({ messages }) =>
+                            messages &&
+                            Object.entries(messages).map(([type, message]) => (
+                                <div key={type}
+                                     style={{color:"red", fontWeight:"bold"}}
+                                >{" "}{message}<br/></div>
+                            ))}
+                    /><br/>
 
-                <label>Type of Pet:
-                    <select id = "dropdown" onChange={e => 
-                    {setPetType(Number(e.target.value))
-                    document.querySelector(".prev-img").src = petImg[e.target.value]
-                    }}>
-                        <option value='1'> Blob </option>
-                        <option value='2'> Winged Cat</option>
-                    </select>
-                </label><br/>
+                    {/* CONFIRM PASSWORD ----------------------------------------------------------------------------*/}
+                    <label>Confirm your password:<br/>
+                        <input className="login-input"
+                               {...register("password2", {
+                                   required: "Confirmation required.",
+                                   validate: value =>
+                                       value  === password || "Passwords do not match.",
+                               })} type="password"
+                               onChange={e => setPassword(e.target.value)}/>
+                    </label>
+
+                    <ErrorMessage
+                        errors={errors}
+                        name="password2"
+                        render={({ messages }) =>
+                            messages &&
+                            Object.entries(messages).map(([type, message]) => (
+                                <div key={type}
+                                     style={{color:"red", fontWeight:"bold"}}
+                                >{message}<br/></div>
+                        ))}
+                    /><br/>
+
+                    <h2>Create Your Pet</h2>
+
+                    {/* PET NAME ------------------------------------------------------------------------------------*/}
+                    <label>Name of Pet:<br/>
+                        <input className="login-input"
+                               {...register("petname", {
+                                   required: "Pet name required."})}
+                               onChange={e => setPetName(e.target.value)} />
+                    </label><br/>
+
+                    <ErrorMessage
+                        errors={errors}
+                        name="petname"
+                        render={({ message }) =>
+                            <div style={{color:"red", fontWeight:"bold"}}>
+                                {message}
+                            </div>}
+                    /><br/>
+
+                    {/* PET TYPE ------------------------------------------------------------------------------------*/}
+                    <label>Type of Pet:
+                        <select id = "dropdown" onChange={e => 
+                            {setPetType(Number(e.target.value))
+                            document.querySelector(".prev-img").src = petImg[e.target.value]
+                        }}>
+                            <option value='1'> Blob </option>
+                            <option value='2'> Winged Cat</option>
+                        </select>
+                    </label><br/>
                 <span>
                         <img src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" className="prev-img" />
                 </span>
-                <ErrorDisplay errors={errors} />
-                <input type="submit" value="Submit"/>
+                    <br/><br/>
+
+                    <input type="submit" value="Submit"/>
+                </div>
             </form>
-        </>
+        </div>
     )
 }

@@ -19,6 +19,16 @@ export default function Store() {
 
     return (
 
+        // '1':tissue,
+        // '2':sandwich,
+        // '3':water,
+        // '4':ball,
+        // '5':duck,
+        // '6':cake,
+        // '7':juice,
+        // '8':syrup,
+        // '9':bear
+
         <div className="storeInventory">
             <h1> Hello, what would you like to buy? </h1>
 
@@ -26,7 +36,10 @@ export default function Store() {
             <h2> Toys </h2>
             <div className="toys">
                 <ul> Ball
-                    <img  alt = "ball" id="ball" src={ball} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ }}} />
+                    <img  alt = "ball" id="ball" src={ball} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){
+                        setInventory([...inventory,4])
+
+                     }}} />
                     <p> 150 coins </p>
                     <p> +5 Happiness </p>
                 </ul>

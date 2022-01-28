@@ -9,6 +9,8 @@ export default function Fishinggame(props){
         const newCurrency = {currency: user.currency + amount};
         return updateUser(newCurrency);
     }
+    const loading = user.currency === 0;
+
    function gamePlay(){
     if(!gamePlayed){
        document.querySelector('.start-btn').style.visibility = "hidden"
@@ -124,11 +126,11 @@ export default function Fishinggame(props){
       }
      return(
             <div>
-                <div className="currency">
-                    <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
-                        className="coins-img"/>
-                    <p className="coins">{user.currency}</p>
-                </div>
+                {!loading && <div className="currency">
+                                <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
+                                    className="coins-img"/>
+                                <p className="coins">{user.currency}</p>
+                </div>}
                 <button onClick={gamePlay} className="start-btn">START</button>
                 <div className="minig-page">
                     <div className="game-row">

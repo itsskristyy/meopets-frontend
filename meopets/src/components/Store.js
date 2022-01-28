@@ -25,17 +25,19 @@ export default function Store() {
         const newCurrency = {currency: user.currency - amount};
         return updateUser(newCurrency);
         }
+    const loading = user.currency === 0;
+
     return (
 
 
         <div className="storeInventory">
             <h1> Hello, what would you like to buy? </h1>
 
-            <div className="currency">
+            {!loading && <div className="currency">
                             <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
                                 className="coins-img"/>
                             <p className="coins">{user.currency}</p>
-            </div>
+            </div>}
 
             <h2> Toys </h2>
             <div className="toys">

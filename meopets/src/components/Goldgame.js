@@ -7,6 +7,8 @@ export default function Goldgame(props){
    const updateUser = useContext(UserContext).updateUser;
    let draggedOver = false
    let points = 0 
+   const loading = user.currency === 0;
+
    async function getTCoins(amount) {
     const newCurrency = {currency: user.currency + amount};
     return updateUser(newCurrency);
@@ -68,11 +70,11 @@ export default function Goldgame(props){
     
     return(
         <>
-            <div className="currency">
+            {!loading && <div className="currency">
                             <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
                                 className="coins-img"/>
                             <p className="coins">{user.currency}</p>
-            </div>
+            </div>}
         <div className="gold-page">
             <button onClick={playGame} className="start-btn">START</button>
             <div className="game-row">

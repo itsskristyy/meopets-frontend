@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react"
+import { useContext } from "react";
+import { UserContext } from "../contexts/loginContext"
 
-export default function Goldgame(props){
+export default function Goldgame(props){ 
+   const user = useContext(UserContext);
+   const updateUser = useContext(UserContext).updateUser;
    let draggedOver = false
    let points = 0 
+   async function getTCoins(amount) {
+    const newCurrency = {currency: user.user.currency + amount};
+    return updateUser(newCurrency);
+    }
     function dropCoins(){
         const coins = []
         for(let i=0;i<18;i++){
@@ -24,11 +32,14 @@ export default function Goldgame(props){
             console.log(coins[i].onDragEnd)
            }
     }
+    async function getC(points){
+        await getTCoins(points)
+     }
     function playGame(){
         document.querySelector('.start-btn').style.visibility = "hidden"
         dropCoins()
         setTimeout(function(){
-           
+            getC(points)
             document.querySelector('.gold-page').innerHTML = `<p>Game over! You got ${points} coins!</p><button onClick={window.location.reload()} style="margin-left:440px;  background-color: #FFF4AA; border: 2px solid #c9c5b0;
             width: 125px; height: 40px; border-radius: 5px; " className="start-btn">Click here to play again.</button>`
                }, 30000)

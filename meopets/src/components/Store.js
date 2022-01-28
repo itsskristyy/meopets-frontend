@@ -18,7 +18,6 @@ import juice from '../juice.png';
 import syrup from '../coughsyrup.png';
 import bear from '../bear.png';
 import { useParams } from "react-router-dom";
-import { PetsContext } from "../contexts/petsContext";
 import { useNavigate } from "react-router-dom";
 
 

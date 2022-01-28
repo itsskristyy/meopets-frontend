@@ -217,3 +217,28 @@ container {
     width: 80px;
     height: 80px;
 }
+.invent-items{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+}
+.invent-el{
+    margin: 20px 70px;
+}
+.invent-page{
+    margin-left: 330px;
+}
+.invent-btn{
+    margin-left: 170px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    background-color: #FFF4AA;
+    border: 2px solid #c9c5b0;
+    width: 275px;
+    height: 35px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.invent-btn:hover{
+    background-color: #dfd38b;
+  }

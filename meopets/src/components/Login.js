@@ -64,7 +64,9 @@ export default function Login() {
                     render={({ messages }) =>
                         messages &&
                         Object.entries(messages).map(([type, message]) => (
-                            <span key={type}>{" "}{message}</span>
+                            <div key={type}
+                                 style={{color:"red", fontWeight:"bold"}}
+                            >{" "}{message}<br/><br/></div>
                         ))
                     }
                 />
@@ -87,14 +89,16 @@ export default function Login() {
                     render={({ messages }) =>
                         messages &&
                         Object.entries(messages).map(([type, message]) => (
-                            <span key={type}>{" "}{message}</span>
+                            <div key={type}
+                                 style={{color:"red", fontWeight:"bold"}}
+                            >{" "}{message}<br/></div>
                         ))
                     }
                 /><br/>
 
                 <input className="login-input"
-                       type="submit" value="Log in!"
-                    style={{padding: "0.5em"}}></input>
+                       type="submit"
+                       style={{padding: "0.5em"}}></input>
                 </div>
             </form>
 

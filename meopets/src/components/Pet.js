@@ -29,7 +29,7 @@ export default function Pet(props){
 
     async function feedPet(pet) {
         const petToFeed = {...pet};
-        petToFeed.hunger < 40 ? petToFeed.hunger += 10 : petToFeed.hunger = 50;
+        petToFeed.hunger > 0 ? petToFeed.hunger -= 10 : petToFeed.hunger = 0;
         return await petUpdateHandler(petToFeed);
     }
 
@@ -38,7 +38,20 @@ export default function Pet(props){
         petToPlay.happiness += 10;
         return await petUpdateHandler(petToPlay);
     }
-
+    async function playFishing(pet) {
+        const petToPlay = {...pet};
+        petToPlay.health > 0 ? petToPlay.health -= 10 : petToPlay.health = 0;
+        navigate("/fishing")
+        return await petUpdateHandler(petToPlay);
+    }
+    async function playGold(pet) {
+        const petToPlay = {...pet};
+        petToPlay.health > 0 ? petToPlay.health -= 10 : petToPlay.health = 0;
+        navigate("/goldgame")
+        return await petUpdateHandler(petToPlay);
+    }
+    
+    
 
     return (
         <>
@@ -51,7 +64,8 @@ export default function Pet(props){
 
             <button onClick={async () => await feedPet(pets[id])}>Feed me!</button>
             <button onClick={async () => await playWithPet(pets[id])}>Play with me!</button>
-            <button onClick={() => {navigate("/fishing")}}>Go fishing!</button>
+            <button onClick={async () => await playFishing(pets[id]) }>Go fishing!</button>
+            <button onClick={async () => await playGold(pets[id]) }>Get some gold!</button>
                 <br/><br/>
 
                 {/* Clicking on the button navigates the user back to UserProfile */}

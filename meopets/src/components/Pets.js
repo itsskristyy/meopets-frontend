@@ -34,7 +34,7 @@ export default function Pets(){
                     <ul className="pet-stats">
                         <li>Happiness: {pets.pets[key].happiness}</li>
                         <li>Health: {pets.pets[key].health}</li>
-                        <li>Hunger: {pets.pets[key].hunger}</li>
+                        <li>Energy: {pets.pets[key].hunger}</li>
                     </ul>
                 </div>
             ))}           

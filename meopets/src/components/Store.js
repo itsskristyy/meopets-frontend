@@ -145,7 +145,7 @@ export default function Store() {
                         } 
                     }}} />
                     <p> 70 coins </p>
-                    <p> +5 Health </p>
+                    <p> +5 Energy </p>
                 </ul>
 
                 <ul>   Meopkins
@@ -158,7 +158,7 @@ export default function Store() {
                         } 
                     }}} />
                     <p> 70 coins </p>
-                    <p> +3 Health </p>
+                    <p> +3 Energy </p>
                 </ul>
 
                 <ul>   Cough Syrup
@@ -172,7 +172,7 @@ export default function Store() {
                         } 
                     }}} />
                     <p> 120 coins </p>
-                    <p> +7 Health </p>
+                    <p> +7 Energy </p>
                 </ul>
 
 

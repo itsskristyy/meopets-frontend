@@ -27,7 +27,7 @@ ReactDOM.render(
 
     <UsersProvider>
       <PetsProvider>
-        <HashRouter>
+        <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />} >
                     <Route index element={<Home />} />
@@ -48,7 +48,7 @@ ReactDOM.render(
                     }/>
                 </Route>
             </Routes>
-        </HashRouter>
+        </BrowserRouter>
       </PetsProvider>
     </UsersProvider>,
     document.getElementById('root')

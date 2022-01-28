@@ -77,7 +77,7 @@ export default function Users(props) {
             }
             getCurr();
         }
-    }, [])
+    }, [currency])
 
 
     // Login function. Sends the POST request to the login route with username and password as bodies. 
@@ -94,6 +94,7 @@ export default function Users(props) {
             });
         // Assuming login went well, the user state is updated with the response data.
         const returnedUser = response.data.user;
+        setCurrency(returnedUser.currency);
         delete returnedUser.currency;
         setToken(response.data.token);
         setUser(returnedUser);
@@ -127,12 +128,13 @@ export default function Users(props) {
         });
         // The user is automatically signed in (this can be changed, of course).
         const returnedUser = response.data.user;
+        setCurrency(returnedUser.currency);
         delete returnedUser.currency;
         setToken(response.data.token);
         setUser(returnedUser);
         sessionStorage.setItem('token', response.data.token);
         sessionStorage.setItem('expirationTime', response.data.exp);
-        sessionStorage.setItem('user', JSON.stringify(returnedUser));
+        sessionStorage.setIcccccccccccccctem('user', JSON.stringify(returnedUser));
         const remainingTime = calculateRemainingTime(response.data.exp);
         console.log(remainingTime);
         logoutTimer = setTimeout(logOut, (remainingTime-300)*1000);
@@ -146,6 +148,9 @@ export default function Users(props) {
                 {headers: {'Authorization' : 'Bearer ' + token}})
                 const updated = updatedUser.data.user;
                 setCurrency(updated.currency)
+                delete updated.currency;
+                setUser(updated);
+                sessionStorage.setItem('user', JSON.stringify(updated));
                 return updated;
             } catch(err) {
                 console.log(err);

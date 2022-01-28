@@ -24,7 +24,16 @@ export default function UserProfile(props) {
             {user.isLoggedIn && 
             <div className="user-disp">
                 <button type='button' 
-                    onClick={async () => {await getCoins({currency: user.currency + 10})}}>Get Your Daily Coins!</button>
+                    onClick={async () => {
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        const lastUpdated = new Date(user.user.lastUpdated);
+                        if(today > lastUpdated) {
+                            await getCoins({currency: user.currency + 50})
+                        } else {
+                            
+                        }
+                    }}>Get Your Daily Coins!</button>
                 <div className="currency">
                     <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
                          className="coins-img"/>

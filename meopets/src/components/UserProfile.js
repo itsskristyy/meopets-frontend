@@ -44,17 +44,20 @@ export default function UserProfile(props) {
                 {/*        }*/}
                 {/*    }}>Get Your Daily Coins!</button>*/}
 
-                <div>
-                    {user.user.created !== user.user.lastUpdated &&
-                    <h3 className="prof-msg-txt">Welcome back, {user.user.username}!</h3>}
-                    {user.user.created === user.user.lastUpdated &&
-                    <h4 className="prof-msg-txt">Welcome, {user.user.username}!</h4>}
-                </div>
+                    <div>
+                        {user.user.created !== user.user.lastUpdated &&
+                            <h1 className="prof-msg-txt">Welcome back, {user.user.username}!</h1>}
+                        {user.user.created === user.user.lastUpdated &&
+                        <h1 className="prof-msg-txt">Welcome, {user.user.username}!</h1>}
+                    </div>
 
-            </div>
+                    </div>
+
+                    <h2 className="pet-list">Your pets:</h2>
+                    <Pets/>
             </div>}
 
-            <Pets/>
+
 
             {/* Outlet sets this component as the parent route:
             

@@ -16,19 +16,25 @@ export default function Pets(){
     }, []);
     
     return(
-        <div>
+        <div className="pet-grid">
             {/* Map through data and display a div for each pet */}
             {pets.pets && Object.keys(pets.pets).map(key => (
-                <div>
+                <div className="pet-card">
                     {/* Clicking on the pet's name will redirect you to its own page */}
-                    <Link className="pet" to={`/userprofile/${user.user.username}/${pets.pets[key].id}`}>
-                        {pets.pets[key].name}
+                    <Link className="pet-name"
+                          to={`/userprofile/${user.user.username}/${pets.pets[key].id}`}
+                    >{pets.pets[key].name}</Link>
+
+                    <Link className="pet-image"
+                          to={`/userprofile/${user.user.username}/${pets.pets[key].id}`}
+                    >
+                        <img src={petImg[pets.pets[key].type]} alt={pets.pets[key].name} className='all-pet-img' />
                     </Link>
-                    <img src={petImg[pets.pets[key].type]} alt={pets.pets[key].name} className='all-pet-img' />
-                    <ul>
-                    <li>Happiness: {pets.pets[key].happiness}</li>
-                    <li>Health: {pets.pets[key].health}</li>
-                    <li>Hunger: {pets.pets[key].hunger}</li>
+
+                    <ul className="pet-stats">
+                        <li>Happiness: {pets.pets[key].happiness}</li>
+                        <li>Health: {pets.pets[key].health}</li>
+                        <li>Hunger: {pets.pets[key].hunger}</li>
                     </ul>
                 </div>
             ))}           

@@ -1,7 +1,7 @@
 h2 {
     font-size: 20px;
     text-align: center;
-    
+    display: grid;
     
 }
 p{
@@ -11,17 +11,27 @@ p{
     
 }
 img {
-    height: 150px;
+    height: 100px;
     width: auto;
-   
+    display: flex;
    
 }
-ul{
-    font-size: 10px;
-    text-align: left;
-    display: grid;
+.medicine{
+    display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
 }
+.food{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
 
+}
 .toys{
-    display: inline;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
 }

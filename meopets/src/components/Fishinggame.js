@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react"
-
+import { useContext } from "react";
+import { UserContext } from "../contexts/loginContext"
 export default function Fishinggame(props){
+    const user = useContext(UserContext);
+    const updateUser = useContext(UserContext).updateUser;
     const [gamePlayed, setGamePlayed] = useState(false)
+    async function getTCoins(amount) {
+        const newCurrency = {currency: user.user.currency + amount};
+        return updateUser(newCurrency);
+    }
    function gamePlay(){
     if(!gamePlayed){
        document.querySelector('.start-btn').style.visibility = "hidden"
@@ -93,11 +100,14 @@ export default function Fishinggame(props){
             document.querySelector('.canvas').appendChild(allFish[i])
            }
            document.querySelector(".box-color").style.backgroundColor = mouseCol
-           
+           async function getC(fish){
+               await getTCoins(fish)
+            }
            let intID =  setInterval(changeCol,1500)
            setTimeout(function(){
                clearInterval(intID)
-               document.querySelector('.minig-page').innerHTML = `<p>Game over! You caught ${fish} fish!<button onClick={window.location.reload()} style="margin-left:440px;  background-color: #FFF4AA; border: 2px solid #c9c5b0;
+               getC(fish)
+               document.querySelector('.minig-page').innerHTML = `<p>Game over! You caught ${fish} fish and won ${fish} coins!<button onClick={window.location.reload()} style="margin-left:440px;  background-color: #FFF4AA; border: 2px solid #c9c5b0;
                width: 125px; height: 40px; border-radius: 5px; " className="start-btn">Click here to play again.</button>`
                //here there should be a line to the user 
                // you won this many coins!

@@ -1,9 +1,9 @@
 /* All pages */
 body {
     background: #ACE3FF;
-    font-family: Roboto;
     min-width: 1100px;
 }
+
 nav {
     box-shadow: 0px 4px 4px grey;
     background-color: #FFA9BA;
@@ -31,22 +31,19 @@ p {
     text-decoration: none;
     margin-right: 30px;
 }
-/*.nav-txt{*/
-/*    margin-left: 15px;*/
-/*    font-size: 30px;*/
-/*    margin-top: 0;*/
-/*    color: #FAFAFA;*/
-/*}*/
 
 /* Login */
 .form-title {
-    text-align: center;
+    /*margin-left: -30px;*/
+    /*text-align: center;*/
 }
 .login-form {
     background-color: #FFF4AA;
     border-color: #88C6ED;
     box-sizing: border-box;
     border-style: inset;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 350px;
     padding: 30px 40px 30px 40px;
 }
@@ -61,6 +58,7 @@ p {
 }
 .login-page {
     display: grid;
+    grid-template-rows: 6em 17em 5em;
     justify-content: center;
 }
 
@@ -219,3 +217,28 @@ container {
     width: 80px;
     height: 80px;
 }
+.invent-items{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+}
+.invent-el{
+    margin: 20px 70px;
+}
+.invent-page{
+    margin-left: 330px;
+}
+.invent-btn{
+    margin-left: 170px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    background-color: #FFF4AA;
+    border: 2px solid #c9c5b0;
+    width: 275px;
+    height: 35px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.invent-btn:hover{
+    background-color: #dfd38b;
+  }

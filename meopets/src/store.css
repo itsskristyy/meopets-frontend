@@ -1,0 +1,45 @@
+h2 {
+    font-size: 20px;
+    text-align: center;
+    display: grid;
+   
+    
+}
+h1{
+    text-align: center;
+    font-weight: 400;
+}
+p{
+    font-size: 10px;
+    text-align: left;
+    
+    
+}
+img {
+    height: 100px;
+    width: auto;
+    display: flex;
+   
+}
+.medicine{
+    display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+.food{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+
+}
+.toys{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+ul{
+    line-height: 1.8;
+}

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/meopets-frontend/static/css/main.1fb5ea7a.css",
-    "main.js": "/meopets-frontend/static/js/main.25fe85fe.js",
+    "main.js": "/meopets-frontend/static/js/main.0cf90fc9.js",
     "static/media/tissue.png": "/meopets-frontend/static/media/tissue.bc013ced0c3220f7b1eb.png",
     "static/media/duck.png": "/meopets-frontend/static/media/duck.270f54b7515b1ff076b5.png",
     "static/media/water.png": "/meopets-frontend/static/media/water.1349d1ca6db94921896a.png",
@@ -14,10 +14,10 @@
     "static/media/logo.png": "/meopets-frontend/static/media/logo.9c2eee5e5920ad572057.png",
     "index.html": "/meopets-frontend/index.html",
     "main.1fb5ea7a.css.map": "/meopets-frontend/static/css/main.1fb5ea7a.css.map",
-    "main.25fe85fe.js.map": "/meopets-frontend/static/js/main.25fe85fe.js.map"
+    "main.0cf90fc9.js.map": "/meopets-frontend/static/js/main.0cf90fc9.js.map"
   },
   "entrypoints": [
     "static/css/main.1fb5ea7a.css",
-    "static/js/main.25fe85fe.js"
+    "static/js/main.0cf90fc9.js"
   ]
 }

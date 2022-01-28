@@ -17,9 +17,17 @@ import cake from '../cupcakee.png';
 import juice from '../juice.png';
 import syrup from '../coughsyrup.png';
 import bear from '../bear.png';
+import { useParams } from "react-router-dom";
+import { PetsContext } from "../contexts/petsContext";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Store() {
     const[inventory, setInventory] = useState([2,2,8])
+    const params = useParams();
+    const id = Number(params.petId);
+    const pets = useContext(PetsContext).pets;
+    const updatePet = useContext(PetsContext).updatePet;
     const user = useContext(UserContext);
     const pets = useContext(PetsContext).pets;
     const updatePet = useContext(PetsContext).updatePet;
@@ -28,6 +36,28 @@ export default function Store() {
         const newCurrency = {currency: user.currency - amount};
         return updateUser(newCurrency);
         }
+
+    // async function petUpdateHandler(pet) {
+    //     return await updatePet(pet);
+    // }
+    // async function feedPet(pet,amount) {
+    //     const petToFeed = {...pet};
+    //     petToFeed.hunger > 0 ? petToFeed.hunger -= amount : petToFeed.hunger = 0;
+    //     return await petUpdateHandler(petToFeed);
+    // }
+
+    // async function playWithPet(pet, amount) {
+    //     const petToPlay = {...pet};
+    //     petToPlay.happiness += amount;
+    //     return await petUpdateHandler(petToPlay);
+    // }
+    // async function playFishing(pet,amount) {
+    //     const petToPlay = {...pet};
+    //     petToPlay.health > 0 ? petToPlay.health -= amount : petToPlay.health = 0;
+    //     return await petUpdateHandler(petToPlay);
+    // }
+   // pets[id], amount
+
     const loading = user.currency === 0;
 
     async function petUpdateHandler(pet) {
@@ -61,6 +91,7 @@ export default function Store() {
         return str.join('.');
     }
 
+
     return (
 
 
@@ -93,7 +124,9 @@ export default function Store() {
 
 
                 <ul> Teddy Bear
+
                     <img alt = "bear" id="bear" src = {bear} onClick={async () => { if (window.confirm('Are you sure you want to purchase?')){ 
+
                         if(user.currency >= 220){
                             setInventory([...inventory,9])
                             getTCoins(220)
@@ -108,7 +141,9 @@ export default function Store() {
 
 
                 <ul> Rubber Duck
+
                     <img alt = "duck" id="duck" src={duck} onClick={async () => { if (window.confirm('Are you sure you want to purchase?')){ 
+
                          if(user.currency >= 70){
                             setInventory([...inventory,5])
                             getTCoins(70)
@@ -126,12 +161,14 @@ export default function Store() {
             <h2> Food </h2>
             <div className="food">
                 <ul> Apple Juice
+
                     <img alt = "juice" id="juice" src= {juice} onClick={async () => { if (window.confirm('Are you sure you want to purchase?')){ 
                         if(user.currency >= 20){
                             setInventory([...inventory,7])
                             getTCoins(20)
                             const petId =  Object.keys(pets)[0];
                             await feedPet(pets[petId], 1)
+
                         }else{
                             alert("Sorry, You do not have enough coins to purchase this item.")
                         } 
@@ -141,7 +178,9 @@ export default function Store() {
                 </ul>
 
                 <ul> Cupcake
+
                     <img alt = "cupcake" id="cake" src={cake} onClick={async () => { if (window.confirm('Are you sure you want to purchase?')){
+
                         if(user.currency >= 35){
                             setInventory([...inventory,6])
                             getTCoins(35)
@@ -156,7 +195,9 @@ export default function Store() {
                 </ul>
 
                 <ul> Water
+
                     <img alt = "water" id="water" src={water} onClick={async () => { if (window.confirm('Are you sure you want to purchase?')){ 
+
                         if(user.currency >= 10){
                             setInventory([...inventory,3])
                             getTCoins(10)
@@ -191,7 +232,9 @@ export default function Store() {
             <h2> Medicine </h2>
             <div className="medicine">
                 <ul> Magic Candy
+
                     <img alt = "candy" src="https://clipart.world/wp-content/uploads/2020/08/pink-candy-transparent.png" onClick={async () => { if (window.confirm('Are you sure you want to purchase?')){ 
+
                         if(user.currency >= 70){
                             setInventory([...inventory,10])
                             getTCoins(70)
@@ -202,11 +245,13 @@ export default function Store() {
                         } 
                     }}} />
                     <p> 70 coins </p>
-                    <p> +5 Health </p>
+                    <p> +5 Energy </p>
                 </ul>
 
                 <ul>   Meopkins
+
                     <img  alt = "napkins" id="napkins" alt="tissue" src={tissue} onClick={async () => { if (window.confirm('Are you sure you want to purchase?')){ 
+
                          if(user.currency >= 70){
                             setInventory([...inventory,1])
                             getTCoins(70)
@@ -217,12 +262,14 @@ export default function Store() {
                         } 
                     }}} />
                     <p> 70 coins </p>
-                    <p> +3 Health </p>
+                    <p> +3 Energy </p>
                 </ul>
 
                 <ul>   Cough Syrup
                     <img  id="cough" src= {syrup}  
+
                     onClick={async () => { if (window.confirm('Are you sure you want to purchase?')){ 
+
                         if(user.currency >= 80){
                             setInventory([...inventory,8])
                             getTCoins(120)
@@ -233,13 +280,13 @@ export default function Store() {
                         } 
                     }}} />
                     <p> 120 coins </p>
-                    <p> +7 Health </p>
+                    <p> +7 Energy </p>
                 </ul>
 
 
 
             </div >
-            <h1> Inventory </h1>
+            <h1> Purchases </h1>
             <Inventory inventory={inventory} setInventory={setInventory}/>
         </div>
     );

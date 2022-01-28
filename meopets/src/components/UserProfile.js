@@ -19,6 +19,19 @@ export default function UserProfile(props) {
     async function getCoins(newCurrency) {
         return updateUser(newCurrency);
     }
+
+    function insertCommas(num) {
+        let str = num.toString().split('.');
+        if (str[0].length >= 5) {
+            str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+        }
+        if (str[1] && str[1].length >= 5) {
+            str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+        }
+        return str.join('.');
+    }
+    
+
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -31,7 +44,7 @@ export default function UserProfile(props) {
                         <div className="currency">
                             <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
                                 className="coins-img"/>
-                            <p className="coins">{user.currency}</p>
+                            <p className="coins">{insertCommas(user.currency)}</p>
                         </div>
                         {(user.user.created === user.user.lastUpdated || today > new Date(user.user.lastUpdated)) && 
                         <button type='button' className="daily-button"  

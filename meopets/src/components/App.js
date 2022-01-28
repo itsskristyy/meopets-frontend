@@ -19,7 +19,7 @@ function App() {
 
                 {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
-                        color: isActive ? "black" : ""
+                        color: isActive ? "lightgray" : ""
                     };}}
                          to={`/userprofile`}>
                     My Profile
@@ -27,7 +27,7 @@ function App() {
 
                 {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
-                        color: isActive ? "black" : ""
+                        color: isActive ? "lightgray" : ""
                     };}}
                          to={`/fishing`}>
                     Fishing Pond
@@ -35,7 +35,7 @@ function App() {
 
                 {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
-                        color: isActive ? "black" : ""
+                        color: isActive ? "lightgray" : ""
                     };}}
                          to={`/goldgame`}>
                     Gold Rush
@@ -43,7 +43,7 @@ function App() {
 
                 {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {
                     return {
-                        color: isActive ? "black" : ""
+                        color: isActive ? "lightgray" : ""
                     };}}
                          to={`/store`}>
                     Store

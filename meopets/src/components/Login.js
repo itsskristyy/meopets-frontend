@@ -97,9 +97,9 @@ export default function Login() {
                     }
                 /><br/>
 
-                <input className="login-input"
+                <button className="login-input"
                        type="submit"
-                       style={{padding: "0.5em"}}></input>
+                       style={{padding: "0.5em"}}>Submit</button>
                 </div>
             </form>
 

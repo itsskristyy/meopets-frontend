@@ -37,7 +37,8 @@ export default function Pet(props){
     async function playWithPet(pet) {
         const petToPlay = {...pet};
         petToPlay.happiness += 10;
-        alert("Pet happiness decreased by 10")
+        petToPlay.hunger += 10;
+        alert("Pet happiness increased by 10, hunger increased by 10")
         return await petUpdateHandler(petToPlay);
     }
     async function playFishing(pet) {

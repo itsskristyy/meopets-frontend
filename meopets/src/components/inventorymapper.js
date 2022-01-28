@@ -17,6 +17,7 @@ const inventoryInfo = {
     '6':cake,
     '7':juice,
     '8':syrup,
-    '9':bear
+    '9':bear,
+    '10':"https://clipart.world/wp-content/uploads/2020/08/pink-candy-transparent.png"
     } 
 export default inventoryInfo;

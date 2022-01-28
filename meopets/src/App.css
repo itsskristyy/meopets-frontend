@@ -120,6 +120,10 @@ p {
     display: flex;
     justify-content: center;
 }
+.pet-header {
+    display: flex;
+    justify-conte: left;
+}
 .pet-image {
     display: flex;
     justify-content: center;

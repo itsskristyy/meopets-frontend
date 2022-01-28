@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import { useContext } from "react";
 
 import App from './components/App';
@@ -27,7 +27,7 @@ ReactDOM.render(
 
     <UsersProvider>
       <PetsProvider>
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 <Route path="/" element={<App />} >
                     <Route index element={<Home />} />
@@ -41,7 +41,6 @@ ReactDOM.render(
                     <Route path="fishing" element={<Fishinggame/>}/>
                     <Route path="goldgame" element={<Goldgame/> }/>
                     <Route path="store" element={<Store/>} />
-
                     <Route path="*" element={
                         <main style={{ padding: "1rem" }}>
                             <p>Invalid URL</p>
@@ -49,7 +48,7 @@ ReactDOM.render(
                     }/>
                 </Route>
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </PetsProvider>
     </UsersProvider>,
     document.getElementById('root')

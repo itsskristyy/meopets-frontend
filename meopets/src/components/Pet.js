@@ -35,7 +35,7 @@ export default function Pet(props){
 
     async function playWithPet(pet) {
         const petToPlay = {...pet};
-        petToPlay.happiness < 40 ? petToPlay.happiness += 10 : petToPlay.happiness = 50;
+        petToPlay.happiness += 10;
         return await petUpdateHandler(petToPlay);
     }
 

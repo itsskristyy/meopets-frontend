@@ -1,4 +1,5 @@
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import logo from '../logo.png'
 import React, { useContext } from 'react'
 import '../App.css';
 import { UserContext } from '../contexts/loginContext';
@@ -14,7 +15,7 @@ function App() {
         <header>
             <nav className="sticky-nav">
                 <Link className="logo-link" to={`/home`}>
-                    <img src="./logo.png" height="120px" alt="meopets logo"/>
+                    <img src={logo} height="120px" alt="meopets logo"/>
                 </Link>
 
                 {user.isLoggedIn && <NavLink className="nav-link" style={({ isActive }) => {

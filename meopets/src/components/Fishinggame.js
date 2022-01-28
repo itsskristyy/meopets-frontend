@@ -9,6 +9,19 @@ export default function Fishinggame(props){
         const newCurrency = {currency: user.currency + amount};
         return updateUser(newCurrency);
     }
+    const loading = user.currency === 0;
+
+    function insertCommas(num) {
+        let str = num.toString().split('.');
+        if (str[0].length >= 5) {
+            str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+        }
+        if (str[1] && str[1].length >= 5) {
+            str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+        }
+        return str.join('.');
+    }
+
    function gamePlay(){
     if(!gamePlayed){
        document.querySelector('.start-btn').style.visibility = "hidden"
@@ -123,22 +136,27 @@ export default function Fishinggame(props){
        
       }
      return(
-         <div>
-             <button onClick={gamePlay} className="start-btn">START</button>
-    <div className="minig-page">
-        <div className="game-row">
-        <h1 className="points">You caught 0 fish</h1>
-        <div className="box-color"> </div>
-        <p className="game-inst">You have 30 seconds to catch as many fish as you can! 
-            You can only catch fish when the box is displaying the color of that fish!</p>
-        </div>
-        <div className="canvas-p">
-        <div className="canvas">
-         
-        </div>
-        </div>
-      
-    </div>
-    </div>
+            <div>
+                    <div className="currency">
+                        <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
+                            className="coins-img"/>
+                        <p className="coins">{insertCommas(user.currency)}</p>
+                    </div>
+                <button onClick={gamePlay} className="start-btn">START</button>
+                <div className="minig-page">
+                    <div className="game-row">
+                        <h1 className="points">You caught 0 fish</h1>
+                        <div className="box-color"> </div>
+                        <p className="game-inst">You have 30 seconds to catch as many fish as you can! 
+                            You can only catch fish when the box is displaying the color of that fish!</p>
+                    </div>
+                    <div className="canvas-p">
+                        <div className="canvas">
+                        
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
      )
  }

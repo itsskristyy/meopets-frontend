@@ -29,7 +29,7 @@ export default function Pet(props){
 
     async function feedPet(pet) {
         const petToFeed = {...pet};
-        petToFeed.hunger < 40 ? petToFeed.hunger += 10 : petToFeed.hunger = 50;
+        petToFeed.hunger > 0 ? petToFeed.hunger -= 10 : petToFeed.hunger = 0;
         return await petUpdateHandler(petToFeed);
     }
 

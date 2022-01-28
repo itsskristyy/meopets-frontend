@@ -9,6 +9,17 @@ export default function Goldgame(props){
    let points = 0 
    const loading = user.currency === 0;
 
+   function insertCommas(num) {
+    let str = num.toString().split('.');
+    if (str[0].length >= 5) {
+        str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    }
+    if (str[1] && str[1].length >= 5) {
+        str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+    }
+    return str.join('.');
+    }
+
    async function getTCoins(amount) {
     const newCurrency = {currency: user.currency + amount};
     return updateUser(newCurrency);
@@ -73,7 +84,7 @@ export default function Goldgame(props){
             {!loading && <div className="currency">
                             <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
                                 className="coins-img"/>
-                            <p className="coins">{user.currency}</p>
+                            <p className="coins">{insertCommas(user.currency)}</p>
             </div>}
         <div className="gold-page">
             <button onClick={playGame} className="start-btn">START</button>

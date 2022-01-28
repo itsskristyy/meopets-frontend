@@ -10,6 +10,8 @@ import ball from '../beachball.png';
 import duck from '../duck.png';
 import cake from '../cupcakee.png';
 import juice from '../juice.png';
+import syrup from '../coughsyrup.png';
+import bear from '../bear.png';
 
 export default function Store() {
   
@@ -29,10 +31,10 @@ export default function Store() {
                 </ul>
 
 
-                <ul> Ball
-                    <img alt = "ball" id="ball" src={ball} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ }}} />
-                    <p> 150 coins </p>
-                    <p> +5 Happiness </p>
+                <ul> Teddy Bear
+                    <img alt = "bear" id="bear" src = {bear} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ }}} />
+                    <p> 220 coins </p>
+                    <p> +6 Happiness </p>
                 </ul>
 
 
@@ -86,10 +88,10 @@ export default function Store() {
                 </ul>
 
                 <ul>   Cough Syrup
-                    <img  id="cough" src= ""   
+                    <img  id="cough" src= {syrup}  
                     onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ }}} />
-                    <p> 70 coins </p>
-                    <p> +3 Health </p>
+                    <p> 120 coins </p>
+                    <p> +7 Health </p>
                 </ul>
 
 

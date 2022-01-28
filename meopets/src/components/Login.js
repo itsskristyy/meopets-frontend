@@ -46,6 +46,7 @@ export default function Login() {
             <h2 className="form-title">Log In</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="login-form">
+                    {/* USERNAME ------------------------------------------------------------------------------------*/}
                 <label>Username:<br/>
                     <input className="login-input"
                            {...register("username", {
@@ -71,7 +72,7 @@ export default function Login() {
                     }
                 />
 
-                {/* TODO: Validate password matches backend */}
+                    {/* PASSWORD ------------------------------------------------------------------------------------*/}
                 <label>Password:<br/>
                     <input className="login-input"
                            {...register("password1", {

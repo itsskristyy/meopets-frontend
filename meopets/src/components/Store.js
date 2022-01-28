@@ -25,11 +25,9 @@ export default function Store() {
     const[inventory, setInventory] = useState([2,2,8])
     const params = useParams();
     const id = Number(params.petId);
-    const pets = useContext(PetsContext).pets;
     const updatePet = useContext(PetsContext).updatePet;
     const user = useContext(UserContext);
     const pets = useContext(PetsContext).pets;
-    const updatePet = useContext(PetsContext).updatePet;
     const updateUser = useContext(UserContext).updateUser;
     async function getTCoins(amount) {
         const newCurrency = {currency: user.currency - amount};

@@ -32,12 +32,10 @@ export default function UserProfile(props) {
                                 className="coins-img"/>
                             <p className="coins">{user.currency}</p>
                         </div>
-                        {today > new Date(user.user.lastUpdated) && 
+                        {(user.user.created === user.user.lastUpdated || today > new Date(user.user.lastUpdated)) && 
                         <button type='button' className="daily-button"  
                         onClick={async () => {
-                            const lastUpdated = new Date(user.user.lastUpdated);
-                            console.log(lastUpdated, Date(user.user.lastUpdated))
-                            if(today > lastUpdated) {
+                            if(user.user.created === user.user.lastUpdated || today > new Date(user.user.lastUpdated)) {
                                 await getCoins({currency: user.currency + 50})
                             }
                         }}>Daily Coins!</button>}

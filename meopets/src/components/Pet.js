@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import {useLocation, useNavigate, useParams} from "react-router-dom";
+import { useLocation, useNavigate, useParams} from "react-router-dom";
 import { UserContext } from "../contexts/loginContext";
 import { PetsContext } from "../contexts/petsContext";
 import petImg from "./petmapper";
@@ -9,7 +9,7 @@ import petImg from "./petmapper";
 // If species is 2 -> return /cat.png
 
 export default function Pet(props){
-    let location = useLocation();
+    // let location = useLocation();
     const params = useParams();
     const id = Number(params.petId);
     let navigate = useNavigate();
@@ -44,7 +44,7 @@ export default function Pet(props){
         <>
             {user.isLoggedIn &&
             <div>
-                <h2>{pets[id].name}</h2>
+                <h1 className="pet-header">{pets[id].name}</h1>
                 {/* // Return function */}
                 <img src={petImg[pets[id].type]} alt={pets[id].name} className="singe-pet-img"/>
       

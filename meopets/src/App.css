@@ -1,7 +1,7 @@
 /* All pages */
 body {
     background: #ACE3FF;
-    min-width: 1100px;
+    min-width: 1310px;
 }
 
 nav {
@@ -16,13 +16,16 @@ p {
     font-size: 30px;
     text-align: center;
 }
-
 .link {
     -webkit-text-stroke: 1px black;
     color: white;
     font-size: 24px;
     text-decoration: none;
 }
+.logo-link {
+    display: inline-block;
+}
+
 .nav-link {
     -webkit-text-stroke: 1px black;
     color: white;
@@ -61,7 +64,6 @@ p {
     grid-template-rows: 6em 20em 5em;
     justify-content: center;
 }
-
 .logout {
     -webkit-text-stroke: 1px black;
     background-color: #e66a83;
@@ -71,6 +73,7 @@ p {
     float: right;
     font-size: 24px;
     font-weight: bold;
+    margin-top: 80px;
     padding: 7px 32px;
 }
 .redirect {
@@ -83,15 +86,61 @@ p {
     text-decoration: none;
     text-shadow: 2px 2px 4px #000000;
 }
+
 /* Signup page */
 .signup{
     text-align: center;
 }
+.signup-form {
+    background-color: #FFF4AA;
+    border-color: #88C6ED;
+    box-sizing: border-box;
+    border-style: inset;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 350px;
+    padding: 30px 40px 30px 40px;
+}
+.signup-page {
+    display: grid;
+    grid-template-rows: 6em 20em;
+    justify-content: center;
+}
 
 /* Pets */
-.pet {
+.pet-card {
+    background-color: #FFF4AA;
+    border-color: #88C6ED;
+    box-sizing: border-box;
+    border-style: inset;
+
+    padding: 12px 25px 5px 25px;
+}
+.pet-grid {
+    display: flex;
+    justify-content: center;
+}
+.pet-header {
+    display: flex;
+    justify-conte: left;
+}
+.pet-image {
+    display: flex;
+    justify-content: center;
+}
+.pet-list {
+    -webkit-text-stroke: 1px black;
+    color: white;
+}
+.pet-name {
+    display: flex;
+    justify-content: center;
     color: black;
+    font-size: 28px;
     text-decoration: none;
+}
+.pet-stats {
+    margin-right: 20px;
 }
 
 /* User Profile */
@@ -108,8 +157,10 @@ p {
     margin-right: 6px;
 }
 .currency {
-    margin-top: 20px;
-    margin-left: 40px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    margin-top: -25px;
     vertical-align: middle;
     height: 40px;
     display:inline-flex;
@@ -121,6 +172,14 @@ p {
     box-shadow: 0 6px 20px -5px;
     padding-bottom: 6px;
     padding-right: 6px;
+}
+.banner {
+    background-color: #FFF4AA;
+    border-color: #88C6ED;
+    box-sizing: border-box;
+    border-style: inset;
+    margin-top: 10px;
+    padding: 2px 40px 2px 40px;
 }
 
 /* Fishing */
@@ -156,17 +215,23 @@ p {
     cursor:url(../public/fishing-rod.png),auto;
 }
 .prof-msg{
-    margin-top: 30px;
-    margin-left: 50px;
-    display: inline-flex;
-    text-align: center;
-    border-radius: 50%;
-    background: #FAFAFA;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /*margin-top: 30px;*/
+    /*margin-left: 50px;*/
+    /*display: inline-flex;*/
+    /*text-align: center;*/
+    /*border-radius: 50%;*/
+    /*background: #FAFAFA;*/
+    /*box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);*/
 }
 .prof-msg-txt {
-    padding: 10px;
+    /*padding: 10px;*/
+    display: flex;
+    justify-content: center;
 }
+
+
+
+
 /* GoldGame */
 .gold-coin{
     height: 13px;

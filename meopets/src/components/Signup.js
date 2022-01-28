@@ -135,23 +135,24 @@ export default function SignUp() {
                                {...register("petname", {
                                    required: "Pet name required."})}
                                onChange={e => setPetName(e.target.value)} />
-                    </label><br/>
+                    </label>
 
                     <ErrorMessage
                         errors={errors}
                         name="petname"
                         render={({ message }) =>
                             <div style={{color:"red", fontWeight:"bold"}}>
-                                {message}
+                                {message}<br/>
                             </div>}
                     /><br/>
 
                     {/* PET TYPE ------------------------------------------------------------------------------------*/}
-                    <label>Type of Pet:
+                    <label>Type of Pet:{" "}
                         <select id = "dropdown" onChange={e => 
                             {setPetType(Number(e.target.value))
                             document.querySelector(".prev-img").src = petImg[e.target.value]
                         }}>
+                            <option value="" disabled selected>Choose a pet</option>
                             <option value='1'> Blob </option>
                             <option value='2'> Winged Cat</option>
                         </select>
@@ -161,7 +162,9 @@ export default function SignUp() {
                 </span>
                     <br/><br/>
 
-                    <input type="submit" value="Submit"/>
+                    <button className="login-input"
+                            type="submit"
+                            style={{padding: "0.5em"}}>Submit</button>
                 </div>
             </form>
         </div>

@@ -135,14 +135,14 @@ export default function SignUp() {
                                {...register("petname", {
                                    required: "Pet name required."})}
                                onChange={e => setPetName(e.target.value)} />
-                    </label><br/>
+                    </label>
 
                     <ErrorMessage
                         errors={errors}
                         name="petname"
                         render={({ message }) =>
                             <div style={{color:"red", fontWeight:"bold"}}>
-                                {message}
+                                {message}<br/>
                             </div>}
                     /><br/>
 

@@ -2,7 +2,12 @@ h2 {
     font-size: 20px;
     text-align: center;
     display: grid;
+   
     
+}
+h1{
+    text-align: center;
+    font-weight: 400;
 }
 p{
     font-size: 10px;
@@ -34,4 +39,7 @@ img {
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
+}
+ul{
+    line-height: 1.8;
 }

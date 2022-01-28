@@ -142,7 +142,7 @@ export default function Users(props) {
         setUser(returnedUser);
         sessionStorage.setItem('token', response.data.token);
         sessionStorage.setItem('expirationTime', response.data.exp);
-        sessionStorage.setIcccccccccccccctem('user', JSON.stringify(returnedUser));
+        sessionStorage.setItem('user', JSON.stringify(returnedUser));
         const remainingTime = calculateRemainingTime(response.data.exp);
         console.log(remainingTime);
         logoutTimer = setTimeout(logOut, (remainingTime-300)*1000);

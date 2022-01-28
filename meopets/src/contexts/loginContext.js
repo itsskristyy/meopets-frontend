@@ -105,7 +105,15 @@ export default function Users(props) {
             password: password,
             firstPetName: firstPetName,
             firstPetType: firstPetType
-        });
+        })
+            .catch(function (error) {
+                if (error.response.status === 418) {
+                    alert ("There is already an account associated with this email.");
+                }
+                if (error.response.status === 422) {
+                    alert ("This username is taken.")
+                }
+            });;
         // The user is automatically signed in (this can be changed, of course).
         setToken(response.data.token);
         setUser(response.data.user);

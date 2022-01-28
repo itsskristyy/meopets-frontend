@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 /* login/user Context. Here is where the global state gets defined. */
 //heroku url: https://virtual-pets.herokuapp.com
@@ -12,6 +11,7 @@ export const UserContext = React.createContext({
     token: {},
     isLoggedIn: {},
     user: {},
+    currency: {},
     signUp: (email, username, password, firstPetName, firstPetType) => {},
     logIn: (username, password) => {},
     logOut: () => {},
@@ -51,6 +51,7 @@ export default function Users(props) {
     const initialUser = !!initialToken ? JSON.parse(sessionStorage.getItem('user')) : null;
     const [token, setToken] = useState(initialToken);
     const [user, setUser] = useState(initialUser);
+    const [currency, setCurrency] = useState(0);
     let isLoggedIn = !!token;
 
     const logOut = useCallback(() => {
@@ -68,6 +69,15 @@ export default function Users(props) {
         }
     }, [tokenData, logOut]);
 
+    useEffect(() => {
+        if (isLoggedIn && !currency) {
+            const getCurr = async () => {
+                await getCurrency();
+            }
+            getCurr();
+        }
+    }, [currency])
+
 
     // Login function. Sends the POST request to the login route with username and password as bodies. 
     // More error handling might be needed tbh (or handling errors from the API).
@@ -82,16 +92,25 @@ export default function Users(props) {
                 }
             });
         // Assuming login went well, the user state is updated with the response data.
+        const returnedUser = response.data.user;
+        setCurrency(returnedUser.currency);
+        delete returnedUser.currency;
         setToken(response.data.token);
-        setUser(response.data.user);
+        setUser(returnedUser);
         sessionStorage.setItem('token', response.data.token);
         sessionStorage.setItem('expirationTime', response.data.exp);
-        sessionStorage.setItem('user', JSON.stringify(response.data.user));
+        sessionStorage.setItem('user', JSON.stringify(returnedUser));
         console.log(response);
         const remainingTime = calculateRemainingTime(response.data.exp);
         console.log(response.data.exp, remainingTime);
         logoutTimer = setTimeout(logOut, (remainingTime-200)*1000);
         return response;
+    }
+
+    async function getCurrency() {
+        const response = await axios.get('https://virtual-pets.herokuapp.com/users', {headers: {'Authorization' : 'Bearer ' + token}});
+        console.log(response);
+        setCurrency(response.data.user.currency);
     }
 
     // Signup function. Similar to login, except here we're creating a new account. POST. 
@@ -115,11 +134,14 @@ export default function Users(props) {
                 }
             });;
         // The user is automatically signed in (this can be changed, of course).
+        const returnedUser = response.data.user;
+        setCurrency(returnedUser.currency);
+        delete returnedUser.currency;
         setToken(response.data.token);
-        setUser(response.data.user);
+        setUser(returnedUser);
         sessionStorage.setItem('token', response.data.token);
         sessionStorage.setItem('expirationTime', response.data.exp);
-        sessionStorage.setItem('user', JSON.stringify(response.data.user));
+        sessionStorage.setItem('user', JSON.stringify(returnedUser));
         const remainingTime = calculateRemainingTime(response.data.exp);
         console.log(remainingTime);
         logoutTimer = setTimeout(logOut, (remainingTime-300)*1000);
@@ -132,8 +154,10 @@ export default function Users(props) {
                 const updatedUser = await axios.put('https://virtual-pets.herokuapp.com/users', {data: userUpdate},
                 {headers: {'Authorization' : 'Bearer ' + token}})
                 const updated = updatedUser.data.user;
+                setCurrency(updated.currency)
+                delete updated.currency;
                 setUser(updated);
-                sessionStorage.setItem('user', JSON.stringify(updated));                
+                sessionStorage.setItem('user', JSON.stringify(updated));
                 return updated;
             } catch(err) {
                 console.log(err);
@@ -148,6 +172,7 @@ export default function Users(props) {
             token: token,
             isLoggedIn: isLoggedIn,
             user: user, 
+            currency: currency,
             signup: signUp, 
             login: logIn, 
             logout: logOut,

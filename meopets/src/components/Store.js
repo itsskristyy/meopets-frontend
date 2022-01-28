@@ -36,8 +36,13 @@ export default function Store() {
             <div className="toys">
                 <ul> Ball
                     <img  alt = "ball" id="ball" src={ball} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){
-                        setInventory([...inventory,4])
-                        getTCoins(150)
+                        if(user.user.currency >= 150){
+                            setInventory([...inventory,4])
+                            getTCoins(150)
+                        }else{
+                            alert("Sorry, You do not have enough coins to purchase this item.")
+                        }
+                        
                      }}} />
                     <p> 150 coins </p>
                     <p> +5 Happiness </p>
@@ -59,8 +64,12 @@ export default function Store() {
 
                 <ul> Rubber Duck
                     <img alt = "duck" id="duck" src={duck} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        setInventory([...inventory,5])
-                        getTCoins(70)
+                         if(user.user.currency >= 70){
+                            setInventory([...inventory,5])
+                            getTCoins(70)
+                        }else{
+                            alert("Sorry, You do not have enough coins to purchase this item.")
+                        } 
                     }}}/>
                     <p> 70 coins </p>
                     <p> +5 Happiness </p>
@@ -71,8 +80,12 @@ export default function Store() {
             <div className="food">
                 <ul> Apple Juice
                     <img alt = "juice" id="juice" src= {juice} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        setInventory([...inventory,7])
-                        getTCoins(20)
+                        if(user.user.currency >= 20){
+                            setInventory([...inventory,7])
+                            getTCoins(20)
+                        }else{
+                            alert("Sorry, You do not have enough coins to purchase this item.")
+                        } 
                     }}}/>
                     <p> 20 coins</p>
                     <p> +1 Hunger </p>
@@ -80,8 +93,12 @@ export default function Store() {
 
                 <ul> Cupcake
                     <img alt = "cupcake" id="cake" src={cake} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){
-                        setInventory([...inventory,6])
-                        getTCoins(35)
+                        if(user.user.currency >= 35){
+                            setInventory([...inventory,6])
+                            getTCoins(35)
+                        }else{
+                            alert("Sorry, You do not have enough coins to purchase this item.")
+                        } 
                      }}} />
                     <p> 35 coins</p>
                     <p> +2 Hunger </p>
@@ -89,8 +106,12 @@ export default function Store() {
 
                 <ul> Water
                     <img alt = "water" id="water" src={water} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        setInventory([...inventory,3])
-                        getTCoins(10)
+                        if(user.user.currency >= 10){
+                            setInventory([...inventory,3])
+                            getTCoins(10)
+                        }else{
+                            alert("Sorry, You do not have enough coins to purchase this item.")
+                        } 
                     }}}/>
                     <p> 10 coins</p>
                     <p> +2 Hunger </p>
@@ -98,8 +119,13 @@ export default function Store() {
 
                 <ul> Sandwich
                     <img alt = "sandwich" id="sandwich" src={sandwich} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        setInventory([...inventory,2])
-                        getTCoins(40)
+                        
+                        if(user.user.currency >= 40){
+                            setInventory([...inventory,2])
+                            getTCoins(40)
+                        }else{
+                            alert("Sorry, You do not have enough coins to purchase this item.")
+                        } 
                     }}}/>
                     <p> 40 coins</p>
                     <p> +6 Hunger </p>
@@ -111,8 +137,12 @@ export default function Store() {
             <div className="medicine">
                 <ul> Magic Candy
                     <img alt = "candy" src="https://clipart.world/wp-content/uploads/2020/08/pink-candy-transparent.png" onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        setInventory([...inventory,10])
-                        getTCoins(70)
+                        if(user.user.currency >= 70){
+                            setInventory([...inventory,10])
+                            getTCoins(70)
+                        }else{
+                            alert("Sorry, You do not have enough coins to purchase this item.")
+                        } 
                     }}} />
                     <p> 70 coins </p>
                     <p> +5 Health </p>
@@ -120,9 +150,12 @@ export default function Store() {
 
                 <ul>   Meopkins
                     <img  alt = "napkins" id="napkins" alt="tissue" src={tissue} onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        
-                        setInventory([...inventory,1])
-                        getTCoins(70)
+                         if(user.user.currency >= 70){
+                            setInventory([...inventory,1])
+                            getTCoins(70)
+                        }else{
+                            alert("Sorry, You do not have enough coins to purchase this item.")
+                        } 
                     }}} />
                     <p> 70 coins </p>
                     <p> +3 Health </p>
@@ -131,8 +164,12 @@ export default function Store() {
                 <ul>   Cough Syrup
                     <img  id="cough" src= {syrup}  
                     onClick={() => { if (window.confirm('Are you sure you want to purchase?')){ 
-                        setInventory([...inventory,8])
-                        getTCoins(120)
+                        if(user.user.currency >= 80){
+                            setInventory([...inventory,8])
+                            getTCoins(120)
+                        }else{
+                            alert("Sorry, You do not have enough coins to purchase this item.")
+                        } 
                     }}} />
                     <p> 120 coins </p>
                     <p> +7 Health </p>

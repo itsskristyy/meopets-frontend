@@ -12,6 +12,7 @@ export default function Inventory(props) {
             document.querySelector('.invent-btn').textContent = "Refresh Inventory"
             document.querySelector('.invent-items').innerHTML = ""
             let amountItems = [0,0,0,0,0,0,0,0,0]
+            let title = ["", "", "", "", "", "","", "", ""]
             for(let i=0; i<props.inventory.length; i++){
                 props.inventory[i] === 1 && amountItems[0]++
                 props.inventory[i] === 2 && amountItems[1]++
@@ -22,23 +23,26 @@ export default function Inventory(props) {
                 props.inventory[i] === 7 && amountItems[6]++
                 props.inventory[i] === 8 && amountItems[7]++
                 props.inventory[i] === 9 && amountItems[8]++
+                props.inventory[i] === 1 && (title[0] = "Meopkins")
+                props.inventory[i] === 2 && (title[1] = "Sandwich")
+                props.inventory[i] === 3 && (title[2] = "Water")
+                props.inventory[i] === 4 && (title[3] = "Ball")
+                props.inventory[i] === 5 && (title[4] = "Rubber Duck")
+                props.inventory[i] === 6 && (title[5] = "Cupcake")
+                props.inventory[i] === 7 && (title[6] = "Apple Juice")
+                props.inventory[i] === 8 && (title[7] = "Cough Syrup")
+                props.inventory[i] === 9 && (title[8] = "Teddy Bear")
             }
                 for(let i=0; i<9;i++){
                     if(amountItems[i] !== 0){
-                        let title = ""
-                        props.inventory[i] === 1 && (title = "Meopkins")
-                        props.inventory[i] === 2 && (title = "Sandwich")
-                        props.inventory[i] === 3 && (title = "Water")
-                        props.inventory[i] === 4 && (title = "Ball")
-                        props.inventory[i] === 5 && (title = "Rubber Duck")
-                        props.inventory[i] === 6 && (title = "Cupcake")
-                        props.inventory[i] === 7 && (title = "Apple Juice")
-                        props.inventory[i] === 8 && (title = "Cough Syrup")
-                        props.inventory[i] === 9 && (title = "Teddy Bear")
+                        console.log(i)
+                        
+                        console.log(props.inventory[i])
+                        
                         let item = document.createElement('div')
                         item.className = "invent-el"
                         let itemText = document.createElement('h4')
-                        itemText.textContent = title
+                        itemText.textContent = title[i]
                         let itemImg = document.createElement('img')
                         let itemAmount = document.createElement('p')
                         itemAmount.textContent = "Amount: " + amountItems[i]

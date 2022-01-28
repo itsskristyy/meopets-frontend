@@ -15,7 +15,7 @@ import syrup from '../coughsyrup.png';
 import bear from '../bear.png';
 
 export default function Store() {
-    const [inventory, setInventory] = useState([1,1,1,3,2,1,3,4])
+    const [inventory, setInventory] = useState([2,2,8])
 
     return (
 

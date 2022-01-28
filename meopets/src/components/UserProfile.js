@@ -8,14 +8,14 @@ export default function UserProfile(props) {
     const user = useContext(UserContext);
     const updateUser = useContext(UserContext).updateUser;
     const navigate = useNavigate();
+    
     useEffect(() => {
         if(!user.isLoggedIn) {
             navigate('/home');
         }
     }, []);
 
-    async function getCoins() {
-        const newCurrency = {currency: user.user.currency + 50};
+    async function getCoins(newCurrency) {
         return updateUser(newCurrency);
     }
 
@@ -24,11 +24,21 @@ export default function UserProfile(props) {
             {!user.isLoggedIn && navigate('/home')}
             {user.isLoggedIn && 
             <div className="user-disp">
-                <button type='button' onClick={async () => await getCoins()}>Get Your Daily Coins!</button>
+                <button type='button' 
+                    onClick={async () => {
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        const lastUpdated = new Date(user.user.lastUpdated);
+                        if(today > lastUpdated) {
+                            await getCoins({currency: user.currency + 50})
+                        } else {
+
+                        }
+                    }}>Get Your Daily Coins!</button>
                 <div className="currency">
                     <img src="https://cdn-icons-png.flaticon.com/512/550/550638.png" alt="coin stack"
                          className="coins-img"/>
-                    <p className="coins">{user.user.currency}</p>
+                    <p className="coins">{user.currency}</p>
                 </div>
                 <div className="prof-msg">
                     {user.user.created !== user.user.lastUpdated &&

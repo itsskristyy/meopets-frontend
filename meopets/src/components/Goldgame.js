@@ -8,7 +8,7 @@ export default function Goldgame(props){
    let draggedOver = false
    let points = 0 
    async function getTCoins(amount) {
-    const newCurrency = {currency: user.user.currency + amount};
+    const newCurrency = {currency: user.currency + amount};
     return updateUser(newCurrency);
     }
     function dropCoins(){

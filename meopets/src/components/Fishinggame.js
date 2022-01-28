@@ -6,7 +6,7 @@ export default function Fishinggame(props){
     const updateUser = useContext(UserContext).updateUser;
     const [gamePlayed, setGamePlayed] = useState(false)
     async function getTCoins(amount) {
-        const newCurrency = {currency: user.user.currency + amount};
+        const newCurrency = {currency: user.currency + amount};
         return updateUser(newCurrency);
     }
    function gamePlay(){

@@ -30,23 +30,27 @@ export default function Pet(props){
     async function feedPet(pet) {
         const petToFeed = {...pet};
         petToFeed.hunger > 0 ? petToFeed.hunger -= 10 : petToFeed.hunger = 0;
+        alert("Pet happiness decreased by 10")
         return await petUpdateHandler(petToFeed);
     }
 
     async function playWithPet(pet) {
         const petToPlay = {...pet};
         petToPlay.happiness += 10;
+        alert("Pet happiness decreased by 10")
         return await petUpdateHandler(petToPlay);
     }
     async function playFishing(pet) {
         const petToPlay = {...pet};
         petToPlay.health > 0 ? petToPlay.health -= 10 : petToPlay.health = 0;
+        alert("Pet energy will decrease by 10")
         navigate("/fishing")
         return await petUpdateHandler(petToPlay);
     }
     async function playGold(pet) {
         const petToPlay = {...pet};
         petToPlay.health > 0 ? petToPlay.health -= 10 : petToPlay.health = 0;
+        alert("Pet energy will decrease by 10")
         navigate("/goldgame")
         return await petUpdateHandler(petToPlay);
     }
@@ -67,7 +71,7 @@ export default function Pet(props){
             <button onClick={async () => await playFishing(pets[id]) }>Go fishing!</button>
             <button onClick={async () => await playGold(pets[id]) }>Get some gold!</button>
                 <br/><br/>
-
+                <p className="changes-div"></p>
                 {/* Clicking on the button navigates the user back to UserProfile */}
                 <button onClick={() => {
                     navigate("/userprofile")

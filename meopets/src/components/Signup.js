@@ -4,10 +4,7 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 
 import { UserContext } from "../contexts/loginContext";
-
-import blob from "../assets/blob.png";
-import cat from "../assets/cat.png";
-import apple from "../assets/apple.png"
+import petImg from "./petmapper";
 
 export default function SignUp() {
     let navigate = useNavigate()
@@ -30,18 +27,6 @@ export default function SignUp() {
     const onSubmit = async data => {
         await signUp(data.email, data.username, data.password, data.petName, data.petType);
         navigate('/userprofile', {replace: true})
-    }
-
-    function petMap(){
-        if(petType === 1) {
-            return (<img src={blob} alt="blob with smiley face" className="prev-img"/>)
-        }
-        if(petType === 2) {
-            return (<img src={cat} alt="gray cat with wings" className="prev-img"/>)
-        }
-        if(petType === 3) {
-            return (<img src={apple} alt="granny smith apple making weird smiley face" className="prev-img"/>)
-        }
     }
 
     return(
@@ -166,19 +151,15 @@ export default function SignUp() {
                     <label>Type of Pet:{" "}
                         <select id = "dropdown" onChange={e => 
                             {setPetType(Number(e.target.value))
-                            //     let petPreview = require (petImg[e.target.value]);
-                            // document.querySelector(".prev-img").src = petPreview
+                            document.querySelector(".prev-img").src = petImg[e.target.value]
                         }}>
-                            <option value="" disabled selected> Choose a pet </option>
+                            <option value="" disabled selected>Choose a pet</option>
                             <option value='1'> Blob </option>
-                            <option value='2'> Winged Cat </option>
-                            <option value='3'> Granny Smith </option>
+                            <option value='2'> Winged Cat</option>
                         </select>
                     </label><br/>
                 <span>
-                        {/*<img src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" className="prev-img" />*/}
-                        {/*<img className="prev-img" />*/}
-                    {petMap()}
+                        <img src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" className="prev-img" />
                 </span>
                     <br/><br/>
 

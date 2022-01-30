@@ -12,7 +12,7 @@ Brooklyn College 2022 TTP Residency - Capstone for Group #2
 * [Rivka Bar-Chaim](https://github.com/Rivka99)
 * [Kristy Delacruz](https://github.com/itsskristyy)
 * [Lucy Lee](https://github.com/lucylee-412)
-* [Marcin Tomala](https://github.com/Mordyfier)
+* [Marcin Tomala](https://github.com/marcintomala)
 
 ---
 

@@ -2,11 +2,8 @@ import { useContext, useEffect } from "react";
 import { useLocation, useNavigate, useParams} from "react-router-dom";
 import { UserContext } from "../contexts/loginContext";
 import { PetsContext } from "../contexts/petsContext";
-import petImg from "./petmapper";
-// Function to check species
-// pets[id].type
-// If species is 1 -> return /blob.png
-// If species is 2 -> return /cat.png
+// import petImg from "./petmapper";
+import petPreview from './petmapper';
 
 export default function Pet(props){
     // let location = useLocation();
@@ -64,7 +61,8 @@ export default function Pet(props){
             <div>
                 <h1 className="pet-header">{pets[id].name}</h1>
                 {/* // Return function */}
-                <img src={petImg[pets[id].type]} alt={pets[id].name} className="singe-pet-img"/>
+                {/*<img src={petImg[pets[id].type]} alt={pets[id].name} className="singe-pet-img"/>*/}
+                <img src={petPreview(pets[id].type)} alt={pets[id].name} className="singe-pet-img"/>
       
 
             <button onClick={async () => await feedPet(pets[id])}>Feed me!</button>

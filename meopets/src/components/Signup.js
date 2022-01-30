@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 
 import { UserContext } from "../contexts/loginContext";
-import petImg from "./petmapper";
+// import petImg from "./petmapper";
+import petPreview from './petmapper';
 
 export default function SignUp() {
     let navigate = useNavigate()
@@ -151,7 +152,7 @@ export default function SignUp() {
                     <label>Type of Pet:{" "}
                         <select id = "dropdown" onChange={e => 
                             {setPetType(Number(e.target.value))
-                            document.querySelector(".prev-img").src = petImg[e.target.value]
+                            // document.querySelector(".prev-img").src = petImg[e.target.value]
                         }}>
                             <option value="" disabled selected>Choose a pet</option>
                             <option value='1'> Blob </option>
@@ -159,7 +160,7 @@ export default function SignUp() {
                         </select>
                     </label><br/>
                 <span>
-                        <img src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" className="prev-img" />
+                        <img src={petPreview(petType)} className="prev-img" />
                 </span>
                     <br/><br/>
 

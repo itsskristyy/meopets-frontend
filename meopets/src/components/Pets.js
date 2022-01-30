@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../contexts/loginContext';
 import { PetsContext } from '../contexts/petsContext';
-import petImg from './petmapper';
+import petPreview from './petmapper';
 export default function Pets(){
     //let pets = getPets(); // Grab pet(s) from dummy data
     const navigate = useNavigate();
@@ -14,6 +14,7 @@ export default function Pets(){
             navigate('/home');
         }
     }, []);
+
     
     return(
         <div className="pet-grid">
@@ -28,7 +29,9 @@ export default function Pets(){
                     <Link className="pet-image"
                           to={`/userprofile/${user.user.username}/${pets.pets[key].id}`}
                     >
-                        <img src={petImg[pets.pets[key].type]} alt={pets.pets[key].name} className='all-pet-img' />
+                        <img src={petPreview(pets.pets[key].type)}
+                             alt={pets.pets[key].name}
+                             className='all-pet-img' />
                     </Link>
 
                     <ul className="pet-stats">

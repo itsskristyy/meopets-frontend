@@ -63,7 +63,7 @@ export default function Inventory(props) {
     return (
         <div className="invent-page">
             
-             <button onClick={showItems} className="invent-btn">Show Items in Inventory</button>
+             <button onClick={showItems} className="invent-btn">Show Purchases</button>
             <div className='invent-items'>
             </div>
         </div>

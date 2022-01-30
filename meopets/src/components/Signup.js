@@ -112,7 +112,8 @@ export default function SignUp() {
                                    validate: value =>
                                        value  === password || "Passwords do not match.",
                                })} type="password"
-                               onChange={e => setPassword(e.target.value)}/>
+                               // onChange={e => setPassword(e.target.value)}
+                        />
                     </label>
 
                     <ErrorMessage

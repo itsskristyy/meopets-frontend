@@ -51,7 +51,7 @@ export default function Users(props) {
     const initialUser = !!initialToken ? JSON.parse(sessionStorage.getItem('user')) : null;
     const [token, setToken] = useState(initialToken);
     const [user, setUser] = useState(initialUser);
-    const [currency, setCurrency] = useState(0);
+    const [currency, setCurrency] = useState(-1);
     let isLoggedIn = !!token;
 
     const logOut = useCallback(() => {
@@ -70,7 +70,7 @@ export default function Users(props) {
     }, [tokenData, logOut]);
 
     useEffect(() => {
-        if (isLoggedIn && !currency) {
+        if (isLoggedIn && currency === -1) {
             const getCurr = async () => {
                 await getCurrency();
             }

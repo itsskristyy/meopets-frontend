@@ -7,7 +7,7 @@ export default function Goldgame(props){
    const updateUser = useContext(UserContext).updateUser;
    let draggedOver = false
    let points = 0 
-   const loading = user.currency === 0;
+   const loading = user.currency === -1;
 
    function insertCommas(num) {
     let str = num.toString().split('.');

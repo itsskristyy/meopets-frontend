@@ -9,7 +9,7 @@ export default function Fishinggame(props){
         const newCurrency = {currency: user.currency + amount};
         return updateUser(newCurrency);
     }
-    const loading = user.currency === 0;
+    const loading = user.currency === -1;
 
     function insertCommas(num) {
         let str = num.toString().split('.');

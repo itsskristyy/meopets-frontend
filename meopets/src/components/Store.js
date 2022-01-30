@@ -28,7 +28,7 @@ export default function Store() {
         const newCurrency = {currency: user.currency - amount};
         return updateUser(newCurrency);
         }
-    const loading = user.currency === 0;
+    const loading = user.currency === -1;
 
     async function petUpdateHandler(pet) {
         return await updatePet(pet);

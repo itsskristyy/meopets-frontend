@@ -8,7 +8,7 @@ export default function UserProfile(props) {
     const user = useContext(UserContext);
     const updateUser = useContext(UserContext).updateUser;
     const navigate = useNavigate();
-    const loading = user.currency === 0;
+    const loading = user.currency === -1;
     
     useEffect(() => {
         if(!user.isLoggedIn) {

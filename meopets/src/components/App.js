@@ -14,6 +14,7 @@ function App() {
     return (
         <header>
             <nav className="sticky-nav">
+                <h1> hello</h1>
                 <Link className="logo-link" to={`/home`}>
                     <img src={logo} height="120px" alt="meopets logo"/>
                 </Link>

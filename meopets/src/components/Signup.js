@@ -13,7 +13,7 @@ export default function SignUp() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [petName, setPetName] = useState("");
-    const [petType, setPetType] = useState(1);
+    const [petType, setPetType] = useState("");
 
     const signup = useContext(UserContext).signup;
 
@@ -156,7 +156,8 @@ export default function SignUp() {
                         }}>
                             <option value="" disabled selected>Choose a pet</option>
                             <option value='1'> Blob </option>
-                            <option value='2'> Winged Cat</option>
+                            <option value='2'> Winged Cat </option>
+                            <option value='3'> Green Apple </option>
                         </select>
                     </label><br/>
                 <span>

@@ -33,29 +33,7 @@ export default function Store() {
         const newCurrency = {currency: user.currency - amount};
         return updateUser(newCurrency);
         }
-
-    // async function petUpdateHandler(pet) {
-    //     return await updatePet(pet);
-    // }
-    // async function feedPet(pet,amount) {
-    //     const petToFeed = {...pet};
-    //     petToFeed.hunger > 0 ? petToFeed.hunger -= amount : petToFeed.hunger = 0;
-    //     return await petUpdateHandler(petToFeed);
-    // }
-
-    // async function playWithPet(pet, amount) {
-    //     const petToPlay = {...pet};
-    //     petToPlay.happiness += amount;
-    //     return await petUpdateHandler(petToPlay);
-    // }
-    // async function playFishing(pet,amount) {
-    //     const petToPlay = {...pet};
-    //     petToPlay.health > 0 ? petToPlay.health -= amount : petToPlay.health = 0;
-    //     return await petUpdateHandler(petToPlay);
-    // }
-   // pets[id], amount
-
-    const loading = user.currency === 0;
+    const loading = user.currency === -1;
 
     async function petUpdateHandler(pet) {
         return await updatePet(pet);
